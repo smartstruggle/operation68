@@ -2814,3 +2814,8 @@ background-size:
   }
 }
 
+@media (max-width: 780px) {
+  .casebook-sheet h3 br {
+    display: inline !important;
+  }
+}
