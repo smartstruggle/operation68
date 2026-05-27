@@ -580,7 +580,6 @@ if (casebook && totalCasebookPages > 0) {
   });
 }
 
-
 /* =========================================================
   GUIDELINE MODAL — INTERNE ENTFÜHRUNGSLEITLINIE
 ========================================================= */
@@ -603,8 +602,7 @@ function openGuidelineModal(triggerButton = null) {
   document.body.classList.add("modal-is-open");
 
   window.setTimeout(() => {
-    const closeButton = guidelineModal.querySelector("[data-guideline-close]");
-    closeButton?.focus();
+    guidelineModal.querySelector("[data-guideline-close]")?.focus();
   }, 50);
 }
 
@@ -640,14 +638,12 @@ function toggleGuidelineModal(triggerButton = null) {
   }
 }
 
-/* Initial sicher verstecken */
 if (guidelineModal) {
   guidelineModal.classList.add("hidden");
   guidelineModal.setAttribute("aria-hidden", "true");
   guidelineModal.setAttribute("inert", "");
 }
 
-/* Event Delegation */
 document.addEventListener("click", (event) => {
   const openButton = event.target.closest("[data-guideline-open]");
   const closeButton = event.target.closest("[data-guideline-close]");
