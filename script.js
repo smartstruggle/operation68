@@ -519,3 +519,63 @@ if (hudDate || hudTime || hudBatteryPercent) {
   updateLandingHud();
   window.setInterval(updateLandingHud, 1000);
 }
+
+
+/* =========================================================
+  CASEBOOK — AKTENBUCH BLÄTTERN
+========================================================= */
+
+const casebook = document.querySelector("#casebook");
+const casebookPages = document.querySelectorAll(".casebook-page");
+const casebookPrevButton = document.querySelector("[data-casebook-prev]");
+const casebookNextButton = document.querySelector("[data-casebook-next]");
+const casebookCounter = document.querySelector("#casebookCounter");
+
+let currentCasebookPage = 1;
+const totalCasebookPages = casebookPages.length;
+
+function showCasebookPage(pageNumber, direction = "next") {
+  if (!casebook || totalCasebookPages === 0) return;
+
+  const nextPageNumber = Math.max(1, Math.min(totalCasebookPages, pageNumber));
+
+  casebookPages.forEach((page) => {
+    const pageIndex = Number(page.dataset.casePage);
+    const isActive = pageIndex === nextPageNumber;
+
+    page.classList.remove("is-active", "is-leaving-left", "is-leaving-right");
+
+    if (isActive) {
+      page.classList.add("is-active");
+    } else if (pageIndex === currentCasebookPage) {
+      page.classList.add(direction === "next" ? "is-leaving-left" : "is-leaving-right");
+    }
+  });
+
+  currentCasebookPage = nextPageNumber;
+  casebook.dataset.currentPage = String(currentCasebookPage);
+
+  if (casebookCounter) {
+    casebookCounter.textContent = `Seite ${currentCasebookPage} / ${totalCasebookPages}`;
+  }
+
+  if (casebookPrevButton) {
+    casebookPrevButton.disabled = currentCasebookPage === 1;
+  }
+
+  if (casebookNextButton) {
+    casebookNextButton.disabled = currentCasebookPage === totalCasebookPages;
+  }
+}
+
+if (casebook && totalCasebookPages > 0) {
+  showCasebookPage(1);
+
+  casebookPrevButton?.addEventListener("click", () => {
+    showCasebookPage(currentCasebookPage - 1, "prev");
+  });
+
+  casebookNextButton?.addEventListener("click", () => {
+    showCasebookPage(currentCasebookPage + 1, "next");
+  });
+}
