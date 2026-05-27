@@ -1,0 +1,1691 @@
+/* =========================================================
+  OPERATION 68 — LANDINGPAGE STYLE.CSS
+  Clean Agency 2026 / Retro Mission UI
+========================================================= */
+
+:root {
+  --bg-0: #030604;
+  --bg-1: #07110d;
+  --bg-2: #0d1a13;
+
+  --cream: #f4eddc;
+  --cream-soft: rgba(244, 237, 220, 0.78);
+
+  --green: #9cff5f;
+  --green-soft: #c7ff8f;
+  --green-muted: rgba(156, 255, 95, 0.52);
+  --green-line: rgba(156, 255, 95, 0.28);
+
+  --amber: #d7b35b;
+  --red: #ff3b2e;
+
+  --screen: #a8d36b;
+  --screen-light: #c4ed82;
+  --screen-dark: #6b9343;
+  --screen-text: #10170d;
+
+  --panel: rgba(12, 18, 13, 0.84);
+  --panel-border: rgba(255, 255, 255, 0.12);
+
+  --radius-lg: 32px;
+  --radius-md: 22px;
+  --shadow-heavy: 0 30px 100px rgba(0, 0, 0, 0.62);
+
+  --font-display: Impact, "Arial Black", system-ui, sans-serif;
+  --font-mono: "Courier New", Courier, monospace;
+  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* =========================================================
+  BASE
+========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--bg-0);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+
+  color: var(--cream);
+  background:
+    radial-gradient(circle at 50% 14%, rgba(215, 179, 91, 0.22), transparent 28rem),
+    radial-gradient(circle at 50% 68%, rgba(156, 255, 95, 0.07), transparent 34rem),
+    linear-gradient(180deg, var(--bg-1) 0%, var(--bg-0) 100%);
+
+  font-family: var(--font-body);
+}
+
+/* feines Raster + Scanlines */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+    linear-gradient(rgba(156, 255, 95, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(156, 255, 95, 0.03) 1px, transparent 1px),
+    repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.025) 0,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px,
+      transparent 5px
+    );
+
+  background-size: 38px 38px, 38px 38px, 100% 5px;
+  opacity: 0.5;
+}
+
+/* Vignette */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(circle at center, transparent 36%, rgba(0, 0, 0, 0.52) 100%);
+}
+
+/* =========================================================
+  CORNER SVGs
+========================================================= */
+
+.corner-svg,
+.corner_up_left,
+.corner_up_right,
+.corner_down_left,
+.corner_down_right {
+  position: fixed;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.48;
+
+  filter:
+    drop-shadow(0 0 14px rgba(156, 255, 95, 0.1))
+    drop-shadow(0 18px 24px rgba(0, 0, 0, 0.45));
+}
+
+.corner-svg svg,
+.corner_up_left svg,
+.corner_up_right svg,
+.corner_down_left svg,
+.corner_down_right svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.corner_up_left {
+  top: clamp(80px, 10vh, 140px);
+  left: clamp(22px, 6vw, 120px);
+  width: clamp(120px, 13vw, 210px);
+}
+
+.corner_up_right {
+  top: clamp(78px, 9vh, 132px);
+  right: clamp(24px, 7vw, 140px);
+  width: clamp(130px, 14vw, 230px);
+}
+
+.corner_down_left {
+  bottom: clamp(52px, 8vh, 110px);
+  left: clamp(22px, 6vw, 120px);
+  width: clamp(118px, 13vw, 205px);
+}
+
+.corner_down_right {
+  bottom: clamp(52px, 8vh, 110px);
+  right: clamp(24px, 7vw, 130px);
+  width: clamp(112px, 12vw, 195px);
+}
+
+/* =========================================================
+  LANDING PAGE
+========================================================= */
+
+.page.landing-page {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.hero {
+  position: relative;
+  width: min(100%, 1680px);
+  min-height: 100vh;
+  margin: 0 auto;
+
+  padding:
+    clamp(92px, 9vw, 140px)
+    clamp(18px, 4vw, 72px)
+    clamp(56px, 7vw, 92px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+/* dezenter Rahmen */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: clamp(56px, 5vw, 84px) clamp(20px, 3vw, 48px);
+  z-index: -1;
+  pointer-events: none;
+
+  border: 1px solid rgba(156, 255, 95, 0.13);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(215, 179, 91, 0.08), transparent 36rem),
+    rgba(255, 255, 255, 0.012);
+  box-shadow:
+    inset 0 0 80px rgba(156, 255, 95, 0.025),
+    0 0 80px rgba(0, 0, 0, 0.28);
+}
+
+/* =========================================================
+  HUD — works with .landing-hud if present
+========================================================= */
+
+.landing-hud {
+  position: absolute;
+  top: clamp(18px, 2vw, 28px);
+  left: clamp(18px, 3vw, 48px);
+  right: clamp(18px, 3vw, 48px);
+  z-index: 10;
+
+  display: grid;
+  grid-template-columns: 1fr auto auto auto auto auto;
+  align-items: center;
+  gap: clamp(10px, 2vw, 34px);
+
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(156, 255, 95, 0.38);
+
+  color: var(--green);
+  font-family: var(--font-mono);
+  font-size: clamp(0.72rem, 0.95vw, 1rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow: 0 0 12px rgba(156, 255, 95, 0.18);
+}
+
+.landing-hud span {
+  white-space: nowrap;
+}
+
+.hud-pill {
+  padding: 7px 16px;
+  border: 1px solid rgba(156, 255, 95, 0.58);
+  border-radius: 999px;
+  background: rgba(156, 255, 95, 0.06);
+}
+
+/* fallback, falls du noch alte HUD-Klassen irgendwo hast */
+.top-hud,
+.hud-bar,
+.mission-hud,
+.hero-hud,
+.page-hud {
+  position: relative;
+  z-index: 10;
+
+  width: min(100%, 1420px);
+  margin: 0 auto clamp(28px, 3vw, 44px);
+  padding: 12px 16px;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+
+  border-top: 1px solid rgba(156, 255, 95, 0.18);
+  border-bottom: 1px solid rgba(156, 255, 95, 0.22);
+
+  color: var(--green);
+  font-family: var(--font-mono);
+  font-size: clamp(0.72rem, 0.95vw, 0.95rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+  TYPOGRAPHY
+========================================================= */
+
+.eyebrow {
+  margin: 0 0 clamp(18px, 2vw, 28px);
+
+  color: var(--amber);
+  font-family: var(--font-mono);
+  font-size: clamp(0.78rem, 0.95vw, 1rem);
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+
+  text-shadow: 0 0 16px rgba(215, 179, 91, 0.2);
+}
+
+.eyebrow::before,
+.eyebrow::after {
+  content: "";
+  display: inline-block;
+  width: clamp(20px, 3vw, 40px);
+  height: 1px;
+  margin: 0 16px 0 0;
+  vertical-align: middle;
+  background: rgba(215, 179, 91, 0.72);
+}
+
+.eyebrow::after {
+  margin: 0 0 0 16px;
+}
+
+.hero h1 {
+  margin: 0;
+
+  color: var(--cream);
+  font-family: var(--font-display);
+  font-size: clamp(5.2rem, 11.5vw, 12.2rem);
+  line-height: 0.82;
+  letter-spacing: 0.065em;
+  text-transform: uppercase;
+
+  text-shadow:
+    0 0 18px rgba(244, 237, 220, 0.18),
+    0 0 48px rgba(244, 237, 220, 0.08),
+    6px 6px 0 rgba(0, 0, 0, 0.48);
+}
+
+.subtitle {
+  margin: clamp(26px, 3vw, 42px) auto 0;
+  max-width: 980px;
+
+  color: var(--green-soft);
+  font-family: var(--font-mono);
+  font-size: clamp(1rem, 1.45vw, 1.5rem);
+  font-weight: 900;
+  line-height: 1.42;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+
+  text-shadow: 0 0 14px rgba(156, 255, 95, 0.16);
+}
+
+.subtitle::before,
+.subtitle::after {
+  content: "—";
+  margin: 0 18px;
+  color: rgba(156, 255, 95, 0.55);
+}
+
+/* =========================================================
+  CHOICE CARDS
+========================================================= */
+
+.choice-grid {
+  width: min(100%, 1040px);
+  margin: clamp(76px, 8vw, 118px) auto 0;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(28px, 4vw, 54px);
+  align-items: stretch;
+}
+
+.choice-card,
+.index-flip-card,
+.protected-choice {
+  position: relative;
+  min-height: clamp(250px, 22vw, 322px);
+  padding: 18px;
+
+  display: block;
+  text-decoration: none;
+  color: inherit;
+
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.015)),
+    linear-gradient(180deg, rgba(32, 40, 31, 0.98), rgba(8, 12, 8, 0.98));
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.045),
+    inset 0 0 34px rgba(0, 0, 0, 0.68),
+    var(--shadow-heavy);
+
+  overflow: hidden;
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease,
+    filter 180ms ease;
+}
+
+.choice-card:hover,
+.index-flip-card:hover,
+.protected-choice:hover {
+  transform: translateY(-6px);
+  border-color: rgba(156, 255, 95, 0.4);
+  filter: brightness(1.05);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 0 38px rgba(0, 0, 0, 0.68),
+    0 34px 90px rgba(0, 0, 0, 0.72),
+    0 0 32px rgba(156, 255, 95, 0.08);
+}
+
+/* Display inside card */
+.choice-card::before,
+.index-flip-card::before,
+.protected-choice::before {
+  content: "";
+  position: absolute;
+  inset: 16px;
+  z-index: 0;
+
+  border-radius: 20px;
+  border: 2px solid rgba(4, 8, 4, 0.88);
+
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.22), transparent 38%),
+    linear-gradient(180deg, var(--screen-light), var(--screen));
+
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 255, 255, 0.08),
+    inset 0 0 34px rgba(9, 15, 7, 0.24);
+}
+
+/* scanlines over display */
+.choice-card::after,
+.index-flip-card::after,
+.protected-choice::after {
+  content: "";
+  position: absolute;
+  inset: 16px;
+  z-index: 1;
+  pointer-events: none;
+
+  border-radius: 20px;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(10, 15, 8, 0.075) 0,
+      rgba(10, 15, 8, 0.075) 2px,
+      transparent 2px,
+      transparent 6px
+    );
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+}
+
+/* normal link-card content */
+.choice-card:not(.index-flip-card) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.choice-card > * {
+  position: relative;
+  z-index: 3;
+}
+
+.option-label {
+  display: block;
+  width: fit-content;
+  margin: 0 0 22px;
+
+  color: rgba(16, 22, 13, 0.72);
+  font-family: var(--font-mono);
+  font-size: clamp(0.72rem, 0.9vw, 0.9rem);
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.choice-title,
+.index-flip-front .choice-title,
+.index-flip-back .choice-title,
+.choice-card > span:not(.option-label) {
+  display: block;
+
+  color: var(--screen-text);
+  font-family: var(--font-mono);
+  font-size: clamp(1.95rem, 3.05vw, 3.15rem);
+  font-weight: 900;
+  line-height: 1.04;
+  letter-spacing: 0.035em;
+  text-align: left;
+  text-transform: uppercase;
+
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.choice-icon {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 0.82em;
+  transform: translateY(-0.04em);
+}
+
+.choice-card small,
+.index-flip-front small,
+.index-flip-back small {
+  display: block;
+  max-width: 26ch;
+  margin: 26px 0 0;
+
+  color: rgba(16, 22, 13, 0.9);
+  font-family: var(--font-mono);
+  font-size: clamp(0.92rem, 1.12vw, 1.12rem);
+  font-weight: 900;
+  line-height: 1.48;
+  letter-spacing: 0.065em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+  INDEX FLIP CARD / MISSION CODE
+========================================================= */
+
+.index-flip-card {
+  perspective: 1200px;
+}
+
+.index-flip-inner {
+  position: relative;
+  z-index: 3;
+
+  width: 100%;
+  min-height: calc(clamp(250px, 22vw, 322px) - 36px);
+
+  transform-style: preserve-3d;
+  transition: transform 320ms ease;
+}
+
+.index-flip-card.is-flipped .index-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.index-flip-front,
+.index-flip-back {
+  position: absolute;
+  inset: 0;
+
+  padding: clamp(22px, 3vw, 38px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  backface-visibility: hidden;
+}
+
+.index-flip-back {
+  transform: rotateY(180deg);
+}
+
+.index-mission-form {
+  margin-top: 22px;
+  display: grid;
+  gap: 12px;
+}
+
+.index-mission-form input {
+  width: 100%;
+  min-height: 52px;
+  padding: 12px 14px;
+
+  border: 1px solid rgba(16, 22, 13, 0.36);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.28);
+  color: var(--screen-text);
+
+  font: 900 1rem var(--font-mono);
+  letter-spacing: 0.05em;
+}
+
+.index-mission-form input::placeholder {
+  color: rgba(16, 22, 13, 0.58);
+}
+
+.index-mission-form button {
+  min-height: 50px;
+  padding: 12px 16px;
+
+  border: 1px solid rgba(16, 22, 13, 0.42);
+  border-radius: 999px;
+  background: rgba(16, 22, 13, 0.18);
+  color: var(--screen-text);
+
+  font: 900 0.95rem var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  cursor: pointer;
+}
+
+#indexMissionError {
+  min-height: 1.2em;
+  margin: 2px 0 0;
+  color: #7a1a16;
+  font: 800 0.9rem var(--font-body);
+  text-align: left;
+}
+
+/* =========================================================
+  CONNECTION / SECURITY
+========================================================= */
+
+.connection-bar {
+  width: min(100%, 640px);
+  margin: clamp(52px, 5vw, 78px) auto 0;
+  padding: 16px 28px;
+
+  border: 1px solid rgba(156, 255, 95, 0.46);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(9, 18, 12, 0.78), rgba(4, 8, 6, 0.88));
+
+  color: var(--green);
+  font-family: var(--font-mono);
+  font-size: clamp(0.9rem, 1.08vw, 1.08rem);
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.035),
+    0 16px 34px rgba(0, 0, 0, 0.36);
+}
+
+.connection-bar span {
+  margin-left: 18px;
+  letter-spacing: 0.24em;
+}
+
+.security-note,
+.landing-footer-note,
+.hero-note {
+  width: min(100%, 900px);
+  margin: clamp(34px, 4vw, 52px) auto 0;
+
+  color: rgba(215, 179, 91, 0.78);
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 0.9vw, 0.9rem);
+  font-weight: 800;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+  RESPONSIVE
+========================================================= */
+
+@media (max-width: 1120px) {
+  .landing-hud {
+    grid-template-columns: repeat(3, auto);
+    justify-content: center;
+    gap: 8px 22px;
+    text-align: center;
+  }
+
+  .landing-hud span:first-child,
+  .landing-hud span:nth-child(5),
+  .landing-hud span:nth-child(6) {
+    display: none;
+  }
+
+  .choice-grid {
+    width: min(100%, 860px);
+  }
+
+  .hero h1 {
+    font-size: clamp(4.8rem, 13vw, 9rem);
+  }
+}
+
+@media (max-width: 820px) {
+  .hero {
+    padding:
+      clamp(92px, 18vw, 122px)
+      18px
+      54px;
+    justify-content: flex-start;
+  }
+
+  .hero::before {
+    inset: 64px 12px 24px;
+    border-radius: 22px;
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+  }
+
+  .eyebrow::before,
+  .eyebrow::after {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.8rem, 17vw, 6.5rem);
+    line-height: 0.9;
+    letter-spacing: 0.04em;
+  }
+
+  .subtitle {
+    margin-top: 22px;
+    font-size: clamp(0.88rem, 3.4vw, 1.1rem);
+    letter-spacing: 0.075em;
+  }
+
+  .subtitle::before,
+  .subtitle::after {
+    display: none;
+  }
+
+  .choice-grid {
+    width: min(100%, 520px);
+    margin-top: 48px;
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .choice-card,
+  .index-flip-card,
+  .protected-choice {
+    min-height: 228px;
+    border-radius: 26px;
+  }
+
+  .index-flip-inner {
+    min-height: 192px;
+  }
+
+  .choice-title,
+  .index-flip-front .choice-title,
+  .index-flip-back .choice-title,
+  .choice-card > span:not(.option-label) {
+    font-size: clamp(1.7rem, 7.4vw, 2.45rem);
+  }
+
+  .choice-card small,
+  .index-flip-front small,
+  .index-flip-back small {
+    font-size: 0.88rem;
+    line-height: 1.42;
+  }
+
+  .corner-svg {
+    opacity: 0.3;
+  }
+
+  .corner_up_left,
+  .corner_up_right {
+    width: 88px;
+    top: 78px;
+  }
+
+  .corner_down_left,
+  .corner_down_right {
+    width: 86px;
+    bottom: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-hud {
+    left: 12px;
+    right: 12px;
+    top: 12px;
+    grid-template-columns: 1fr;
+    font-size: 0.66rem;
+    gap: 6px;
+  }
+
+  .landing-hud span:nth-child(2),
+  .landing-hud span:nth-child(3) {
+    display: none;
+  }
+
+  .hud-pill {
+    justify-self: center;
+    padding: 6px 12px;
+  }
+
+  .hero {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .hero::before {
+    display: none;
+  }
+
+  .choice-card,
+  .index-flip-card,
+  .protected-choice {
+    min-height: 218px;
+    padding: 14px;
+  }
+
+  .choice-card::before,
+  .choice-card::after,
+  .index-flip-card::before,
+  .index-flip-card::after,
+  .protected-choice::before,
+  .protected-choice::after {
+    inset: 12px;
+    border-radius: 16px;
+  }
+
+  .index-flip-front,
+  .index-flip-back {
+    padding: 22px;
+  }
+
+  .option-label {
+    margin-bottom: 16px;
+    font-size: 0.68rem;
+  }
+
+  .connection-bar {
+    margin-top: 34px;
+    padding: 14px 18px;
+    font-size: 0.76rem;
+    border-radius: 18px;
+  }
+
+  .connection-bar span {
+    display: none;
+  }
+
+  .security-note,
+  .landing-footer-note,
+  .hero-note {
+    margin-top: 24px;
+    font-size: 0.66rem;
+  }
+}
+
+/* =========================================================
+  LANDING CARDS PATCH — GAMEBOY GREEN / READABLE / LEFT
+========================================================= */
+
+/* Card-Größe behalten, aber innen stabiler machen */
+.choice-card,
+.index-flip-card,
+.protected-choice {
+  min-height: clamp(280px, 20vw, 340px);
+  padding: 20px;
+}
+
+/* Innerer Display-Screen: giftiger Gameboy-Look */
+.choice-card::before,
+.index-flip-card::before,
+.protected-choice::before {
+  inset: 18px;
+  border-radius: 20px;
+
+  background:
+    radial-gradient(circle at 18% 10%, rgba(255, 255, 255, 0.18), transparent 34%),
+    linear-gradient(180deg, #cfff67 0%, #a8f33e 46%, #76c71f 100%);
+
+  border: 2px solid rgba(5, 20, 3, 0.92);
+
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 255, 255, 0.08),
+    inset 0 0 22px rgba(12, 40, 4, 0.22),
+    inset 0 -18px 28px rgba(30, 80, 8, 0.14);
+}
+
+/* Scanlines etwas stärker wie Gameboy-Screen */
+.choice-card::after,
+.index-flip-card::after,
+.protected-choice::after {
+  inset: 18px;
+  border-radius: 20px;
+
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(4, 24, 3, 0.10) 0,
+      rgba(4, 24, 3, 0.10) 2px,
+      transparent 2px,
+      transparent 6px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.08),
+      transparent 18%,
+      transparent 82%,
+      rgba(0, 0, 0, 0.08)
+    );
+
+  opacity: 0.72;
+  mix-blend-mode: multiply;
+}
+
+/* Inhalt sauber im Screen halten */
+.choice-card:not(.index-flip-card) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.choice-card > *,
+.index-flip-front > *,
+.index-flip-back > * {
+  position: relative;
+  z-index: 3;
+}
+
+/* Flip-Card Innenhöhe stabil */
+.index-flip-inner {
+  min-height: calc(clamp(280px, 20vw, 340px) - 40px);
+}
+
+.index-flip-front,
+.index-flip-back {
+  padding: clamp(30px, 3vw, 44px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  text-align: left;
+}
+
+/* Automatisches altes OPTION-Pseudo aus, falls noch aktiv */
+.choice-card > span::before,
+.index-flip-front > span::before,
+.index-flip-back > span::before {
+  content: none !important;
+}
+
+/* OPTION-LABEL: nicht mehr grau-unlesbar */
+.option-label {
+  display: block;
+  width: fit-content;
+  margin: 0 0 clamp(18px, 2vw, 24px);
+
+  color: rgba(8, 25, 5, 0.78);
+  font-family: var(--font-mono, "Courier New", monospace);
+  font-size: clamp(0.78rem, 0.9vw, 0.92rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+/* Titel: linksbündig, Symbol in erster Zeile, Text darf umbrechen */
+.choice-title,
+.index-flip-front .choice-title,
+.index-flip-back .choice-title,
+.choice-card > span:not(.option-label) {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+
+  max-width: 100%;
+  margin: 0;
+
+  color: #071404;
+  font-family: var(--font-mono, "Courier New", monospace);
+  font-size: clamp(1.65rem, 2.25vw, 2.42rem);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: 0.045em;
+  text-align: left;
+  text-transform: uppercase;
+
+  overflow-wrap: anywhere;
+  word-break: normal;
+
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.18),
+    0 0 6px rgba(7, 20, 4, 0.08);
+}
+
+/* Symbol immer oben neben dem Titel */
+.choice-icon {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 1.15em;
+  margin: 0;
+  padding-top: 0.04em;
+
+  font-size: 0.82em;
+  line-height: 1;
+  color: #071404;
+  transform: none;
+}
+
+/* Der Textteil neben dem Icon darf sauber umbrechen */
+.choice-title > span:not(.choice-icon) {
+  min-width: 0;
+}
+
+/* Falls dein Titeltext nicht extra in einem span liegt, trotzdem okay:
+   flex behandelt Textnode automatisch neben Icon. */
+
+/* Untertext: linksbündig, lesbar, passt besser rein */
+.choice-card small,
+.index-flip-front small,
+.index-flip-back small {
+  display: block;
+  max-width: 100%;
+  margin-top: clamp(22px, 2.2vw, 30px);
+
+  color: rgba(7, 20, 4, 0.86);
+  font-family: var(--font-mono, "Courier New", monospace);
+  font-size: clamp(0.82rem, 0.95vw, 0.98rem);
+  font-weight: 900;
+  line-height: 1.52;
+  letter-spacing: 0.065em;
+  text-align: left;
+  text-transform: uppercase;
+
+  overflow-wrap: anywhere;
+}
+
+/* Spezifisch rechte Karte: etwas kleiner, damit "Unterstütze die Entführung" elegant passt */
+.choice-card--support .choice-title,
+.index-flip-front .choice-title {
+  font-size: clamp(1.5rem, 2.05vw, 2.25rem);
+  line-height: 1.18;
+  letter-spacing: 0.04em;
+}
+
+/* Zielperson darf etwas größer bleiben */
+.choice-card--target .choice-title {
+  font-size: clamp(1.75rem, 2.35vw, 2.55rem);
+}
+
+/* Code-Rückseite: nicht überlaufen */
+.index-flip-back .choice-title {
+  font-size: clamp(1.45rem, 2vw, 2.2rem);
+}
+
+.index-mission-form {
+  margin-top: 18px;
+  display: grid;
+  gap: 10px;
+}
+
+.index-mission-form input,
+.index-mission-form button {
+  width: 100%;
+  min-height: 48px;
+}
+
+/* Mobile: Text nicht sprengen */
+@media (max-width: 820px) {
+  .choice-card,
+  .index-flip-card,
+  .protected-choice {
+    min-height: 230px;
+  }
+
+  .index-flip-inner {
+    min-height: 190px;
+  }
+
+  .index-flip-front,
+  .index-flip-back {
+    padding: 28px;
+  }
+
+  .choice-title,
+  .index-flip-front .choice-title,
+  .index-flip-back .choice-title,
+  .choice-card > span:not(.option-label),
+  .choice-card--support .choice-title,
+  .choice-card--target .choice-title {
+    font-size: clamp(1.45rem, 6.8vw, 2.18rem);
+    line-height: 1.16;
+  }
+
+  .choice-card small,
+  .index-flip-front small,
+  .index-flip-back small {
+    font-size: 0.82rem;
+    line-height: 1.48;
+  }
+}
+
+@media (max-width: 480px) {
+  .choice-card,
+  .index-flip-card,
+  .protected-choice {
+    min-height: 220px;
+    padding: 14px;
+  }
+
+  .choice-card::before,
+  .choice-card::after,
+  .index-flip-card::before,
+  .index-flip-card::after,
+  .protected-choice::before,
+  .protected-choice::after {
+    inset: 12px;
+    border-radius: 16px;
+  }
+
+  .index-flip-front,
+  .index-flip-back {
+    padding: 22px;
+  }
+
+  .option-label {
+    margin-bottom: 14px;
+    font-size: 0.68rem;
+  }
+
+  .choice-title,
+  .index-flip-front .choice-title,
+  .index-flip-back .choice-title,
+  .choice-card > span:not(.option-label),
+  .choice-card--support .choice-title,
+  .choice-card--target .choice-title {
+    gap: 10px;
+    font-size: clamp(1.32rem, 7vw, 1.95rem);
+    letter-spacing: 0.035em;
+  }
+
+  .choice-card small,
+  .index-flip-front small,
+  .index-flip-back small {
+    margin-top: 18px;
+    font-size: 0.76rem;
+    letter-spacing: 0.045em;
+  }
+}
+
+
+/* =========================================================
+  LANDING CARDS — SAME STRUCTURE / GAMEBOY DISPLAY
+========================================================= */
+
+.choice-card-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  min-height: calc(clamp(280px, 20vw, 340px) - 40px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  text-align: left;
+}
+
+.choice-card:not(.index-flip-card) {
+  display: block;
+}
+
+.choice-card:not(.index-flip-card) .choice-card-content {
+  padding: clamp(30px, 3vw, 44px);
+}
+
+.index-flip-front,
+.index-flip-back {
+  padding: 0;
+}
+
+.index-flip-front .choice-card-content,
+.index-flip-back .choice-card-content {
+  padding: clamp(30px, 3vw, 44px);
+}
+
+/* Mini-Label besser lesbar */
+.option-label {
+  color: rgba(5, 18, 3, 0.82);
+  font-size: clamp(0.8rem, 0.95vw, 0.98rem);
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  margin: 0 0 clamp(18px, 2vw, 26px);
+}
+
+/* Titel mit Symbol sauber in einer Zeile starten */
+.choice-title,
+.index-flip-front .choice-title,
+.index-flip-back .choice-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+
+  width: 100%;
+  max-width: 100%;
+
+  color: #071404;
+  font-family: var(--font-mono, "Courier New", monospace);
+  font-size: clamp(1.55rem, 2.1vw, 2.35rem);
+  font-weight: 900;
+  line-height: 1.18;
+  letter-spacing: 0.045em;
+  text-align: left;
+  text-transform: uppercase;
+
+  overflow-wrap: anywhere;
+}
+
+.choice-icon {
+  flex: 0 0 auto;
+  width: 1.15em;
+  margin: 0;
+  padding-top: 0.06em;
+
+  display: inline-flex;
+  justify-content: center;
+
+  font-size: 0.78em;
+  line-height: 1;
+  color: #071404;
+  transform: none;
+}
+
+.choice-title > span:last-child {
+  min-width: 0;
+}
+
+/* Untertext bleibt innerhalb der Card */
+.choice-card small,
+.index-flip-front small,
+.index-flip-back small {
+  max-width: 100%;
+  margin-top: clamp(22px, 2.2vw, 30px);
+
+  color: rgba(7, 20, 4, 0.88);
+  font-size: clamp(0.82rem, 0.92vw, 0.98rem);
+  line-height: 1.55;
+  letter-spacing: 0.065em;
+
+  overflow-wrap: anywhere;
+}
+
+/* Display noch giftgrüner / Gameboy */
+.choice-card::before,
+.index-flip-card::before,
+.protected-choice::before {
+  background:
+    radial-gradient(circle at 18% 8%, rgba(255, 255, 255, 0.22), transparent 34%),
+    linear-gradient(180deg, #d6ff5f 0%, #a8ff22 48%, #6fd115 100%);
+}
+
+/* Rechte Karte nicht größer wirken lassen als linke */
+.choice-card--support .choice-title,
+.index-flip-front .choice-title {
+  font-size: clamp(1.55rem, 2.1vw, 2.35rem);
+}
+
+/* Mobile */
+@media (max-width: 820px) {
+  .choice-card-content,
+  .choice-card:not(.index-flip-card) .choice-card-content,
+  .index-flip-front .choice-card-content,
+  .index-flip-back .choice-card-content {
+    min-height: 190px;
+    padding: 26px;
+  }
+
+  .choice-title,
+  .index-flip-front .choice-title,
+  .index-flip-back .choice-title {
+    font-size: clamp(1.4rem, 6.6vw, 2.1rem);
+    line-height: 1.18;
+  }
+
+  .choice-card small,
+  .index-flip-front small,
+  .index-flip-back small {
+    font-size: 0.8rem;
+  }
+}
+
+/* =========================================================
+  SUPPORT CARD FIX — HOVER / POINTER / BACKSIDE CLIPPING
+========================================================= */
+
+/* Die Entführer-/Support-Card muss sich wie ein Button anfühlen */
+.index-flip-card,
+.choice-card--support,
+#supportAccessCard {
+  cursor: pointer;
+}
+
+.index-flip-card:hover,
+.choice-card--support:hover,
+#supportAccessCard:hover {
+  transform: translateY(-6px);
+  border-color: rgba(156, 255, 95, 0.62);
+  filter: brightness(1.08) saturate(1.1);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+    inset 0 0 38px rgba(0, 0, 0, 0.68),
+    0 34px 90px rgba(0, 0, 0, 0.72),
+    0 0 34px rgba(156, 255, 95, 0.14);
+}
+
+/* Tastatur-Fokus auch sichtbar */
+.index-flip-card:focus-within,
+.choice-card--support:focus-within,
+#supportAccessCard:focus-within {
+  outline: 2px solid rgba(156, 255, 95, 0.75);
+  outline-offset: 5px;
+}
+
+/* Wichtig: Card darf beim Umdrehen nichts abschneiden */
+.index-flip-card {
+  overflow: visible;
+}
+
+/* Display-Pseudo bleibt trotzdem sauber in der Karte */
+.index-flip-card::before,
+.index-flip-card::after {
+  pointer-events: none;
+}
+
+/* Flip-Innenleben bekommt echte Höhe */
+.index-flip-inner {
+  height: 100%;
+  min-height: calc(clamp(280px, 20vw, 340px) - 40px);
+}
+
+/* Vorder- und Rückseite stabil */
+.index-flip-front,
+.index-flip-back {
+  inset: 0;
+  min-height: calc(clamp(280px, 20vw, 340px) - 40px);
+  overflow: hidden;
+}
+
+/* Rückseite: nicht oben abschneiden, aber scrollen falls nötig */
+.index-flip-back .choice-card-content {
+  justify-content: center;
+  min-height: calc(clamp(280px, 20vw, 340px) - 40px);
+  padding: clamp(26px, 2.4vw, 36px);
+  overflow-y: auto;
+}
+
+/* Rückseiten-Titel etwas kleiner, damit Code-Form sicher reinpasst */
+.index-flip-back .choice-title {
+  font-size: clamp(1.35rem, 1.8vw, 2rem);
+  line-height: 1.12;
+}
+
+.index-flip-back small {
+  margin-top: 14px;
+  font-size: clamp(0.76rem, 0.86vw, 0.9rem);
+  line-height: 1.42;
+}
+
+/* Form kompakter, damit nichts rausläuft */
+.index-mission-form {
+  margin-top: 16px;
+  gap: 9px;
+}
+
+.index-mission-form input,
+.index-mission-form button {
+  min-height: 44px;
+  font-size: 0.88rem;
+}
+
+#indexMissionError {
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+
+/* Mobile: Rückseite ebenfalls nicht abschneiden */
+@media (max-width: 820px) {
+  .index-flip-inner,
+  .index-flip-front,
+  .index-flip-back,
+  .index-flip-back .choice-card-content {
+    min-height: 190px;
+  }
+
+  .index-flip-back .choice-card-content {
+    padding: 22px;
+  }
+
+  .index-flip-back .choice-title {
+    font-size: clamp(1.25rem, 6vw, 1.8rem);
+  }
+}
+
+/* =========================================================
+  HERO TITLE PATCH — YELLOWED CRT / DOSSIER LOOK
+========================================================= */
+
+.hero h1 {
+  color: #efe2bf;
+
+  font-family: Impact, "Arial Black", system-ui, sans-serif;
+  font-size: clamp(5.2rem, 11.5vw, 12.2rem);
+  line-height: 0.82;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+
+  /* warmer, gelblicher Akten-/CRT-Look */
+  text-shadow:
+    0 1px 0 #fff2cf,
+    0 2px 0 rgba(184, 148, 82, 0.34),
+    0 5px 0 rgba(0, 0, 0, 0.42),
+    0 0 18px rgba(239, 226, 191, 0.18),
+    0 0 42px rgba(215, 179, 91, 0.12);
+
+  filter:
+    contrast(1.06)
+    brightness(1.02)
+    saturate(0.92);
+}
+
+/* Text bekommt eine leichte horizontale CRT-Struktur */
+.hero h1 {
+  background:
+    repeating-linear-gradient(
+      180deg,
+      #f6ecd0 0,
+      #f6ecd0 2px,
+      #d9c895 2px,
+      #d9c895 4px
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* dezenter Schatten/Block darunter, wie im Beispielbild */
+.hero h1::after {
+  content: "Operation 68";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  color: rgba(0, 0, 0, 0.42);
+  transform: translate(7px, 7px);
+  filter: blur(0.2px);
+}
+
+/* Damit ::after sauber funktioniert */
+.hero h1 {
+  position: relative;
+  z-index: 1;
+}
+
+/* Mobile etwas weniger Letterspacing, sonst wird es zu breit */
+@media (max-width: 820px) {
+  .hero h1 {
+    letter-spacing: 0.045em;
+  }
+
+  .hero h1::after {
+    transform: translate(4px, 4px);
+  }
+}
+
+
+/* =========================================================
+  SCREEN 01 — BRIEFING TYPO BIGGER PATCH
+========================================================= */
+
+#screen-briefing .support-intro {
+  width: min(100%, 1280px);
+  padding: clamp(42px, 5vw, 86px) clamp(20px, 5vw, 70px);
+}
+
+/* kleine Zeile oben größer */
+#screen-briefing .support-intro .eyebrow {
+  font-size: clamp(0.98rem, 1.25vw, 1.28rem);
+  line-height: 1.25;
+  letter-spacing: 0.16em;
+  margin-bottom: clamp(22px, 2.4vw, 34px);
+}
+
+/* Haupttitel */
+#screen-briefing .support-intro h1 {
+  font-size: clamp(6.6rem, 12.8vw, 14.5rem);
+  line-height: 0.78;
+  letter-spacing: 0.065em;
+}
+
+/* Untertitel deutlich größer */
+#screen-briefing .support-intro .subtitle {
+  max-width: 1120px;
+  margin-top: clamp(34px, 3.4vw, 54px);
+
+  font-size: clamp(1.28rem, 1.85vw, 1.95rem);
+  line-height: 1.42;
+  letter-spacing: 0.105em;
+}
+
+/* Disclaimer größer und besser lesbar */
+#screen-briefing .mission-disclaimer {
+  max-width: 1040px;
+  margin-top: clamp(42px, 4.4vw, 66px);
+  padding: clamp(24px, 3vw, 34px);
+
+  font-size: clamp(1.18rem, 1.45vw, 1.42rem);
+  line-height: 1.72;
+}
+
+#screen-briefing .mission-disclaimer strong {
+  font-size: 1.04em;
+}
+
+/* Fließtext größer */
+#screen-briefing .mission-copy {
+  max-width: 980px;
+  margin-top: clamp(30px, 3.4vw, 44px);
+
+  font-size: clamp(1.18rem, 1.42vw, 1.38rem);
+  line-height: 1.78;
+}
+
+/* kleinerer Zusatztext trotzdem nicht zu klein */
+#screen-briefing .mission-copy-small {
+  max-width: 900px;
+
+  font-size: clamp(1.08rem, 1.25vw, 1.24rem);
+  line-height: 1.72;
+}
+
+/* Button größer */
+#screen-briefing .screen-actions .btn {
+  min-width: min(100%, 360px);
+  min-height: 66px;
+  padding: 18px 34px;
+
+  font-size: clamp(1rem, 1.16vw, 1.15rem);
+  letter-spacing: 0.105em;
+}
+
+/* Mobile: größer, aber nicht sprengen */
+@media (max-width: 720px) {
+  #screen-briefing .support-intro {
+    padding: 34px 16px 46px;
+  }
+
+  #screen-briefing .support-intro .eyebrow {
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+  }
+
+  #screen-briefing .support-intro h1 {
+    font-size: clamp(4rem, 18vw, 6.2rem);
+    line-height: 0.88;
+    letter-spacing: 0.04em;
+  }
+
+  #screen-briefing .support-intro .subtitle {
+    font-size: clamp(1rem, 4.3vw, 1.22rem);
+    line-height: 1.5;
+    letter-spacing: 0.065em;
+  }
+
+  #screen-briefing .mission-disclaimer {
+    padding: 20px 18px;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  #screen-briefing .mission-copy {
+    font-size: 1rem;
+    line-height: 1.72;
+  }
+
+  #screen-briefing .mission-copy-small {
+    font-size: 0.95rem;
+    line-height: 1.68;
+  }
+
+  #screen-briefing .screen-actions .btn {
+    min-height: 58px;
+    font-size: 0.9rem;
+  }
+}
+
+/* =========================================================
+  MOBILE PAPER TITLES FIX — READABLE HEADLINES
+========================================================= */
+
+@media (max-width: 680px) {
+  /* Alle Papier-Screen-Titel auf Mobile kontrollieren */
+  .paper-file h2,
+  .message-file h2,
+  .tracking-file h2,
+  .committee-file h2,
+  .case-file h2,
+  #screen-nachricht h2,
+  #screen-tracking h2,
+  #screen-komitee h2,
+  #screen-akte h2,
+  #screen-einsatzleitung h2 {
+    max-width: 100%;
+    margin-bottom: 18px;
+
+    font-family: Impact, "Arial Black", system-ui, sans-serif;
+    font-size: clamp(2.65rem, 12vw, 4.25rem);
+    line-height: 0.94;
+    letter-spacing: 0.015em;
+    text-transform: uppercase;
+
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+
+    color: #17110a;
+  }
+
+  /* Nachricht-Titel etwas ruhiger, weil er lang ist */
+  #screen-nachricht h2 {
+    font-size: clamp(2.45rem, 11vw, 3.7rem);
+    line-height: 0.96;
+    max-width: 9ch;
+  }
+
+  /* Live-Protokoll darf groß sein, aber nicht zerbrechen */
+  #screen-tracking h2 {
+    font-size: clamp(2.75rem, 12vw, 4.15rem);
+    line-height: 0.92;
+    max-width: 9ch;
+  }
+
+  /* Entführungskomitee ist lang: gezielter kleiner */
+  #screen-komitee h2 {
+    font-size: clamp(2.55rem, 11.5vw, 3.95rem);
+    line-height: 0.94;
+    max-width: 9.5ch;
+  }
+
+  /* Einsatzleitung / Akteneinsicht */
+  #screen-einsatzleitung h2,
+  #screen-akte h2 {
+    font-size: clamp(2.9rem, 13vw, 4.5rem);
+    line-height: 0.92;
+    max-width: 10ch;
+  }
+
+  /* Kicker oben mehr Luft, weniger gequetscht */
+  .paper-kicker,
+  #screen-nachricht .paper-kicker,
+  #screen-tracking .paper-kicker,
+  #screen-komitee .paper-kicker {
+    margin-bottom: 16px;
+    font-size: 0.72rem;
+    line-height: 1.35;
+    letter-spacing: 0.18em;
+  }
+
+  /* Meta-Tags sollen nicht rechts rausrutschen */
+  .paper-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .paper-meta span {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    font-size: 0.68rem;
+    line-height: 1.25;
+  }
+
+  /* Papier bekommt etwas mehr Innenluft */
+  .paper-file,
+  .message-file,
+  .tracking-file,
+  .committee-file,
+  .case-file {
+    padding: 28px 18px;
+  }
+
+  /* Fließtext auf Mobile nicht so fett/klobig */
+  .case-copy,
+  .message-file p,
+  .tracking-file p,
+  #screen-komitee .case-copy {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+}

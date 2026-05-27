@@ -1,0 +1,445 @@
+/* =========================================================
+  OPERATION 68 — ZIELPERSON.CSS
+  Fragebogen / shady Einverständniserklärung
+========================================================= */
+
+.target-page {
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+
+  color: #17110a;
+  background:
+    radial-gradient(circle at 50% 8%, rgba(215, 179, 91, 0.18), transparent 28rem),
+    radial-gradient(circle at 50% 70%, rgba(156, 255, 95, 0.06), transparent 34rem),
+    linear-gradient(180deg, #030604 0%, #06100b 100%);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* dezentes Raster im Hintergrund */
+.target-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+    linear-gradient(rgba(156, 255, 95, 0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(156, 255, 95, 0.028) 1px, transparent 1px);
+  background-size: 34px 34px;
+  opacity: 0.56;
+}
+
+/* =========================================================
+  PAGE
+========================================================= */
+
+.target-page .page {
+  position: relative;
+  z-index: 2;
+
+  width: min(100%, 1040px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding:
+    clamp(34px, 6vw, 82px)
+    clamp(14px, 4vw, 42px)
+    clamp(46px, 8vw, 96px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================================
+  FORMULAR-AKTE / PANEL
+========================================================= */
+
+.target-page .panel {
+  position: relative;
+  width: min(100%, 860px);
+  padding: clamp(28px, 5vw, 66px);
+
+  color: #1b130b;
+
+  border-radius: 24px;
+  border: 1px solid rgba(77, 52, 26, 0.28);
+
+  background:
+    linear-gradient(rgba(70, 49, 25, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(70, 49, 25, 0.035) 1px, transparent 1px),
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.38), transparent 34rem),
+    linear-gradient(180deg, #f1e2bd 0%, #dcc79c 100%);
+
+  background-size:
+    26px 26px,
+    26px 26px,
+    100% 100%,
+    100% 100%;
+
+  box-shadow:
+    0 28px 90px rgba(0, 0, 0, 0.62),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.32),
+    inset 0 0 54px rgba(88, 55, 24, 0.12);
+}
+
+/* dunkle Aktenkante oben */
+.target-page .panel::before {
+  content: "OPERATION 68 / VORLÄUFIGE PERSONENBEFRAGUNG / NUR INTERN";
+  position: absolute;
+  top: 18px;
+  left: clamp(22px, 5vw, 58px);
+  right: clamp(22px, 5vw, 58px);
+
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(50, 32, 16, 0.28);
+
+  color: rgba(58, 37, 19, 0.7);
+  font-family: "Courier New", monospace;
+  font-size: clamp(0.62rem, 1vw, 0.78rem);
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* roter Aktenstempel */
+.target-page .panel::after {
+  content: "FREIWILLIG";
+  position: absolute;
+  top: clamp(58px, 7vw, 88px);
+  right: clamp(20px, 5vw, 52px);
+
+  padding: 8px 14px;
+  border: 2px solid rgba(125, 23, 18, 0.48);
+  border-radius: 8px;
+
+  color: rgba(125, 23, 18, 0.6);
+  font-family: "Courier New", monospace;
+  font-size: clamp(0.75rem, 1.2vw, 1rem);
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  transform: rotate(4deg);
+  pointer-events: none;
+}
+
+/* =========================================================
+  TYPO
+========================================================= */
+
+.target-page .eyebrow {
+  margin: clamp(34px, 5vw, 48px) 0 14px;
+
+  color: #7b391d;
+  font-family: "Courier New", monospace;
+  font-size: clamp(0.78rem, 1vw, 0.95rem);
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.target-page .eyebrow::before,
+.target-page .eyebrow::after {
+  display: none;
+}
+
+.target-page h1 {
+  max-width: 760px;
+  margin: 0 0 clamp(24px, 4vw, 38px);
+
+  color: #17110a;
+  font-family: Impact, "Arial Black", system-ui, sans-serif;
+  font-size: clamp(3rem, 7vw, 6.8rem);
+  line-height: 0.88;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.34),
+    3px 3px 0 rgba(94, 64, 31, 0.14);
+}
+
+.target-page h2 {
+  margin: clamp(38px, 5vw, 58px) 0 22px;
+
+  color: #17110a;
+  font-family: "Courier New", monospace;
+  font-size: clamp(1.1rem, 2vw, 1.55rem);
+  line-height: 1.28;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.target-page p {
+  max-width: 68ch;
+  margin: 0 0 18px;
+
+  color: #24180d;
+  font-size: clamp(1rem, 1.22vw, 1.12rem);
+  line-height: 1.72;
+  font-weight: 650;
+}
+
+/* =========================================================
+  NOTICE
+========================================================= */
+
+.target-page .notice {
+  position: relative;
+
+  margin: clamp(28px, 4vw, 42px) 0;
+  padding: clamp(18px, 3vw, 26px);
+
+  border: 1px solid rgba(125, 23, 18, 0.28);
+  border-radius: 16px;
+
+  background:
+    linear-gradient(180deg, rgba(125, 23, 18, 0.08), rgba(125, 23, 18, 0.035)),
+    rgba(255, 255, 255, 0.22);
+
+  color: #21160c;
+  font-weight: 800;
+  line-height: 1.62;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.24),
+    0 12px 26px rgba(88, 55, 24, 0.12);
+}
+
+.target-page .notice::before {
+  content: "HINWEIS";
+  display: inline-block;
+  margin-right: 10px;
+
+  color: #7d1712;
+  font-family: "Courier New", monospace;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+/* =========================================================
+  FORMULAR
+========================================================= */
+
+.target-page .mission-form {
+  margin-top: 24px;
+  display: grid;
+  gap: 22px;
+}
+
+.target-page .mission-form label {
+  display: grid;
+  gap: 10px;
+}
+
+.target-page .mission-form label > span {
+  color: #4b2b15;
+  font-family: "Courier New", monospace;
+  font-size: 0.88rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Eingabefelder: shady Behördenformular */
+.target-page select,
+.target-page textarea,
+.target-page input[type="text"],
+.target-page input[type="email"],
+.target-page input[type="password"] {
+  width: 100%;
+  min-height: 54px;
+  padding: 14px 16px;
+
+  border-radius: 12px;
+  border: 1px solid rgba(58, 37, 19, 0.34);
+
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.16)),
+    rgba(255, 246, 220, 0.66);
+
+  color: #17110a;
+  font: 700 1rem system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  outline: none;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.36),
+    inset 0 0 18px rgba(94, 64, 31, 0.06);
+}
+
+.target-page textarea {
+  min-height: 132px;
+  resize: vertical;
+}
+
+.target-page select:focus,
+.target-page textarea:focus,
+.target-page input:focus {
+  border-color: rgba(125, 23, 18, 0.48);
+  box-shadow:
+    0 0 0 4px rgba(125, 23, 18, 0.08),
+    inset 0 0 18px rgba(94, 64, 31, 0.08);
+}
+
+.target-page textarea::placeholder {
+  color: rgba(23, 17, 10, 0.5);
+}
+
+/* Select Optionen */
+.target-page option {
+  background: #f1e2bd;
+  color: #17110a;
+}
+
+/* Checkboxen als Aktenpunkte */
+.target-page .checkbox-row {
+  display: grid !important;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 13px !important;
+
+  padding: 15px 16px;
+  border: 1px solid rgba(58, 37, 19, 0.24);
+  border-radius: 14px;
+
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.08));
+}
+
+.target-page .checkbox-row input {
+  width: 19px;
+  height: 19px;
+  margin: 2px 0 0;
+  accent-color: #7d1712;
+}
+
+.target-page .checkbox-row span {
+  color: #24180d !important;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-size: 0.98rem !important;
+  font-weight: 700 !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+/* =========================================================
+  BUTTONS / LINKS
+========================================================= */
+
+.target-page .btn {
+  width: fit-content;
+  min-height: 54px;
+  margin-top: 8px;
+  padding: 14px 24px;
+
+  border-radius: 999px;
+  border: 1px solid rgba(58, 37, 19, 0.38);
+
+  background:
+    linear-gradient(180deg, #23170d, #120c07);
+
+  color: #f1e2bd;
+  font-family: "Courier New", monospace;
+  font-size: 0.92rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 14px 30px rgba(58, 37, 19, 0.22),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    filter 160ms ease;
+}
+
+.target-page .btn:hover {
+  transform: translateY(-2px) rotate(-0.4deg);
+  filter: brightness(1.08);
+  box-shadow:
+    0 18px 38px rgba(58, 37, 19, 0.28),
+    0 0 0 4px rgba(125, 23, 18, 0.06),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.target-page .back-link {
+  display: inline-flex;
+  margin-top: clamp(28px, 4vw, 46px);
+
+  color: #7b391d;
+  font-family: "Courier New", monospace;
+  font-size: 0.92rem;
+  font-weight: 900;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.target-page .back-link:hover {
+  color: #17110a;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* =========================================================
+  MOBILE
+========================================================= */
+
+@media (max-width: 720px) {
+  .target-page .page {
+    padding: 18px 12px 42px;
+    align-items: flex-start;
+  }
+
+  .target-page .panel {
+    padding: 26px 18px;
+    border-radius: 20px;
+  }
+
+  .target-page .panel::before {
+    position: relative;
+    display: block;
+    top: auto;
+    left: auto;
+    right: auto;
+    margin-bottom: 26px;
+  }
+
+  .target-page .panel::after {
+    top: 22px;
+    right: 18px;
+    font-size: 0.62rem;
+    opacity: 0.7;
+  }
+
+  .target-page .eyebrow {
+    margin-top: 0;
+  }
+
+  .target-page h1 {
+    font-size: clamp(2.4rem, 13vw, 4.2rem);
+  }
+
+  .target-page h2 {
+    font-size: 1.02rem;
+    letter-spacing: 0.08em;
+  }
+
+  .target-page p {
+    font-size: 0.98rem;
+  }
+
+  .target-page .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

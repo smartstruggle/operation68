@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unterstützung | Operation 68</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="support-board.css" />
+</head>
+
+<body>
+  <main class="page support-page">
+
+    <section id="supportArea" class="support-area">
+
+      <!-- =========================================================
+        MISSION NAVIGATION
+      ========================================================== -->
+
+      
+      <nav class="mission-nav" aria-label="Missionsnavigation">
+  <button class="mission-nav__button is-active" type="button" data-screen-target="briefing">
+    01 Briefing
+  </button>
+
+  <button class="mission-nav__button" type="button" data-screen-target="pinnwand">
+    02 Pinnwand
+  </button>
+
+  <button class="mission-nav__button" type="button" data-screen-target="nachricht">
+    03 Nachricht
+  </button>
+
+  <button class="mission-nav__button" type="button" data-screen-target="tracking">
+    04 Protokoll
+  </button>
+
+  <button class="mission-nav__button" type="button" data-screen-target="einsatzleitung">
+    05 Einsatzleitung
+  </button>
+
+  <button class="mission-nav__button" type="button" data-screen-target="komitee">
+    06 Komitee
+  </button>
+
+  <button class="mission-nav__button" type="button" data-screen-target="akte">
+    07 Akteneinsicht
+  </button>
+</nav>
+
+      <!-- =========================================================
+        SCREEN 01: BRIEFING
+      ========================================================== -->
+      <section class="mission-screen is-active" id="screen-briefing" data-screen="briefing">
+        <div class="support-intro">
+          <p class="eyebrow">Interne Einsatzakte</p>
+          <h1>Operation 68</h1>
+          <p class="subtitle">Unterstützung der freiwilligen Geburtstagsentführung von Hans-Peter W.</p>
+
+          <div class="mission-disclaimer">
+            <strong>Offizieller Hinweis:</strong>
+            Bei dieser sogenannten Entführung handelt es sich um eine liebevolle,
+            freiwillige Geburtstagsmaßnahme. Die Zielperson wird weder geschädigt
+            noch bedroht und nur im äußersten Notfall kurzzeitig im Kofferraum diskutiert.
+          </div>
+
+          <p class="mission-copy">
+            Alle Hinweise wurden gesichtet, sortiert und dramatisch überinterpretiert.
+            Unterstützerinnen und Unterstützer können sich durch die Akten klicken,
+            Hinweise hinterlassen, Versorgung sichern und dazu beitragen, die Maßnahme
+            für Hans-Peter W. so angenehm wie möglich zu gestalten.
+          </p>
+
+          <p class="mission-copy mission-copy-small">
+            Bei ausreichender Versorgung der Einsatzkräfte sowie positiver öffentlicher
+            Signallage wird das Entführerteam intern beraten, ob und wann Hans-Peter W.
+            wieder kontrolliert in die Gegenwart zurückgeführt werden darf.
+          </p>
+
+          <div class="screen-actions">
+            <button class="btn mission-next" type="button" data-screen-target="pinnwand">
+              Briefing starten
+            </button>
+          </div>
+        </div>
+      </section>
+
+<!-- =========================================================
+  SCREEN 02: PINNWAND / ERMITTLUNGSWAND
+========================================================== -->
+<section class="mission-screen mission-screen--board" id="screen-pinnwand" data-screen="pinnwand">
+
+  <section class="investigation-board" aria-label="Ermittlungswand Operation 68">
+    <div class="evidence-board">
+
+      <!-- KLEINES HUD AUF DER PINNWAND -->
+      <div class="board-hud">
+        <span>02 / Ermittlungswand</span>
+        <span>Status: aktiv</span>
+        <span>Aktenzeichen: OP-68/W</span>
+      </div>
+
+      <!-- MITTE: KARTE -->
+      <div class="central-map">
+        <img class="board-map" src="images/map.jpg" alt="Missionskarte Köln nach Krefeld" />
+
+        <div class="map-polaroid map-polaroid-koeln">
+          <img src="images/koeln.jpg" alt="Köln" />
+          <span>Köln</span>
+        </div>
+
+        <div class="map-polaroid map-polaroid-krefeld">
+          <img src="images/krefeld.jpg" alt="Krefeld" />
+          <span>Krefeld</span>
+        </div>
+      </div>
+
+      <!-- SCHNÜRE -->
+      <svg class="board-strings" viewBox="0 0 1000 680" preserveAspectRatio="none" aria-hidden="true">
+        <line x1="500" y1="340" x2="145" y2="135" />
+        <line x1="500" y1="340" x2="165" y2="405" />
+        <line x1="500" y1="340" x2="320" y2="555" />
+        <line x1="500" y1="340" x2="835" y2="135" />
+        <line x1="500" y1="340" x2="835" y2="405" />
+        <line x1="500" y1="340" x2="570" y2="585" />
+        <circle cx="500" cy="340" r="9" />
+      </svg>
+
+      <!-- ENTFÜHRERTEAM -->
+      <article class="flip-card card-kidnapper">
+        <div class="flip-inner">
+          <div class="flip-front polaroid">
+            <img src="images/kidnapper.jpg" alt="Das Entführerteam" />
+            <h3>Entführerteam</h3>
+          </div>
+
+          <div class="flip-back">
+            <h3>Entführerteam</h3>
+            <p>
+              Zuständig für Planung, Geheimhaltung, operative Abstimmung
+              und die kontrollierte Rückführung der Zielperson.
+            </p>
+            <p>
+              Beteiligte Stellen: Angelika, Melanie, Mirjam und Natalie.
+            </p>
+            <p class="no-paypal">
+              Kein PayPal-Link. Diese Personen handeln aus familiärer Verpflichtung.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- WACHHUNDE -->
+<article class="flip-card card-dogs text-heavy">
+  <div class="flip-inner">
+    <div class="flip-front polaroid">
+      <img src="images/wachhund.png" alt="Wachhunde" />
+      <h3>Wachhunde</h3>
+    </div>
+
+    <div class="flip-back">
+      <h3>Wachhunde</h3>
+
+      <p>
+        <strong>Miley</strong>, Codename <strong>Old Chewing Tooth</strong>:
+        hochaktive Alarmanlage mit akustischer Eskalationsbereitschaft.
+      </p>
+
+      <p>
+        Zuständig für Geländeüberwachung, akustische Abschreckung
+        und konsequente Abschleckmaßnahmen.
+      </p>
+
+      <p>
+        <strong>Santos</strong>, Codename <strong>Praktikant Relaxo</strong>:
+        zuständig für strategisches Herumliegen, moralische Stabilisierung
+        und beruhigende Präsenz im Einsatzgebiet.
+      </p>
+
+     <a
+  href="https://www.paypal.com/pool/9pvPE6DDOs?sr=accr"
+  class="paypal-link"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  0,99 € Snackfonds
+</a>
+    </div>
+  </div>
+</article>
+
+<!-- FLUCHTFAHRZEUG -->
+<article class="flip-card card-car">
+  <div class="flip-inner">
+    <div class="flip-front polaroid">
+      <img src="images/car.jpg" alt="Fluchtfahrzeug" />
+      <h3>Fluchtfahrzeug</h3>
+    </div>
+
+    <div class="flip-back">
+      <h3>Fluchtfahrzeug</h3>
+
+      <p>
+        Während der Einwilligungserklärung äußerte Hans-Peter W.
+        den Wunsch nach Zitronenbonbons.
+      </p>
+
+      <p>
+        Zur Wahrung humanitärer Mindeststandards kann die Versorgung
+        mit Bonbons und Kaffee unterstützt werden.
+      </p>
+
+  <a
+  href="https://www.paypal.com/pool/9pvPE6DDOs?sr=accr"
+  class="paypal-link"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  0,10 € Zitronenbonbonfonds
+</a>
+    </div>
+  </div>
+</article>
+
+<!-- ZIELPERSON -->
+<article class="flip-card card-target">
+  <div class="flip-inner">
+    <div class="flip-front polaroid">
+      <img src="images/target.png" alt="Zielperson" />
+      <h3>Zielperson</h3>
+    </div>
+
+    <div class="flip-back">
+      <h3>Hans-Peter W.</h3>
+
+      <p>
+        Aktuell gilt Herr W. als freundlich, kooperativ
+        und körperlich in beeindruckender Verfassung.
+      </p>
+
+      <p>
+        Laut eigener Aussage ergab eine Bioimpedanzanalyse im Fitnessstudio
+        ein biologisches Alter von 53 Jahren.
+      </p>
+
+      <p>
+        Die Ermittlungsleitung gratuliert ausdrücklich zu dieser Existenz.
+      </p>
+    </div>
+  </div>
+</article>
+
+<!-- UNTERKUNFT / UMGEBUNG -->
+<article class="flip-card card-location">
+  <div class="flip-inner">
+    <div class="flip-front polaroid">
+      <img src="images/krefeld.jpg" alt="Unterkunft und Umgebung" />
+      <h3>Unterkunft</h3>
+    </div>
+
+    <div class="flip-back">
+      <h3>Würdevolle Lagerung</h3>
+
+      <p>
+        Unterkunfts-Support, damit Hans-Peter W.
+        nicht im Kofferraum schlafen muss.
+      </p>
+
+      <p>
+        Die Maßnahme erfolgt unter möglichst komfortablen
+        und menschenwürdigen Bedingungen.
+      </p>
+
+<a
+  href="https://www.paypal.com/pool/9pvPE6DDOs?sr=accr"
+  class="paypal-link"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  10 € Unterkunft
+</a>
+    </div>
+  </div>
+</article>
+
+<!-- AKTIVITÄTEN -->
+<article class="flip-card card-activities wide-card text-heavy">
+  <div class="flip-inner">
+    <div class="flip-front polaroid activity-polaroid">
+      <div class="activity-images">
+        <img src="images/hockey.jpg" alt="Straßenhockey" />
+        <img src="images/singstar.jpg" alt="SingStar" />
+        <img src="images/barbecue.jpg" alt="Barbecue" />
+      </div>
+      <h3>Aktivitäten</h3>
+    </div>
+
+    <div class="flip-back">
+      <h3>Freizeitprogramm</h3>
+
+      <p>
+        <strong>Straßenhockey:</strong> Herr W. wurde bereits im Alter von acht Jahren
+        mehrfach in entsprechenden Zusammenhängen gesichtet.
+        Quelle: familiäre Überlieferung.
+      </p>
+
+      <p>
+        <strong>SingStar:</strong> mögliches Weihnachtsritual
+        mit erhöhtem Ohrschadenpotenzial.
+      </p>
+
+      <p>
+        <strong>Barbecue:</strong> vegan kompatibel,
+        sofern rechtzeitig daran gedacht wird.
+      </p>
+
+      <p>
+        <strong>Schach & Tischtennis:</strong> zur angemessenen Auslastung
+        körperlicher und gedanklicher Bewegungsdränge.
+      </p>
+
+<a
+  href="https://www.paypal.com/pool/9pvPE6DDOs?sr=accr"
+  class="paypal-link"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  Aktivitäten supporten
+</a>
+    </div>
+  </div>
+</article>
+
+          <div class="flip-back">
+            <h3>Freizeitprogramm</h3>
+            <p>
+              <strong>Straßenhockey:</strong> Herr W. wurde bereits im Alter von acht Jahren
+              mehrfach in entsprechenden Zusammenhängen gesichtet. Quelle: familiäre Überlieferung.
+            </p>
+            <p>
+              <strong>SingStar:</strong> mögliches Weihnachtsritual mit erhöhtem Ohrschadenpotenzial.
+            </p>
+            <p>
+              <strong>Barbecue:</strong> vegan kompatibel, sofern rechtzeitig daran gedacht wird.
+            </p>
+            <p>
+              <strong>Schach & Tischtennis:</strong> zur angemessenen Auslastung körperlicher
+              und gedanklicher Bewegungsdränge.
+            </p>
+            <a href="#" class="paypal-link">Aktivitäten supporten</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <div class="screen-actions screen-actions--board">
+    <button class="btn mission-prev" type="button" data-screen-target="briefing">
+      Zurück
+    </button>
+
+    <button class="btn mission-next" type="button" data-screen-target="nachricht">
+      Weiter
+    </button>
+  </div>
+</section>
+
+
+<!-- =========================================================
+  SCREEN 03: NACHRICHT AN DIE ZIELPERSON
+========================================================== -->
+<section class="mission-screen" id="screen-nachricht" data-screen="nachricht">
+  <section class="message-file">
+    <p class="eyebrow">Glückwünsche & Zeugenaussagen</p>
+  <h2>
+  <span class="desktop-title">Nachricht an die Zielperson</span>
+  <span class="mobile-title">Nachricht<br />an die<br />Zielperson</span>
+</h2>
+
+    <p>
+      Unterstützerinnen und Unterstützer der Operation können freiwillig Nachrichten,
+      Glückwünsche, Erinnerungen oder sachdienliche Hinweise zur Zielperson hinterlassen.
+    </p>
+
+    <p>
+      Bitte geben Sie Ihre Nachricht ein. Nach ausführlicher Prüfung wird das
+      Entführerteam demokratisch entscheiden, ob die Nachricht an Hans-Peter W.
+      weitergeleitet werden darf oder nicht.
+    </p>
+
+    <p>
+      Bis dahin wird sie offiziell seiner Akte beigefügt.
+    </p>
+
+    <form class="message-form" id="targetMessageForm">
+      <label>
+        <span>Name / Deckname</span>
+        <input
+          type="text"
+          name="name"
+          placeholder="Ihr Name oder Deckname"
+        />
+      </label>
+
+      <label>
+        <span>Nachricht</span>
+        <textarea
+          name="message"
+          placeholder="Glückwunsch, Erinnerung, Hinweis oder emotionale Stellungnahme eingeben..."
+        ></textarea>
+      </label>
+
+      <label class="checkbox-row message-confirmation">
+        <input type="checkbox" name="clearance" />
+        <span>
+          Ich bestätige, dass meine Aussage der Ermittlungsakte beigefügt
+          und nach interner Prüfung möglicherweise an Hans-Peter W. weitergeleitet werden darf.
+        </span>
+      </label>
+
+      <button type="submit" class="btn">
+        Nachricht zur Akte geben
+      </button>
+    </form>
+  </section>
+
+  <div class="screen-actions">
+    <button class="btn mission-prev" type="button" data-screen-target="pinnwand">
+      Zurück
+    </button>
+
+    <button class="btn mission-next" type="button" data-screen-target="tracking">
+      Weiter
+    </button>
+  </div>
+</section>
+
+<!-- =========================================================
+  SCREEN 04: LIVE-TRACKING DER OPERATION
+========================================================== -->
+<section class="mission-screen" id="screen-tracking" data-screen="tracking">
+  <section class="paper-file live-tracking">
+    <div class="paper-file__header">
+      <p class="paper-kicker">Operationsprotokoll W.</p>
+      <h2>
+  <span class="desktop-title">Live-Protokoll</span>
+  <span class="mobile-title">Live-<br />Protokoll</span>
+</h2>
+
+      <div class="paper-meta">
+        <span>Zeitraum: 17.–19.07.2026</span>
+        <span>Status: laufende Beobachtung</span>
+        <span>Aktenzeichen: OP-68/W</span>
+      </div>
+    </div>
+
+    <div class="tracking-status-strip">
+      <span>Live-Aktivität / Tracking</span>
+      <span>Übertragung vorbereitet</span>
+    </div>
+
+    <div class="tracking-log" id="trackingLogList">
+      <article class="tracking-entry">
+        <time>17.07.2026 · 09:00</time>
+        <h3>Statusmeldung vorbereitet</h3>
+        <p>
+          Protokollsystem einsatzbereit. Zielperson gilt bis auf Weiteres als ahnungslos.
+        </p>
+      </article>
+
+      <article class="tracking-entry">
+        <time>17.07.2026 · 10:30</time>
+        <h3>Versorgungslage offen</h3>
+        <p>
+          Zitronenbonbons und Kaffee befinden sich noch in Prüfung. Humanitäre Standards werden angestrebt.
+        </p>
+      </article>
+
+      <article class="tracking-entry tracking-entry--pending">
+        <time>18.07.2026 · tbd</time>
+        <h3>Weitere Updates folgen</h3>
+        <p>
+          Mobile Live-Meldungen durch die Einsatzleitung sind für die operative Phase vorgesehen.
+        </p>
+      </article>
+    </div>
+
+    <details class="admin-note">
+      <summary>Admin-Bereich vorbereiten</summary>
+      <p>
+        Für die nächste Ausbaustufe kann dieses Protokoll mit Supabase verbunden werden.
+        Natalie kann dann nach Admin-Login vom Handy neue Einträge mit Uhrzeit und Statusmeldung absenden.
+      </p>
+
+      <form class="admin-live-form" id="adminLiveForm">
+        <label>
+          <span>Admin-Code</span>
+          <input type="password" name="adminCode" placeholder="Admin-Code eingeben" />
+        </label>
+
+        <label>
+          <span>Zeitpunkt</span>
+          <input type="text" name="entryTime" placeholder="z. B. 17.07.2026 · 14:32" />
+        </label>
+
+        <label>
+          <span>Titel</span>
+          <input type="text" name="entryTitle" placeholder="z. B. Zugriff erfolgreich" />
+        </label>
+
+        <label>
+          <span>Meldung</span>
+          <textarea name="entryText" placeholder="Kurze Lagebeschreibung eingeben..."></textarea>
+        </label>
+
+        <button type="button" class="btn">Live-Meldung vorbereiten</button>
+      </form>
+    </details>
+  </section>
+
+  <div class="screen-actions">
+    <button class="btn mission-prev" type="button" data-screen-target="nachricht">Zurück</button>
+    <button class="btn mission-next" type="button" data-screen-target="akte">Weiter</button>
+  </div>
+</section>
+
+
+<!-- =========================================================
+  SCREEN 05: EINSATZLEITUNG / ZUSTÄNDIGE STELLEN
+========================================================== -->
+<section class="mission-screen" id="screen-einsatzleitung" data-screen="einsatzleitung">
+  <section class="paper-file command-file">
+    <div class="paper-file__header">
+      <p class="paper-kicker">Interne Zuständigkeiten</p>
+
+      <h2>
+        <span class="desktop-title">Einsatzleitung</span>
+        <span class="mobile-title">Einsatz-<br />leitung</span>
+      </h2>
+
+      <div class="paper-meta">
+        <span>Abteilung: operative Stellen</span>
+        <span>Status: berufene Personen</span>
+        <span>Aktenzeichen: OP-68/EL</span>
+      </div>
+    </div>
+
+    <p class="case-copy">
+      Die folgenden Personen wurden mit der Vorbereitung, Durchführung und strukturellen
+      Absicherung der Maßnahme betraut. Zuständigkeiten können sich je nach Lage,
+      Kooperationsgrad der Zielperson und Verfügbarkeit von Zitronenbonbons kurzfristig erweitern.
+    </p>
+
+    <div class="command-grid">
+      <article class="command-card">
+        <p class="card-tag">Operative Einsatzleitung</p>
+        <h3>Angelika W.</h3>
+        <p>
+          Zuständig für Planung, praktische Umsetzung und Lageeinschätzung
+          im direkten Umfeld der Zielperson.
+        </p>
+        <p>
+          Verfügt über langjährige Kenntnisse der Zielperson, ihrer Gewohnheiten
+          sowie relevanter Kindheits- und Familienfragmente.
+        </p>
+        <p>
+          Übernimmt die Sicherung biografischer Hinweise und die Einschätzung
+          der Kooperationswahrscheinlichkeit.
+        </p>
+      </article>
+
+      <article class="command-card">
+        <p class="card-tag">Gleichstellung &amp; Ethik</p>
+        <h3>Melanie W.</h3>
+        <p>
+          Beauftragte für Gleichstellung, Ethik und humanitäre Mindeststandards.
+        </p>
+        <p>
+          Zuständig für humanitäre Angelegenheiten, diplomatische Verhandlungen
+          und die Prüfung operativer Maßnahmen auf Verhältnismäßigkeit.
+        </p>
+        <p>
+          Bringt Erfahrung aus Brüssel, internationaler Zusammenarbeit und
+          umweltpolitischen Einsatzlagen ein.
+        </p>
+      </article>
+
+      <article class="command-card">
+        <p class="card-tag">Personalabteilung</p>
+        <h3>Mirjam W.</h3>
+        <p>
+          Leitung Personalmanagement &amp; Berufungsverfahren.
+        </p>
+        <p>
+          Sonderbeauftragte für kooperative Härtefälle sowie zentrale Stelle
+          für eingehende Bewerbungen ins Entführungskomitee.
+        </p>
+        <p>
+          Prüft geeignete Komiteemitglieder und kann Personen nach interner
+          Bewertung in offene Posten berufen.
+        </p>
+      </article>
+
+      <article class="command-card">
+        <p class="card-tag">Digitale Einsatzakte</p>
+        <h3>Natalie W.</h3>
+        <p>
+          Zuständig für Website, Einsatzdramaturgie, visuelle Beweissicherung
+          und Koordination der Hundestaffel.
+        </p>
+        <p>
+          Verantwortlich für die digitale Aktenführung sowie die Frage,
+          warum aus einer Geburtstagsidee eine mehrstufige Operationsplattform wurde.
+        </p>
+        <p>
+          Hält Verbindung zwischen Unterstützerbereich, Protokollsystem
+          und allgemeiner Übertreibungslage.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <div class="screen-actions">
+    <button class="btn mission-prev" type="button" data-screen-target="tracking">
+      Zurück
+    </button>
+
+    <button class="btn mission-next" type="button" data-screen-target="komitee">
+      Weiter zum Entführungskomitee
+    </button>
+  </div>
+</section>
+
+<!-- =========================================================
+  SCREEN 06: ENTFÜHRUNGSKOMITEE / STELLEN
+========================================================== -->
+<section class="mission-screen" id="screen-komitee" data-screen="komitee">
+  <section class="paper-file committee-file">
+    <div class="paper-file__header">
+      <p class="paper-kicker">Interne Personalstelle</p>
+
+<h2>
+  <span class="desktop-title">Entführungskomitee</span>
+  <span class="mobile-title">Entführungs-<br />komitee</span>
+</h2>
+
+      <div class="paper-meta">
+        <span>Personalstelle: Mirjam W.</span>
+        <span>Kontakt: personalabteilung@operation68.de</span>
+        <span>Modus: Homeoffice-fähig</span>
+      </div>
+    </div>
+
+    <p class="case-copy">
+      Die folgenden Posten können vollständig aus dem Homeoffice wahrgenommen werden.
+      Bewerbungen werden durch die Personalabteilung gesichtet, bewertet und gegebenenfalls
+      dem Entführungskomitee zur Berufung vorgelegt.
+    </p>
+
+    <div class="job-board">
+      <article
+        class="job-card"
+        data-status="offen"
+        data-role="Juristischer Beistand der Zielperson"
+        data-slots="1 Platz offen"
+        data-description="Für die angekündigte Anhörung von Hans-Peter W. wird eine Stelle zur Prüfung, Sortierung und Formulierung zulässiger Fragen eingerichtet. Aufgaben: Aktenlage prüfen, Fragen vorbereiten, Verfahrensruhe ausstrahlen."
+      >
+        <div class="job-card__topline">
+          <span class="job-status">Offen</span>
+          <span class="job-slots">1 Platz</span>
+        </div>
+
+        <h3>Juristischer Beistand der Zielperson</h3>
+
+        <p>
+          Prüfung, Sortierung und Formulierung zulässiger Fragen im Rahmen der angekündigten Anhörung.
+        </p>
+
+        <button type="button" class="job-open-button">Stelle öffnen</button>
+      </article>
+
+      <article
+        class="job-card"
+        data-status="offen"
+        data-role="Beauftragte:r für Kindheitserinnerungen"
+        data-slots="3 Plätze offen"
+        data-description="Sammelt Hinweise, Fotos, Anekdoten und belastbares Material aus früheren Lebensabschnitten der Zielperson. Besonders relevant: Krefeld, Straßenhockey, analoge Freizeitgestaltung und frühe Spuren der Zielperson."
+      >
+        <div class="job-card__topline">
+          <span class="job-status">Offen</span>
+          <span class="job-slots">3 Plätze</span>
+        </div>
+
+        <h3>Beauftragte:r für Kindheitserinnerungen</h3>
+
+        <p>
+          Sammelt Hinweise, Fotos, Anekdoten und belastbares Material aus früheren Lebensabschnitten.
+        </p>
+
+        <button type="button" class="job-open-button">Stelle öffnen</button>
+      </article>
+
+      <article
+        class="job-card"
+        data-status="in-pruefung"
+        data-role="Emotionale Einsatzbegleitung"
+        data-slots="3 Plätze / Bewerbungen in Prüfung"
+        data-description="Zuständig für Lagegefühl, beruhigende Rückmeldungen und die Einschätzung, ob die Zielperson gerührt, verwirrt oder lediglich unterversorgt ist. Bewerber:innen sollten über Geduld, Diskretion und belastbare familiäre Nerven verfügen."
+      >
+        <div class="job-card__topline">
+          <span class="job-status">In Prüfung</span>
+          <span class="job-slots">3 Plätze</span>
+        </div>
+
+        <h3>Emotionale Einsatzbegleitung</h3>
+
+        <p>
+          Beobachtung der Stimmungslage, Rückversicherung und emotionale Absicherung der Maßnahme.
+        </p>
+
+        <button type="button" class="job-open-button">Stelle öffnen</button>
+      </article>
+
+      <article
+        class="job-card"
+        data-status="vorlaeufig-vergeben"
+        data-role="Beauftragte:r für gezielte Fragen"
+        data-slots="2 Plätze / vorläufig vergeben"
+        data-description="Unterstützt bei der Vorbereitung gezielter Fragen für die Anhörung der Zielperson. Die Fragen sind auf Relevanz, Tonalität und familiäre Verhältnismäßigkeit zu prüfen."
+      >
+        <div class="job-card__topline">
+          <span class="job-status">Vorläufig vergeben</span>
+          <span class="job-slots">2 Plätze</span>
+        </div>
+
+        <h3>Beauftragte:r für gezielte Fragen</h3>
+
+        <p>
+          Vorbereitung und Prüfung gezielter Fragen für die Anhörung der Zielperson.
+        </p>
+
+        <button type="button" class="job-open-button">Stelle öffnen</button>
+      </article>
+    </div>
+  </section>
+
+  <div class="screen-actions">
+    <button class="btn mission-prev" type="button" data-screen-target="einsatzleitung">
+      Zurück
+    </button>
+
+    <button class="btn mission-next" type="button" data-screen-target="akte">
+      Weiter zur Akteneinsicht
+    </button>
+  </div>
+</section>
+
+<!-- =========================================================
+  SCREEN 07: AKTENEINSICHT HANS-PETER W.
+========================================================== -->
+<!-- =========================================================
+  SCREEN 07: AKTENEINSICHT HANS-PETER W.
+========================================================== -->
+<section class="mission-screen" id="screen-akte" data-screen="akte">
+  <section class="paper-file case-access case-file">
+    <div class="paper-file__header">
+      <p class="paper-kicker">Akteneinsicht Hans-Peter W.</p>
+
+      <h2>
+        <span class="desktop-title">Akteneinsicht</span>
+        <span class="mobile-title">Akten-<br />einsicht</span>
+      </h2>
+
+      <div class="paper-meta">
+        <span>Aktenzeichen: OP-68/HPW</span>
+        <span>Status: freundlich &amp; kooperativ</span>
+        <span>Vermerk: Gegenwartsfähigkeit stabilisierbar</span>
+      </div>
+    </div>
+
+    <div class="case-profile">
+      <div class="case-profile__stamp">
+        Zielperson
+      </div>
+
+      <div class="case-profile__content">
+        <p class="card-tag">Personenstammdaten</p>
+
+        <h3>Hans-Peter W.</h3>
+
+        <dl class="case-data-list">
+          <div>
+            <dt>Geboren</dt>
+            <dd>10.07.1958 in Paderborn</dd>
+          </div>
+
+          <div>
+            <dt>Fachliche Prägung</dt>
+            <dd>Studium der Mathematik</dd>
+          </div>
+
+          <div>
+            <dt>Aktueller Status</dt>
+            <dd>Rentner mit dubiosen Nebeneinkünften im Bereich „Schülerhilfe“</dd>
+          </div>
+
+          <div>
+            <dt>Risikostufe</dt>
+            <dd>freundlich, kooperativ, jedoch fortschrittlich auffällig</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="case-summary-grid">
+      <article class="case-summary-card">
+        <p class="card-tag">Status</p>
+
+        <h3>Zielperson</h3>
+
+        <p>
+          Herr W. gilt aktuell als freundlich, kooperativ und in beeindruckender
+          körperlicher Verfassung.
+        </p>
+
+        <p>
+          Laut eigener Aussage ergab eine Bioimpedanzanalyse im Fitnessstudio
+          seines Vertrauens ein biologisches Alter von 53 Jahren.
+        </p>
+
+        <p>
+          Die Ermittlungsleitung gratuliert ausdrücklich zu dieser Existenz.
+        </p>
+      </article>
+
+      <article class="case-summary-card">
+        <p class="card-tag">Beobachtung</p>
+
+        <h3>Digitale Auffälligkeit</h3>
+
+        <p>
+          Wiederholte Hinweise auf Kalenderlogik, Excel-basierte Wunschverwaltung,
+          physische Bücher betreffende Zukunftszweifel und mehrere digitale
+          Assistenzsysteme liegen der Einsatzleitung vor.
+        </p>
+
+        <p>
+          Besonders relevant ist die dokumentierte Frage, ob Bücher überhaupt
+          noch „eine Sache“ seien.
+        </p>
+      </article>
+
+      <article class="case-summary-card">
+        <p class="card-tag">Technische Projektlage</p>
+
+        <h3>Mess- und Kontrollsysteme</h3>
+
+        <p>
+          Die Zielperson widmet sich regelmäßig neuen technischen Projekten,
+          darunter Solartechnik, E-Auto-Nutzung und die Kontrolle der Luftqualität
+          im häuslichen Umfeld.
+        </p>
+
+        <p>
+          Auffällig ist zudem das Interesse an Körperzusammensetzungsdaten,
+          insbesondere am Wasseranteil. Da Wasser als leitfähig gilt, wird dieser
+          Punkt nicht leichtfertig ignoriert.
+        </p>
+      </article>
+
+      <article class="case-summary-card">
+        <p class="card-tag">Organisation</p>
+
+        <h3>„Schülerhilfe“</h3>
+
+        <p>
+          Besondere Aufmerksamkeit gilt einer regelmäßig frequentierten Organisation
+          unter dem Decknamen „Schülerhilfe“.
+        </p>
+
+        <p>
+          Nach bisherigem Erkenntnisstand handelt es sich hierbei nicht ausschließlich
+          um klassische Hilfeleistung, sondern möglicherweise um eine pädagogisch
+          getarnte Rechenstruktur mit auffälliger Nähe zu mathematischer Ordnung,
+          Leistungsquantifizierung und systematischer Ergebnisverbesserung.
+        </p>
+      </article>
+
+      <article class="case-summary-card">
+        <p class="card-tag">KI-Lage</p>
+
+        <h3>Digitale Assistenzsysteme</h3>
+
+        <p>
+          Weiterhin wurde bekannt, dass Herr W. mehrere digitale Assistenzsysteme
+          parallel nutzt, darunter Siri, Google/Gemini, ChatGPT sowie weitere
+          bislang nicht abschließend identifizierte Einheiten.
+        </p>
+
+        <p>
+          Ob es sich hierbei um gewöhnliche technische Neugier oder bereits um
+          eine koordinierte digitale Unterstützungsstruktur handelt, ist Gegenstand
+          laufender Bewertung.
+        </p>
+
+        <p>
+          Eine kleine KI-Armee kann zum jetzigen Zeitpunkt nicht ausgeschlossen werden.
+        </p>
+      </article>
+
+      <article class="case-summary-card">
+        <p class="card-tag">Familiärer Eigenanteil</p>
+
+        <h3>Mitverantwortung</h3>
+
+        <p>
+          Die Ermittlungsleitung erkennt an, dass die Familie an der Entwicklung
+          einzelner Tendenzen nicht vollständig unbeteiligt war.
+        </p>
+
+        <p>
+          Insbesondere die zunehmende Verlagerung von Brettspielabenden in digitale
+          Räume könnte zur Stabilisierung fortschrittlicher Verhaltensmuster
+          beigetragen haben.
+        </p>
+
+        <p>
+          Die vorliegende Maßnahme versteht sich daher nicht nur als Entführung,
+          sondern auch als familiäre Wiedergutmachung.
+        </p>
+      </article>
+    </div>
+
+    <div class="case-note case-note--decision">
+      <p class="card-tag">Operative Einschätzung</p>
+
+      <h3>Analoge Rekonfrontation angeordnet</h3>
+
+      <p>
+        Die Summe der Hinweise lässt auf eine fortschreitende Entfremdung
+        von analogen Zuständen schließen. Um einer vollständigen Verlagerung
+        in Cloudsysteme, Kalenderlogik und KI-gestützte Kommunikation
+        vorzubeugen, wurde eine zeitlich begrenzte analoge Rekonfrontation
+        beschlossen.
+      </p>
+
+      <p>
+        Die Geburtstagsentführung dient der kontrollierten Wiederbegegnung
+        mit konkreten Dingen: Straßen, Gesprächen, Erinnerungen, körperlicher
+        Anwesenheit, Essen, Freizeit und gegebenenfalls einem Zitronenbonbon.
+      </p>
+
+      <p>
+        Ziel ist eine liebevolle Stabilisierung der Gegenwartsfähigkeit.
+      </p>
+    </div>
+
+    <div class="case-note case-note--final">
+      <p class="card-tag">Abschlussvermerk</p>
+
+      <p>
+        Bei ausreichender Versorgung der Einsatzkräfte sowie positiver öffentlicher
+        Signallage wird das Entführerteam intern beraten, ob und wann Hans-Peter W.
+        wieder kontrolliert in die Gegenwart zurückgeführt werden darf.
+      </p>
+    </div>
+  </section>
+
+  <div class="screen-actions">
+    <button class="btn mission-prev" type="button" data-screen-target="komitee">
+      Zurück
+    </button>
+
+    <button class="btn mission-next" type="button" data-screen-target="briefing">
+      Zurück zum Briefing
+    </button>
+  </div>
+</section>
+
+<!-- =========================================================
+  BEWERBUNGS-POPUP
+========================================================== -->
+<div class="application-modal hidden" id="applicationModal" aria-hidden="true">
+  <div class="application-modal__backdrop" data-close-application></div>
+
+  <section
+    class="application-modal__panel"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="applicationModalTitle"
+  >
+    <button
+      class="application-modal__close"
+      type="button"
+      data-close-application
+      aria-label="Popup schließen"
+    >
+      ×
+    </button>
+
+    <p class="eyebrow">Interne Personalstelle</p>
+    <h2 id="applicationModalTitle">Nachricht an Mirjam W.</h2>
+
+    <p class="application-subtitle">
+      Leitung Personalmanagement &amp; Berufungsverfahren
+    </p>
+
+    <div class="application-notice">
+      <strong>Hinweis zur Geheimhaltung:</strong>
+      Bewerbungen für das Entführungskomitee werden mit höchster Vertraulichkeit behandelt.
+      Absolute Diskretion, Einsatzbereitschaft und ein belastbares Verhältnis zu operativen
+      Familienmaßnahmen werden vorausgesetzt.
+    </div>
+
+    <form id="applicationForm" class="application-form">
+      <label>
+        <span>Posten</span>
+        <input id="applicationRole" type="text" name="role" readonly />
+      </label>
+
+      <label>
+        <span>Status</span>
+        <input id="applicationStatus" type="text" name="status" readonly />
+      </label>
+
+      <label>
+        <span>Stellenbeschreibung</span>
+        <textarea id="applicationDescription" name="description" readonly></textarea>
+      </label>
+
+      <label>
+        <span>Ihre E-Mail-Adresse</span>
+        <input
+          id="applicationEmail"
+          type="email"
+          name="email"
+          placeholder="name@example.de"
+        />
+      </label>
+
+      <label>
+        <span>Nachricht an Mirjam W.</span>
+        <textarea
+          id="applicationMessage"
+          name="message"
+          placeholder="Bitte begründen Sie Ihre Eignung, Einsatzbereitschaft und Bereitschaft zur absoluten Geheimhaltung..."
+        ></textarea>
+      </label>
+
+      <button type="submit" class="btn">
+        Bewerbung übermitteln
+      </button>
+    </form>
+  </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

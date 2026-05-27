@@ -1,0 +1,2558 @@
+/* =========================================================
+  OPERATION 68 — SUPPORT / MISSION SCREENS
+  Datei: support-board.css
+========================================================= */
+
+/* SUPPORT PAGE BASE */
+
+.support-page {
+  align-items: start;
+}
+
+.support-area {
+  width: 100%;
+  position: relative;
+  z-index: 5;
+}
+
+/* =========================================================
+  5-SCREEN MISSION FLOW
+========================================================= */
+
+.mission-screen {
+  display: none;
+  width: 100%;
+  min-height: calc(100vh - 120px);
+  animation: missionScreenEnter 420ms ease both;
+}
+
+.mission-screen.is-active {
+  display: block;
+}
+
+@keyframes missionScreenEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Navigation oben */
+
+.mission-nav {
+  position: sticky;
+  top: 0;
+  z-index: 80;
+  width: min(1100px, calc(100vw - 32px));
+  margin: 0 auto clamp(28px, 4vw, 48px);
+  padding: 12px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  background: rgba(4, 7, 4, 0.78);
+  border: 1px solid rgba(156, 255, 95, 0.25);
+  border-radius: 999px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+}
+
+.mission-nav__button {
+  border: 1px solid rgba(156, 255, 95, 0.24);
+  border-radius: 999px;
+  padding: 9px 13px;
+  background: rgba(156, 255, 95, 0.06);
+  color: rgba(243, 234, 210, 0.74);
+  font: 800 0.75rem system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+.mission-nav__button.is-active {
+  background: rgba(156, 255, 95, 0.18);
+  color: #c7ff8f;
+  border-color: rgba(156, 255, 95, 0.58);
+}
+
+/* Zurück / Weiter Buttons */
+
+.screen-actions {
+  width: min(980px, calc(100vw - 32px));
+  margin: clamp(28px, 5vw, 56px) auto 0;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.screen-actions--board {
+  margin-top: 18px;
+}
+
+/* =========================================================
+  SCREEN 01 — BRIEFING
+========================================================= */
+
+.support-intro {
+  width: min(980px, calc(100vw - 32px));
+  margin: clamp(48px, 8vw, 92px) auto clamp(32px, 5vw, 64px);
+  text-align: center;
+  position: relative;
+  z-index: 5;
+}
+
+.mission-disclaimer {
+  margin: 34px auto 0;
+  max-width: 860px;
+  padding: 18px 22px;
+  border: 1px solid rgba(227, 184, 79, 0.48);
+  border-radius: 18px;
+  background: rgba(227, 184, 79, 0.09);
+  color: #fff4d9;
+  line-height: 1.6;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.mission-copy {
+  max-width: 760px;
+  margin: 24px auto 0;
+  color: #c7ff8f;
+  line-height: 1.65;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.mission-copy-small {
+  color: rgba(243, 234, 210, 0.8);
+}
+
+/* =========================================================
+  SCREEN 02 — FULLSCREEN PINNWAND / ERMITTLUNGSWAND
+========================================================= */
+
+.mission-screen--board {
+  min-height: calc(100vh - 96px);
+}
+
+.mission-screen--board .investigation-board {
+  width: min(100%, calc(100vw - 24px));
+  height: calc(100vh - 158px);
+  margin: 0 auto;
+  position: relative;
+  z-index: 5;
+}
+
+.mission-screen--board .evidence-board {
+  height: 100%;
+  min-height: 680px;
+  border-radius: 32px;
+}
+
+/* INVESTIGATION BOARD */
+
+.investigation-board {
+  width: min(1220px, calc(100vw - 32px));
+  margin: 0 auto clamp(64px, 10vw, 120px);
+  position: relative;
+  z-index: 5;
+}
+
+.evidence-board {
+  position: relative;
+  min-height: 760px;
+  border: 1px solid rgba(156, 255, 95, 0.32);
+  border-radius: 30px;
+
+  background:
+    radial-gradient(circle at 50% 46%, rgba(227, 184, 79, 0.12), transparent 34rem),
+    linear-gradient(135deg, rgba(93, 59, 31, 0.96), rgba(34, 22, 13, 0.98));
+
+  box-shadow:
+    inset 0 0 90px rgba(0, 0, 0, 0.62),
+    0 34px 100px rgba(0, 0, 0, 0.72);
+
+  overflow: hidden;
+  padding: 28px;
+}
+
+/* feine Pinnwand-Struktur */
+.evidence-board::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0));
+  background-size: 18px 18px, 100% 100%;
+  opacity: 0.36;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Vignette / Fokusoverlay */
+.evidence-board::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at center, transparent 42%, rgba(0, 0, 0, 0.42) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.evidence-board.has-expanded-card::after {
+  background:
+    radial-gradient(circle at center, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.78));
+  z-index: 90;
+}
+
+/* Board HUD */
+
+.board-hud {
+  position: absolute;
+  left: clamp(18px, 3vw, 34px);
+  top: clamp(18px, 3vw, 34px);
+  z-index: 20;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  font: 800 0.72rem "Courier New", monospace;
+  letter-spacing: 0.12em;
+  color: #c7ff8f;
+  text-transform: uppercase;
+}
+
+.board-hud span {
+  padding: 7px 10px;
+  border: 1px solid rgba(156, 255, 95, 0.35);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(8px);
+}
+
+/* CENTRAL MAP */
+
+.central-map {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(44vw, 500px);
+  aspect-ratio: 4 / 3;
+  transform: translate(-50%, -50%) rotate(-1deg);
+  z-index: 4;
+}
+
+.board-map {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 10px solid #d8c7a4;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.72);
+  filter: sepia(0.28) contrast(0.95);
+  display: block;
+}
+
+.central-map::before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 17px;
+  height: 17px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #a71914;
+  box-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.35),
+    0 3px 8px rgba(0, 0, 0, 0.65);
+  z-index: 5;
+}
+
+/* MAP MINI POLAROIDS */
+
+.map-polaroid {
+  position: absolute;
+  width: clamp(88px, 10vw, 132px);
+  padding: 6px 6px 9px;
+  background: #d8c7a4;
+  color: #15100b;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.56);
+  z-index: 6;
+}
+
+.map-polaroid img {
+  width: 100%;
+  aspect-ratio: 1 / 0.82;
+  object-fit: cover;
+  display: block;
+}
+
+.map-polaroid span {
+  display: block;
+  margin-top: 5px;
+  font: 800 0.7rem system-ui, sans-serif;
+  text-align: center;
+}
+
+.map-polaroid-koeln {
+  left: 10%;
+  top: 18%;
+  transform: rotate(-5deg);
+}
+
+.map-polaroid-krefeld {
+  right: 10%;
+  bottom: 16%;
+  transform: rotate(4deg);
+}
+
+/* STRINGS */
+
+.board-strings {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.board-strings line {
+  stroke: rgba(175, 20, 18, 0.86);
+  stroke-width: 2;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.75));
+}
+
+.board-strings circle {
+  fill: #a71914;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.75));
+}
+
+/* =========================================================
+  PINNWAND CARDS / POLAROIDS
+========================================================= */
+
+.flip-card {
+  position: absolute;
+  width: clamp(188px, 18.75vw, 268px);
+  min-height: 306px;
+  perspective: 1100px;
+  z-index: 8;
+
+  transition:
+    transform 420ms ease,
+    width 420ms ease,
+    min-height 420ms ease,
+    left 420ms ease,
+    right 420ms ease,
+    top 420ms ease,
+    bottom 420ms ease;
+}
+
+.wide-card {
+  width: clamp(300px, 31vw, 438px);
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  min-height: 306px;
+  transition: transform 650ms ease;
+  transform-style: preserve-3d;
+}
+
+.flip-card.is-flipped .flip-inner,
+.flip-card.is-expanded .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-front,
+.flip-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 8px;
+}
+
+/* POLAROID FRONT */
+
+.polaroid {
+  position: relative;
+  padding: 10px 10px 18px;
+  background: #d8c7a4;
+  color: #15100b;
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.66),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+}
+
+.polaroid::before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #a71914;
+  box-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.35),
+    0 3px 8px rgba(0, 0, 0, 0.65);
+}
+
+.polaroid img,
+.photo-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  filter: sepia(0.2) contrast(0.96);
+}
+
+.photo-placeholder {
+  display: grid;
+  place-items: center;
+  border: 1px dashed rgba(24, 17, 10, 0.32);
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.26), rgba(0,0,0,0.08));
+  color: #15100b;
+  font: 900 0.82rem "Courier New", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.polaroid h3 {
+  margin: 10px 0 0;
+  font: 900 1.12rem system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-align: center;
+}
+
+/* ACTIVITY POLAROID */
+
+.activity-images {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.activity-images img {
+  aspect-ratio: 1 / 1.1;
+}
+
+/* FLIP BACK — helle Aktenkarte, lesbar */
+
+.flip-back {
+  transform: rotateY(180deg);
+  padding: 22px;
+
+  background:
+    linear-gradient(rgba(70, 49, 25, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(70, 49, 25, 0.035) 1px, transparent 1px),
+    linear-gradient(180deg, #efe0bc 0%, #d8c59c 100%);
+  background-size: 28px 28px, 28px 28px, 100% 100%;
+
+  border: 2px solid rgba(58, 37, 19, 0.28);
+  color: #17110a;
+  box-shadow:
+    inset 0 0 38px rgba(116, 78, 34, 0.12),
+    0 18px 42px rgba(0, 0, 0, 0.65);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto;
+}
+
+.flip-back h3 {
+  margin: 0 0 16px;
+  font: 900 1.28rem "Arial Black", system-ui, sans-serif;
+  line-height: 1.08;
+  text-transform: uppercase;
+  color: #17110a;
+  letter-spacing: 0.045em;
+}
+
+.flip-back p {
+  margin: 0 0 14px;
+  font: 650 0.98rem system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.72;
+  letter-spacing: 0.03em;
+  color: #17110a;
+}
+
+.flip-back strong {
+  color: #17110a;
+}
+
+.paypal-link,
+.no-paypal {
+  margin-top: auto;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(24, 17, 10, 0.38);
+  background: rgba(255, 255, 255, 0.22);
+  color: #17110a;
+  text-decoration: none;
+  font: 800 0.86rem system-ui, sans-serif;
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+
+.no-paypal {
+  border-style: dashed;
+  opacity: 0.92;
+}
+
+/* DESKTOP POSITIONS */
+
+.card-kidnapper {
+  left: 5%;
+  top: 8%;
+  transform: rotate(-3deg);
+}
+
+.card-dogs {
+  left: 6%;
+  bottom: 9%;
+  transform: rotate(2.5deg);
+}
+
+.card-car {
+  left: 26%;
+  top: 20%;
+  transform: rotate(3deg);
+}
+
+.card-target {
+  right: 5%;
+  top: 8%;
+  transform: rotate(3deg);
+}
+
+.card-location {
+  right: 8%;
+  bottom: 10%;
+  transform: rotate(-2deg);
+}
+
+.card-activities {
+  left: 37%;
+  bottom: 4%;
+  transform: rotate(1deg);
+}
+
+/* MOBILE / TAP: Expanded readable card */
+
+.flip-card.is-expanded {
+  left: 50% !important;
+  top: 50% !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: min(620px, 86vw);
+  min-height: min(640px, 80vh);
+  transform: translate(-50%, -50%) rotate(0deg) !important;
+  z-index: 120;
+}
+
+.flip-card.is-expanded .flip-inner {
+  min-height: min(640px, 80vh);
+  transform: rotateY(180deg);
+}
+
+.flip-card.is-expanded .flip-back {
+  padding: clamp(30px, 4vw, 48px);
+  justify-content: flex-start;
+  overflow-y: auto;
+}
+
+.flip-card.is-expanded .flip-back h3 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+}
+
+.flip-card.is-expanded .flip-back p {
+  font-size: clamp(1.08rem, 1.55vw, 1.22rem);
+  line-height: 1.78;
+  letter-spacing: 0.035em;
+  margin-bottom: 16px;
+}
+
+.evidence-board.has-expanded-card .flip-card.is-expanded {
+  z-index: 120;
+}
+
+/* Desktop Hover: Karte bleibt am Ort, wird größer und passt sich Text besser an */
+@media (hover: hover) and (pointer: fine) {
+  .flip-card:hover {
+    width: min(540px, 39vw);
+    min-height: min(560px, 74vh);
+    z-index: 120;
+  }
+
+  .flip-card:hover .flip-inner {
+    min-height: min(560px, 74vh);
+    transform: rotateY(180deg);
+  }
+
+  .flip-card:hover .flip-back {
+    padding: clamp(30px, 3.5vw, 46px);
+    justify-content: flex-start;
+    overflow-y: auto;
+  }
+
+  .flip-card:hover .flip-back h3 {
+    font-size: clamp(1.75rem, 2.8vw, 2.65rem);
+    line-height: 1.05;
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
+  }
+
+  .flip-card:hover .flip-back p {
+    font-size: clamp(1.08rem, 1.35vw, 1.22rem);
+    line-height: 1.8;
+    letter-spacing: 0.035em;
+    margin-bottom: 16px;
+  }
+
+  .flip-card:hover .paypal-link,
+  .flip-card:hover .no-paypal {
+    margin-top: 18px;
+    font-size: 0.92rem;
+  }
+
+  .flip-card.text-heavy:hover {
+    width: min(660px, 46vw);
+    min-height: min(650px, 82vh);
+  }
+
+  .flip-card.text-heavy:hover .flip-inner {
+    min-height: min(650px, 82vh);
+  }
+}
+
+/* =========================================================
+  SCREEN 03 — MESSAGE FILE
+========================================================= */
+
+.message-file {
+  width: min(860px, calc(100vw - 32px));
+  margin: clamp(42px, 7vw, 78px) auto clamp(72px, 10vw, 130px);
+  padding: clamp(26px, 5vw, 48px);
+  position: relative;
+  z-index: 5;
+
+  background:
+    linear-gradient(rgba(70, 49, 25, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(70, 49, 25, 0.035) 1px, transparent 1px),
+    linear-gradient(180deg, #efe0bc 0%, #d8c59c 100%);
+  background-size: 28px 28px, 28px 28px, 100% 100%;
+
+  color: #18110b;
+  border-radius: 22px;
+  border: 1px solid rgba(58, 37, 19, 0.22);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.68);
+}
+
+.message-file .eyebrow {
+  color: #6a2d14;
+  text-shadow: none;
+}
+
+.message-file h2 {
+  margin: 0 0 18px;
+  font: 900 clamp(2rem, 5vw, 4rem) "Arial Black", system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+}
+
+.message-file p {
+  font-family: system-ui, sans-serif;
+  line-height: 1.65;
+  font-weight: 650;
+}
+
+.message-form {
+  margin-top: 24px;
+  display: grid;
+  gap: 16px;
+}
+
+.message-form label {
+  display: grid;
+  gap: 8px;
+}
+
+.message-form span {
+  font: 800 0.92rem system-ui, sans-serif;
+}
+
+.message-form input,
+.message-form textarea {
+  width: 100%;
+  border: 1px solid rgba(24, 17, 11, 0.32);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.46);
+  color: #18110b;
+  padding: 14px 16px;
+  font: 600 1rem system-ui, sans-serif;
+}
+
+.message-form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.message-form .btn {
+  width: fit-content;
+  background: #18110b;
+  color: #fff8df;
+  border-color: #18110b;
+}
+
+.checkbox-row {
+  display: flex !important;
+  grid-template-columns: auto 1fr;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.checkbox-row input {
+  width: auto;
+  margin-top: 4px;
+}
+
+/* =========================================================
+  SCREEN 04 + 05 — PAPER FILES
+========================================================= */
+
+.paper-file {
+  width: min(980px, calc(100vw - 32px));
+  margin: clamp(42px, 7vw, 78px) auto clamp(64px, 9vw, 120px);
+  padding: clamp(28px, 5vw, 56px);
+  position: relative;
+  z-index: 5;
+
+  color: #17110a;
+  border-radius: 24px;
+  border: 1px solid rgba(58, 37, 19, 0.22);
+  background:
+    linear-gradient(rgba(70, 49, 25, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(70, 49, 25, 0.035) 1px, transparent 1px),
+    linear-gradient(180deg, #efe0bc 0%, #d8c59c 100%);
+  background-size: 28px 28px, 28px 28px, 100% 100%;
+  box-shadow:
+    0 28px 90px rgba(0, 0, 0, 0.62),
+    inset 0 0 60px rgba(116, 78, 34, 0.13);
+}
+
+.paper-file::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(58, 37, 19, 0.14);
+  border-radius: 18px;
+  pointer-events: none;
+}
+
+.paper-file__header {
+  position: relative;
+  z-index: 2;
+  border-bottom: 2px solid rgba(24, 17, 10, 0.28);
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+}
+
+.paper-kicker {
+  margin: 0 0 8px;
+  font: 900 0.82rem "Courier New", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #6a2d14;
+}
+
+.paper-file h2 {
+  margin: 0;
+  font: 900 clamp(2.5rem, 6vw, 5.2rem) "Arial Black", Impact, system-ui, sans-serif;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  color: #17110a;
+}
+
+.paper-meta {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.paper-meta span,
+.tracking-status-strip span {
+  padding: 7px 10px;
+  border: 1px solid rgba(24, 17, 10, 0.28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.26);
+  font: 800 0.72rem "Courier New", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.tracking-status-strip {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.tracking-log,
+.job-board,
+.case-copy,
+.admin-note {
+  position: relative;
+  z-index: 2;
+}
+
+.tracking-entry {
+  padding: 18px 0;
+  border-bottom: 1px dashed rgba(24, 17, 10, 0.32);
+}
+
+.tracking-entry time {
+  display: block;
+  margin-bottom: 6px;
+  font: 900 0.8rem "Courier New", monospace;
+  color: #6a2d14;
+}
+
+.tracking-entry h3 {
+  margin: 0 0 6px;
+  font: 900 1.2rem system-ui, sans-serif;
+  color: #17110a;
+}
+
+.tracking-entry p,
+.case-copy {
+  color: #21160c;
+  font: 650 1rem system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+.tracking-entry--pending {
+  opacity: 0.75;
+}
+
+.admin-note {
+  margin-top: 28px;
+  padding: 16px;
+  border: 1px dashed rgba(24, 17, 10, 0.35);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.admin-note summary {
+  cursor: pointer;
+  font: 900 0.9rem system-ui, sans-serif;
+}
+
+.admin-live-form {
+  margin-top: 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.admin-live-form label {
+  display: grid;
+  gap: 8px;
+}
+
+.admin-live-form span {
+  font: 900 0.86rem system-ui, sans-serif;
+}
+
+.admin-live-form input,
+.admin-live-form textarea {
+  width: 100%;
+  border: 1px solid rgba(24, 17, 10, 0.32);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.38);
+  color: #17110a;
+  padding: 12px 14px;
+  font: 650 1rem system-ui, sans-serif;
+}
+
+.admin-live-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* =========================================================
+  SCREEN 05 — JOB BOARD
+========================================================= */
+
+.job-board {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.job-card {
+  position: relative;
+  min-height: 260px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  cursor: pointer;
+
+  border-radius: 18px;
+  border: 1px solid rgba(24, 17, 10, 0.25);
+  background: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 12px 30px rgba(60, 38, 18, 0.12);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.job-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 42px rgba(60, 38, 18, 0.18);
+}
+
+.job-card__topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.job-status,
+.job-slots {
+  padding: 6px 9px;
+  border-radius: 999px;
+  font: 900 0.68rem "Courier New", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.job-status {
+  background: rgba(35, 78, 28, 0.13);
+  border: 1px solid rgba(35, 78, 28, 0.35);
+}
+
+.job-slots {
+  background: rgba(106, 45, 20, 0.1);
+  border: 1px solid rgba(106, 45, 20, 0.28);
+}
+
+.job-card h3 {
+  margin: 0 0 12px;
+  font: 900 1.25rem system-ui, sans-serif;
+  color: #17110a;
+}
+
+.job-card p {
+  color: #21160c;
+  font: 650 0.95rem system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+.job-open-button,
+.committee-apply-button {
+  margin-top: auto;
+  width: fit-content;
+  border: 1px solid rgba(24, 17, 10, 0.34);
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: #17110a;
+  color: #fff8df;
+  font: 900 0.78rem system-ui, sans-serif;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.job-card--filled {
+  opacity: 0.72;
+}
+
+.job-stamp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  width: max-content;
+  max-width: 90%;
+  transform: translate(-50%, -50%) rotate(-10deg);
+  padding: 10px 16px;
+  border: 3px solid rgba(120, 22, 18, 0.72);
+  color: rgba(120, 22, 18, 0.84);
+  font: 900 1rem "Courier New", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: rgba(239, 224, 188, 0.68);
+}
+
+/* =========================================================
+  APPLICATION MODAL
+========================================================= */
+
+.application-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.application-modal.hidden {
+  display: none !important;
+}
+
+.application-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(8px);
+}
+
+.application-modal__panel {
+  position: relative;
+  width: min(760px, 100%);
+  max-height: min(88vh, 800px);
+  overflow-y: auto;
+  padding: clamp(26px, 5vw, 46px);
+  border-radius: 24px;
+  color: #17110a;
+  background:
+    linear-gradient(rgba(70, 49, 25, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(70, 49, 25, 0.035) 1px, transparent 1px),
+    linear-gradient(180deg, #efe0bc 0%, #d8c59c 100%);
+  background-size: 28px 28px, 28px 28px, 100% 100%;
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.78);
+}
+
+.application-modal__close {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(24, 17, 10, 0.3);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  color: #17110a;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.application-modal__panel .eyebrow {
+  color: #6a2d14;
+  text-shadow: none;
+}
+
+.application-modal__panel h2 {
+  margin: 0;
+  font: 900 clamp(2rem, 5vw, 4rem) "Arial Black", system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+}
+
+.application-subtitle {
+  margin: 8px 0 0;
+  font: 800 0.95rem system-ui, sans-serif;
+}
+
+.application-notice {
+  margin: 20px 0 26px;
+  padding: 16px 18px;
+  border: 1px solid rgba(106, 45, 20, 0.28);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.24);
+  font-family: system-ui, sans-serif;
+  line-height: 1.55;
+}
+
+.application-form {
+  display: grid;
+  gap: 16px;
+}
+
+.application-form label {
+  display: grid;
+  gap: 8px;
+}
+
+.application-form span {
+  font: 900 0.88rem system-ui, sans-serif;
+}
+
+.application-form input,
+.application-form textarea {
+  width: 100%;
+  border: 1px solid rgba(24, 17, 10, 0.32);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.38);
+  color: #17110a;
+  padding: 14px 16px;
+  font: 650 1rem system-ui, sans-serif;
+}
+
+.application-form textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.application-form textarea[readonly] {
+  min-height: 110px;
+  opacity: 0.9;
+}
+
+.application-form .btn {
+  width: fit-content;
+  background: #17110a;
+  color: #fff8df;
+  border-color: #17110a;
+}
+
+/* =========================================================
+  TABLET / MOBILE
+========================================================= */
+
+@media (max-width: 980px) {
+  .mission-nav {
+    position: relative;
+    top: auto;
+    border-radius: 22px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+
+  .mission-nav__button {
+    white-space: nowrap;
+    font-size: 0.68rem;
+  }
+
+  .mission-screen {
+    min-height: auto;
+  }
+
+  .mission-screen--board .investigation-board {
+    height: auto;
+    min-height: calc(100vh - 140px);
+  }
+
+  .mission-screen--board .evidence-board {
+    min-height: auto;
+  }
+
+  .evidence-board {
+    min-height: auto;
+    padding: 18px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .central-map,
+  .flip-card {
+    position: relative;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    width: 100%;
+    transform: none !important;
+  }
+
+  .central-map {
+    grid-column: 1 / -1;
+    aspect-ratio: 4 / 3;
+  }
+
+  .board-map {
+    border-width: 8px;
+  }
+
+  .map-polaroid {
+    width: 82px;
+  }
+
+  .wide-card {
+    width: 100%;
+    grid-column: 1 / -1;
+  }
+
+  .flip-card,
+  .flip-inner {
+    min-height: 306px;
+  }
+
+  .board-strings {
+    display: none;
+  }
+
+  .flip-card.is-expanded {
+    position: fixed;
+    left: 50% !important;
+    top: 50% !important;
+    width: min(92vw, 560px);
+    min-height: min(78vh, 620px);
+    transform: translate(-50%, -50%) !important;
+    z-index: 220;
+  }
+
+  .flip-card.is-expanded .flip-inner {
+    min-height: min(78vh, 620px);
+  }
+
+  .job-board {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .investigation-board,
+  .support-intro,
+  .message-file,
+  .paper-file {
+    width: min(100%, calc(100vw - 24px));
+  }
+
+  .support-intro {
+    text-align: left;
+  }
+
+  .support-intro h1,
+  .support-intro .subtitle {
+    text-align: center;
+  }
+
+  .mission-disclaimer,
+  .mission-copy {
+    text-align: left;
+  }
+
+  .evidence-board {
+    grid-template-columns: 1fr;
+    border-radius: 22px;
+    padding: 14px;
+  }
+
+  .central-map {
+    grid-column: auto;
+  }
+
+  .wide-card {
+    grid-column: auto;
+  }
+
+  .flip-back {
+    padding: 16px;
+  }
+
+  .flip-back p {
+    font-size: 0.86rem;
+  }
+
+  .activity-images {
+    gap: 6px;
+  }
+
+  .message-file,
+  .paper-file {
+    padding: 24px 18px;
+  }
+
+  .message-file .btn,
+  .application-form .btn {
+    width: 100%;
+  }
+
+  .paper-file h2 {
+    font-size: clamp(2.3rem, 14vw, 4rem);
+  }
+
+  .paper-meta,
+  .tracking-status-strip {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .application-modal {
+    padding: 12px;
+  }
+}
+
+/* =========================================================
+  SCREEN 05 — EINSATZLEITUNG / COMMAND FILE
+========================================================= */
+
+.command-file {
+  max-width: 1120px;
+}
+
+.command-grid {
+  position: relative;
+  z-index: 2;
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.command-card {
+  position: relative;
+  min-height: 360px;
+  padding: 24px 22px;
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 18px;
+  border: 1px solid rgba(24, 17, 10, 0.25);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.34), rgba(255,255,255,0.16));
+  box-shadow:
+    0 14px 34px rgba(60, 38, 18, 0.12),
+    inset 0 0 0 1px rgba(255,255,255,0.18);
+}
+
+.command-card::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(120, 22, 18, 0.75);
+  box-shadow:
+    inset 0 2px 3px rgba(255,255,255,0.28),
+    0 3px 8px rgba(0,0,0,0.28);
+}
+
+.command-card .card-tag {
+  width: fit-content;
+  margin: 0 0 14px;
+  padding: 6px 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(106, 45, 20, 0.28);
+  background: rgba(106, 45, 20, 0.1);
+  color: #6a2d14;
+  font: 900 0.68rem "Courier New", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.command-card h3 {
+  margin: 0 0 16px;
+  font: 900 clamp(1.45rem, 2.2vw, 2.05rem) "Arial Black", Impact, system-ui, sans-serif;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #17110a;
+}
+
+.command-card p {
+  margin: 0 0 13px;
+  color: #21160c;
+  font: 650 0.95rem system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.56;
+  letter-spacing: 0.01em;
+}
+
+.command-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* leichte Aktennummer unten */
+.command-card::after {
+  margin-top: auto;
+  padding-top: 18px;
+  color: rgba(24, 17, 10, 0.48);
+  font: 900 0.68rem "Courier New", monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.command-card:nth-child(1)::after {
+  content: "EL-01 / operativ";
+}
+
+.command-card:nth-child(2)::after {
+  content: "EL-02 / ethik";
+}
+
+.command-card:nth-child(3)::after {
+  content: "EL-03 / personal";
+}
+
+.command-card:nth-child(4)::after {
+  content: "EL-04 / akte";
+}
+
+@media (max-width: 1100px) {
+  .command-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .command-card {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 620px) {
+  .command-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .command-card {
+    min-height: auto;
+  }
+}
+
+
+/* =========================================================
+  SCREEN 05 — EINSATZLEITUNG FULLSCREEN
+========================================================= */
+
+#screen-einsatzleitung {
+  min-height: calc(100vh - 96px);
+}
+
+#screen-einsatzleitung .command-file {
+  width: min(100%, calc(100vw - 24px));
+  max-width: none;
+  min-height: calc(100vh - 158px);
+  margin: 0 auto;
+  padding: clamp(28px, 4vw, 64px);
+  display: flex;
+  flex-direction: column;
+}
+
+#screen-einsatzleitung .paper-file__header {
+  margin-bottom: clamp(22px, 3vw, 36px);
+}
+
+#screen-einsatzleitung .paper-file h2 {
+  font-size: clamp(4rem, 9vw, 9rem);
+  line-height: 0.82;
+}
+
+#screen-einsatzleitung .case-copy {
+  max-width: 980px;
+  font-size: clamp(1rem, 1.25vw, 1.22rem);
+  line-height: 1.65;
+}
+
+.command-grid {
+  flex: 1;
+  margin-top: clamp(28px, 4vw, 46px);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(18px, 2vw, 30px);
+  align-items: stretch;
+}
+
+.command-card {
+  min-height: auto;
+  height: 100%;
+  padding: clamp(22px, 2.2vw, 34px);
+}
+
+.command-card h3 {
+  font-size: clamp(2rem, 3vw, 3.3rem);
+}
+
+.command-card p {
+  font-size: clamp(0.98rem, 1.05vw, 1.12rem);
+  line-height: 1.62;
+}
+
+/* Bei mittelgroßen Screens: 2x2 statt gequetscht */
+@media (max-width: 1200px) {
+  #screen-einsatzleitung .paper-file h2 {
+    font-size: clamp(3.6rem, 10vw, 7rem);
+  }
+
+  .command-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .command-card {
+    min-height: 320px;
+  }
+}
+
+/* Mobile: volle Breite, Karten untereinander */
+@media (max-width: 680px) {
+  #screen-einsatzleitung .command-file {
+    width: min(100%, calc(100vw - 18px));
+    min-height: auto;
+    padding: 24px 16px;
+  }
+
+  #screen-einsatzleitung .paper-file h2 {
+    font-size: clamp(3rem, 16vw, 5rem);
+  }
+
+  .command-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .command-card {
+    min-height: auto;
+  }
+}
+
+/* =========================================================
+  SUPPORT BOARD PATCH 01
+  Desktop-Titel größer + Mission-Buttons schöner
+========================================================= */
+
+/* ---------------------------------------------------------
+  1) Große Screen-Titel auf Desktop kräftiger
+--------------------------------------------------------- */
+
+@media (min-width: 900px) {
+  .mission-screen h1,
+  .mission-screen h2,
+  .paper-file h2,
+  .briefing-title,
+  .screen-title {
+    font-size: clamp(4.8rem, 8.8vw, 10.5rem);
+    line-height: 0.82;
+    letter-spacing: 0.025em;
+  }
+
+  /* Falls Operation 68 auf Screen 1 in einem h1 sitzt */
+  #screen-briefing h1,
+  #screen-briefing .briefing-title,
+  #screen-briefing .screen-title {
+    font-size: clamp(5.6rem, 10vw, 12rem);
+    line-height: 0.8;
+    letter-spacing: 0.055em;
+  }
+
+  /* Untertitel/Intro darunter etwas mehr Luft */
+  #screen-briefing .case-copy,
+  #screen-briefing .briefing-copy,
+  #screen-briefing p {
+    font-size: clamp(1.05rem, 1.25vw, 1.25rem);
+    line-height: 1.68;
+  }
+}
+
+/* Mobile nicht zerquetschen */
+@media (max-width: 640px) {
+  .mission-screen h1,
+  .mission-screen h2,
+  .paper-file h2,
+  .briefing-title,
+  .screen-title {
+    font-size: clamp(2.8rem, 14vw, 4.8rem);
+    line-height: 0.88;
+    letter-spacing: 0.015em;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* ---------------------------------------------------------
+  2) Screen Actions: Zurück / Weiter
+--------------------------------------------------------- */
+
+.screen-actions {
+  position: relative;
+  z-index: 20;
+
+  width: min(100%, 980px);
+  margin: clamp(30px, 4vw, 54px) auto 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(12px, 2vw, 20px);
+  flex-wrap: wrap;
+}
+
+/* Grundbutton nur innerhalb der Screen-Navigation */
+.screen-actions .btn,
+.mission-prev,
+.mission-next {
+  position: relative;
+  min-width: 180px;
+  min-height: 52px;
+  padding: 14px 24px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 999px;
+  border: 1px solid rgba(156, 255, 95, 0.42);
+
+  background:
+    linear-gradient(180deg, rgba(156, 255, 95, 0.13), rgba(156, 255, 95, 0.045)),
+    rgba(4, 10, 7, 0.88);
+
+  color: #c7ff8f;
+  font-family: "Courier New", monospace;
+  font-size: clamp(0.78rem, 0.9vw, 0.92rem);
+  font-weight: 900;
+  letter-spacing: 0.09em;
+  line-height: 1;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.035),
+    inset 0 0 24px rgba(156, 255, 95, 0.035),
+    0 16px 34px rgba(0, 0, 0, 0.36);
+
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease,
+    filter 160ms ease;
+}
+
+/* kleiner Scanline-Look */
+.screen-actions .btn::after,
+.mission-prev::after,
+.mission-next::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: inherit;
+  pointer-events: none;
+
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.035) 0,
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+
+  opacity: 0.45;
+}
+
+/* Hover */
+.screen-actions .btn:hover,
+.mission-prev:hover,
+.mission-next:hover {
+  transform: translateY(-2px);
+  border-color: rgba(156, 255, 95, 0.78);
+  filter: brightness(1.08);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.045),
+    inset 0 0 28px rgba(156, 255, 95, 0.055),
+    0 22px 46px rgba(0, 0, 0, 0.42),
+    0 0 28px rgba(156, 255, 95, 0.12);
+}
+
+/* Aktiv beim Klicken */
+.screen-actions .btn:active,
+.mission-prev:active,
+.mission-next:active {
+  transform: translateY(0);
+}
+
+/* Fokus für Tastatur */
+.screen-actions .btn:focus-visible,
+.mission-prev:focus-visible,
+.mission-next:focus-visible {
+  outline: 2px solid rgba(156, 255, 95, 0.86);
+  outline-offset: 4px;
+}
+
+/* Weiter-Button etwas stärker */
+.mission-next {
+  border-color: rgba(215, 179, 91, 0.5);
+  color: #f4e5b8;
+
+  background:
+    linear-gradient(180deg, rgba(215, 179, 91, 0.16), rgba(215, 179, 91, 0.055)),
+    rgba(7, 10, 5, 0.9);
+}
+
+.mission-next:hover {
+  border-color: rgba(215, 179, 91, 0.82);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.045),
+    0 22px 46px rgba(0, 0, 0, 0.42),
+    0 0 28px rgba(215, 179, 91, 0.14);
+}
+
+/* Zurück-Button etwas ruhiger */
+.mission-prev {
+  opacity: 0.92;
+}
+
+/* ---------------------------------------------------------
+  3) Mobile Actions: besser klickbar
+--------------------------------------------------------- */
+
+@media (max-width: 680px) {
+  .screen-actions {
+    width: 100%;
+    margin-top: 28px;
+    padding: 0 12px;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .screen-actions .btn,
+  .mission-prev,
+  .mission-next {
+    width: 100%;
+    min-width: 0;
+    min-height: 52px;
+    font-size: 0.82rem;
+  }
+}
+
+/* =========================================================
+  SCREEN 06 + 07 — KOMITEE / AKTENEINSICHT FULLSCREEN
+========================================================= */
+
+.mobile-title {
+  display: none;
+}
+
+#screen-komitee,
+#screen-akte {
+  min-height: calc(100vh - 96px);
+}
+
+#screen-komitee .committee-file,
+#screen-akte .case-file {
+  width: min(100%, calc(100vw - 24px));
+  max-width: none;
+  min-height: calc(100vh - 158px);
+  margin: 0 auto;
+  padding: clamp(28px, 4vw, 64px);
+  display: flex;
+  flex-direction: column;
+}
+
+#screen-komitee .paper-file__header,
+#screen-akte .paper-file__header {
+  margin-bottom: clamp(22px, 3vw, 36px);
+}
+
+#screen-komitee .paper-file h2,
+#screen-akte .paper-file h2 {
+  font-size: clamp(4.4rem, 8.6vw, 9.4rem);
+  line-height: 0.82;
+  letter-spacing: 0.015em;
+}
+
+#screen-komitee .case-copy,
+#screen-akte .case-copy {
+  max-width: 1080px;
+  font-size: clamp(1.05rem, 1.28vw, 1.25rem);
+  line-height: 1.68;
+}
+
+/* Jobboard größer und breiter */
+#screen-komitee .job-board {
+  flex: 1;
+  margin-top: clamp(28px, 4vw, 46px);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(18px, 2vw, 30px);
+  align-items: stretch;
+}
+
+#screen-komitee .job-card {
+  min-height: 360px;
+  padding: clamp(22px, 2.2vw, 34px);
+}
+
+#screen-komitee .job-card h3 {
+  font-size: clamp(1.55rem, 2.15vw, 2.6rem);
+  line-height: 1;
+}
+
+#screen-komitee .job-card p {
+  font-size: clamp(0.95rem, 1.05vw, 1.08rem);
+  line-height: 1.62;
+}
+
+/* Akteneinsicht-Karten */
+.case-summary-grid {
+  margin-top: clamp(28px, 4vw, 46px);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(18px, 2vw, 30px);
+}
+
+.case-summary-card {
+  padding: clamp(22px, 2.2vw, 34px);
+  border-radius: 18px;
+  border: 1px solid rgba(24, 17, 10, 0.25);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.34), rgba(255,255,255,0.16));
+  color: #17110a;
+  box-shadow:
+    0 14px 34px rgba(60, 38, 18, 0.12),
+    inset 0 0 0 1px rgba(255,255,255,0.18);
+}
+
+.case-summary-card .card-tag {
+  width: fit-content;
+  margin: 0 0 14px;
+  padding: 6px 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(106, 45, 20, 0.28);
+  background: rgba(106, 45, 20, 0.1);
+  color: #6a2d14;
+  font: 900 0.68rem "Courier New", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.case-summary-card h3 {
+  margin: 0 0 16px;
+  font: 900 clamp(1.55rem, 2.4vw, 2.8rem) "Arial Black", Impact, system-ui, sans-serif;
+  line-height: 0.98;
+  text-transform: uppercase;
+  color: #17110a;
+}
+
+.case-summary-card p {
+  margin: 0;
+  color: #21160c;
+  font: 650 clamp(0.98rem, 1.08vw, 1.12rem) system-ui, sans-serif;
+  line-height: 1.62;
+}
+
+.case-note {
+  margin-top: clamp(28px, 4vw, 46px);
+  padding: clamp(20px, 2.6vw, 30px);
+  border-radius: 18px;
+  border: 1px solid rgba(106, 45, 20, 0.3);
+  background: rgba(106, 45, 20, 0.08);
+  color: #21160c;
+  font-size: clamp(1rem, 1.15vw, 1.18rem);
+  line-height: 1.68;
+}
+
+/* Tablet */
+@media (max-width: 1200px) {
+  #screen-komitee .job-board {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .case-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #screen-komitee .job-card {
+    min-height: 300px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 680px) {
+  .desktop-title {
+    display: none;
+  }
+
+  .mobile-title {
+    display: inline;
+  }
+
+  #screen-komitee .committee-file,
+  #screen-akte .case-file {
+    width: min(100%, calc(100vw - 18px));
+    min-height: auto;
+    padding: 24px 16px;
+  }
+
+  #screen-komitee .paper-file h2,
+  #screen-akte .paper-file h2 {
+    font-size: clamp(3.1rem, 15vw, 5rem);
+    line-height: 0.88;
+    letter-spacing: 0.01em;
+  }
+
+  #screen-komitee .job-board {
+    grid-template-columns: 1fr;
+  }
+
+  #screen-komitee .job-card {
+    min-height: auto;
+  }
+}
+
+/* =========================================================
+  MOBILE MISSION NAV — 7 SCREENS CLEAN SCROLL
+========================================================= */
+
+.mission-nav {
+  position: relative;
+  z-index: 80;
+}
+
+/* Desktop: schön mittig, darf umbrechen */
+@media (min-width: 781px) {
+  .mission-nav {
+    width: min(100%, 1180px);
+    margin: 0 auto clamp(24px, 3vw, 42px);
+    padding: 10px;
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .mission-nav__button {
+    min-height: 42px;
+    padding: 10px 16px;
+    border-radius: 999px;
+
+    border: 1px solid rgba(156, 255, 95, 0.28);
+    background: rgba(5, 12, 7, 0.72);
+
+    color: rgba(199, 255, 143, 0.82);
+    font-family: "Courier New", monospace;
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+      transform 160ms ease,
+      border-color 160ms ease,
+      background 160ms ease,
+      color 160ms ease,
+      box-shadow 160ms ease;
+  }
+
+  .mission-nav__button:hover {
+    transform: translateY(-2px);
+    border-color: rgba(156, 255, 95, 0.58);
+    color: #c7ff8f;
+    box-shadow: 0 0 24px rgba(156, 255, 95, 0.08);
+  }
+
+  .mission-nav__button.is-active {
+    border-color: rgba(215, 179, 91, 0.72);
+    background:
+      linear-gradient(180deg, rgba(215, 179, 91, 0.14), rgba(215, 179, 91, 0.045)),
+      rgba(6, 12, 7, 0.86);
+    color: #f4e5b8;
+    box-shadow: 0 0 26px rgba(215, 179, 91, 0.1);
+  }
+}
+
+/* Mobile: horizontale Scroll-Leiste */
+@media (max-width: 780px) {
+  .mission-nav {
+    width: calc(100vw - 16px);
+    margin: 0 auto 18px;
+    padding: 8px;
+
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 8px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+
+    border: 1px solid rgba(156, 255, 95, 0.18);
+    border-radius: 999px;
+
+    background:
+      linear-gradient(180deg, rgba(156, 255, 95, 0.045), rgba(156, 255, 95, 0.015)),
+      rgba(3, 8, 5, 0.82);
+
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.025),
+      0 12px 28px rgba(0, 0, 0, 0.32);
+  }
+
+  .mission-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mission-nav__button {
+    flex: 0 0 auto;
+    min-height: 40px;
+    padding: 10px 14px;
+
+    border-radius: 999px;
+    border: 1px solid rgba(156, 255, 95, 0.24);
+
+    background: rgba(5, 12, 7, 0.74);
+
+    color: rgba(199, 255, 143, 0.72);
+    font-family: "Courier New", monospace;
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    cursor: pointer;
+  }
+
+  .mission-nav__button.is-active {
+    border-color: rgba(215, 179, 91, 0.78);
+    background:
+      linear-gradient(180deg, rgba(215, 179, 91, 0.18), rgba(215, 179, 91, 0.055)),
+      rgba(8, 12, 6, 0.92);
+    color: #f4e5b8;
+    box-shadow: 0 0 20px rgba(215, 179, 91, 0.12);
+  }
+
+  .mission-nav__button:active {
+    transform: scale(0.98);
+  }
+}
+
+/* =========================================================
+  SCREEN 06 — JOBCARDS / ENTFÜHRUNGSKOMITEE POLISH
+========================================================= */
+
+/* Jobboard-Grundlayout */
+#screen-komitee .job-board {
+  align-items: stretch;
+}
+
+/* Jobcards: modernes Akten-/Stellenanzeigen-Design */
+#screen-komitee .job-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid rgba(24, 17, 10, 0.24);
+  border-radius: 22px;
+
+  background:
+    linear-gradient(rgba(70, 49, 25, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(70, 49, 25, 0.025) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.14));
+
+  background-size:
+    22px 22px,
+    22px 22px,
+    100% 100%;
+
+  color: #17110a;
+
+  box-shadow:
+    0 18px 42px rgba(60, 38, 18, 0.14),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+
+  cursor: pointer;
+
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    border-color 160ms ease,
+    filter 160ms ease;
+}
+
+#screen-komitee .job-card:hover {
+  transform: translateY(-4px) rotate(-0.3deg);
+  border-color: rgba(106, 45, 20, 0.38);
+  filter: brightness(1.025);
+
+  box-shadow:
+    0 26px 58px rgba(60, 38, 18, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.24);
+}
+
+/* Statuszeile */
+.job-card__topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: clamp(18px, 2vw, 26px);
+}
+
+.job-status,
+.job-slots {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 30px;
+  padding: 7px 12px;
+
+  border-radius: 999px;
+  border: 1px solid rgba(24, 17, 10, 0.24);
+
+  background: rgba(255, 255, 255, 0.2);
+  color: #17110a;
+
+  font-family: "Courier New", monospace;
+  font-size: clamp(0.68rem, 0.8vw, 0.8rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.job-status {
+  background: rgba(156, 255, 95, 0.16);
+}
+
+.job-slots {
+  background: rgba(215, 179, 91, 0.16);
+}
+
+/* Titel */
+#screen-komitee .job-card h3 {
+  margin: 0 0 18px;
+
+  color: #17110a;
+  font-family: Impact, "Arial Black", system-ui, sans-serif;
+  font-size: clamp(1.8rem, 2.35vw, 3rem);
+  line-height: 0.98;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+}
+
+/* Beschreibung */
+#screen-komitee .job-card p {
+  margin: 0 0 22px;
+
+  color: #21160c;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: clamp(1rem, 1.08vw, 1.12rem);
+  font-weight: 700;
+  line-height: 1.62;
+}
+
+/* Button unten fixieren */
+.job-open-button {
+  width: 100%;
+  min-height: 48px;
+  margin-top: auto;
+  padding: 12px 16px;
+
+  border-radius: 999px;
+  border: 1px solid rgba(24, 17, 10, 0.34);
+
+  background:
+    linear-gradient(180deg, rgba(24, 17, 10, 0.14), rgba(24, 17, 10, 0.06));
+
+  color: #17110a;
+
+  font-family: "Courier New", monospace;
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    transform 150ms ease,
+    background 150ms ease,
+    filter 150ms ease;
+}
+
+.job-open-button:hover {
+  transform: translateY(-1px);
+  background:
+    linear-gradient(180deg, rgba(24, 17, 10, 0.2), rgba(24, 17, 10, 0.08));
+  filter: brightness(1.04);
+}
+
+/* Status-spezifische Optik */
+.job-card[data-status="offen"] .job-status {
+  border-color: rgba(53, 94, 35, 0.36);
+  background: rgba(156, 255, 95, 0.18);
+}
+
+.job-card[data-status="in-pruefung"] .job-status {
+  border-color: rgba(215, 179, 91, 0.42);
+  background: rgba(215, 179, 91, 0.22);
+}
+
+.job-card[data-status="vorlaeufig-vergeben"] {
+  opacity: 0.86;
+}
+
+.job-card[data-status="vorlaeufig-vergeben"]::after {
+  content: "Vorläufig vergeben";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 4;
+
+  padding: 10px 16px;
+  border: 2px solid rgba(125, 23, 18, 0.46);
+  border-radius: 10px;
+
+  color: rgba(125, 23, 18, 0.68);
+  background: rgba(239, 224, 188, 0.58);
+
+  font-family: "Courier New", monospace;
+  font-size: clamp(0.72rem, 0.9vw, 0.9rem);
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  transform: translate(-50%, -50%) rotate(-7deg);
+  pointer-events: none;
+}
+
+/* =========================================================
+  APPLICATION MODAL — CLEANER / MOBILE SAFE
+========================================================= */
+
+.application-modal.hidden {
+  display: none;
+}
+
+.application-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+
+  display: grid;
+  place-items: center;
+
+  padding: clamp(16px, 4vw, 38px);
+}
+
+.application-modal__backdrop {
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(circle at 50% 20%, rgba(215, 179, 91, 0.1), transparent 34rem),
+    rgba(0, 0, 0, 0.72);
+
+  backdrop-filter: blur(7px);
+}
+
+.application-modal__panel {
+  position: relative;
+  z-index: 2;
+
+  width: min(100%, 760px);
+  max-height: min(88vh, 920px);
+  overflow-y: auto;
+
+  padding: clamp(24px, 4vw, 46px);
+
+  border-radius: 24px;
+  border: 1px solid rgba(77, 52, 26, 0.28);
+
+  background:
+    linear-gradient(rgba(70, 49, 25, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(70, 49, 25, 0.035) 1px, transparent 1px),
+    linear-gradient(180deg, #f1e2bd 0%, #dcc79c 100%);
+
+  background-size: 26px 26px, 26px 26px, 100% 100%;
+
+  color: #17110a;
+
+  box-shadow:
+    0 30px 100px rgba(0, 0, 0, 0.68),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+.application-modal__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 999px;
+  border: 1px solid rgba(24, 17, 10, 0.3);
+  background: rgba(255, 255, 255, 0.22);
+  color: #17110a;
+
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.application-modal__panel .eyebrow {
+  margin: 0 0 12px;
+  color: #7b391d;
+  font-family: "Courier New", monospace;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.application-modal__panel h2 {
+  margin: 0;
+
+  color: #17110a;
+  font-family: Impact, "Arial Black", system-ui, sans-serif;
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.application-subtitle {
+  margin: 14px 0 0;
+  color: #4b2b15;
+  font-weight: 800;
+}
+
+.application-notice {
+  margin: 24px 0;
+  padding: 16px 18px;
+
+  border: 1px solid rgba(125, 23, 18, 0.25);
+  border-radius: 14px;
+
+  background: rgba(125, 23, 18, 0.06);
+
+  color: #21160c;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.application-form {
+  display: grid;
+  gap: 16px;
+}
+
+.application-form label {
+  display: grid;
+  gap: 8px;
+}
+
+.application-form label span {
+  color: #4b2b15;
+  font-family: "Courier New", monospace;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.application-form input,
+.application-form textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+
+  border-radius: 12px;
+  border: 1px solid rgba(58, 37, 19, 0.32);
+
+  background: rgba(255, 246, 220, 0.72);
+  color: #17110a;
+
+  font: 700 0.96rem system-ui, sans-serif;
+}
+
+.application-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Mobile */
+@media (max-width: 680px) {
+  #screen-komitee .job-card {
+    padding: 22px;
+  }
+
+  #screen-komitee .job-card h3 {
+    font-size: clamp(1.8rem, 9vw, 2.65rem);
+  }
+
+  .job-card__topline {
+    align-items: flex-start;
+  }
+
+  .job-status,
+  .job-slots {
+    font-size: 0.66rem;
+  }
+
+  .application-modal {
+    padding: 10px;
+    align-items: end;
+  }
+
+  .application-modal__panel {
+    width: 100%;
+    max-height: 92vh;
+    border-radius: 22px 22px 0 0;
+    padding: 26px 18px;
+  }
+
+  .application-modal__panel h2 {
+    font-size: clamp(2.2rem, 12vw, 3.8rem);
+  }
+}
+
+/* =========================================================
+  PINNWAND HARD FIX — DESKTOP MAP HUGE + TARGET FACE VISIBLE
+========================================================= */
+
+@media (min-width: 900px) {
+  /* Ermittlungswand wirklich als große Arbeitsfläche */
+  #screen-pinnwand .evidence-board {
+    position: relative;
+    min-height: calc(100vh - 120px);
+    overflow: hidden;
+  }
+
+  /* MITTLERE KARTE — alle wahrscheinlichen Klassen hart größer */
+  #screen-pinnwand .board-map,
+  #screen-pinnwand .map-board,
+  #screen-pinnwand .evidence-map,
+  #screen-pinnwand .center-map,
+  #screen-pinnwand .board-centerpiece,
+  #screen-pinnwand .evidence-map-card,
+  #screen-pinnwand .map-center,
+  #screen-pinnwand .map-card,
+  #screen-pinnwand .central-map,
+  #screen-pinnwand .pinboard-map {
+    position: absolute !important;
+    left: 50% !important;
+    top: 52% !important;
+    width: clamp(900px, 52vw, 1180px) !important;
+    max-width: none !important;
+    transform: translate(-50%, -50%) rotate(0deg) !important;
+    z-index: 8 !important;
+  }
+
+  #screen-pinnwand .board-map img,
+  #screen-pinnwand .map-board img,
+  #screen-pinnwand .evidence-map img,
+  #screen-pinnwand .center-map img,
+  #screen-pinnwand .board-centerpiece img,
+  #screen-pinnwand .evidence-map-card img,
+  #screen-pinnwand .map-center img,
+  #screen-pinnwand .map-card img,
+  #screen-pinnwand .central-map img,
+  #screen-pinnwand .pinboard-map img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+  }
+
+  /* Polaroids größer */
+  #screen-pinnwand .flip-card {
+    width: clamp(280px, 17vw, 390px) !important;
+    min-height: clamp(280px, 17vw, 400px) !important;
+  }
+
+  #screen-pinnwand .card-activities,
+  #screen-pinnwand .flip-card.wide-card {
+    width: clamp(460px, 32vw, 680px) !important;
+  }
+
+  /* Positionen neu, damit die größere Karte Platz hat */
+  #screen-pinnwand .card-kidnapper {
+    left: 4% !important;
+    top: 8% !important;
+    transform: rotate(-3deg) !important;
+  }
+
+  #screen-pinnwand .card-car {
+    left: 26% !important;
+    top: 16% !important;
+    transform: rotate(2.5deg) !important;
+  }
+
+  #screen-pinnwand .card-dogs {
+    left: 5% !important;
+    bottom: 6% !important;
+    transform: rotate(2deg) !important;
+  }
+
+  #screen-pinnwand .card-target {
+    right: 4% !important;
+    top: 7% !important;
+    transform: rotate(3deg) !important;
+  }
+
+  #screen-pinnwand .card-location {
+    right: 8% !important;
+    bottom: 8% !important;
+    transform: rotate(-2deg) !important;
+  }
+
+  #screen-pinnwand .card-activities {
+    left: 50% !important;
+    bottom: 3% !important;
+    transform: translateX(-50%) rotate(1deg) !important;
+  }
+}
+
+/* =========================================================
+  TARGET PHOTO FIX — Kopf nicht abschneiden
+========================================================= */
+
+/* Polaroid-Foto grundsätzlich etwas höher machen */
+#screen-pinnwand .card-target .polaroid img {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 1 / 1.18 !important;
+  object-fit: cover !important;
+
+  /* wichtig: Bildausschnitt ganz nach oben */
+  object-position: 50% 0% !important;
+}
+
+/* Falls der Kopf trotzdem abgeschnitten wird:
+   nicht covern, sondern ganzes Bild zeigen */
+#screen-pinnwand .card-target .polaroid {
+  overflow: visible !important;
+}
+
+#screen-pinnwand .card-target .polaroid img {
+  object-fit: contain !important;
+  background: #ead9ad !important;
+}
+
+/* Bildfläche der Zielperson etwas größer/hochformatiger */
+#screen-pinnwand .card-target .polaroid img,
+#screen-pinnwand .card-target .photo-placeholder {
+  aspect-ratio: 1 / 1.22 !important;
+}
+
+/* Beschriftung bleibt unten */
+#screen-pinnwand .card-target .polaroid h3 {
+  margin-top: 10px !important;
+}
