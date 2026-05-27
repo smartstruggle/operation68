@@ -579,3 +579,49 @@ if (casebook && totalCasebookPages > 0) {
     showCasebookPage(currentCasebookPage + 1, "next");
   });
 }
+
+
+/* =========================================================
+  GUIDELINE MODAL — INTERNE ENTFÜHRUNGSLEITLINIE
+========================================================= */
+
+const guidelineModal = document.querySelector("#guidelineModal");
+const guidelineOpenButtons = document.querySelectorAll("[data-guideline-open]");
+const guidelineCloseButtons = document.querySelectorAll("[data-guideline-close]");
+
+function openGuidelineModal() {
+  if (!guidelineModal) return;
+
+  guidelineModal.classList.remove("hidden");
+  guidelineModal.setAttribute("aria-hidden", "false");
+}
+
+function closeGuidelineModal() {
+  if (!guidelineModal) return;
+
+  guidelineModal.classList.add("hidden");
+  guidelineModal.setAttribute("aria-hidden", "true");
+}
+
+guidelineOpenButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const isOpen = guidelineModal && !guidelineModal.classList.contains("hidden");
+
+    if (isOpen) {
+      closeGuidelineModal();
+      return;
+    }
+
+    openGuidelineModal();
+  });
+});
+
+guidelineCloseButtons.forEach((button) => {
+  button.addEventListener("click", closeGuidelineModal);
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeGuidelineModal();
+  }
+});
