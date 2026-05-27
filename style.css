@@ -1782,3 +1782,411 @@ min-height: 225px;
 padding: 24px;
 }
 }
+
+/* =========================================================
+  SCREEN 07 — CASEBOOK / AKTENBUCH
+========================================================= */
+
+.casebook-screen {
+  width: min(100%, calc(100vw - 24px));
+  min-height: calc(100vh - 150px);
+  margin: 0 auto;
+  padding: clamp(24px, 4vw, 58px);
+
+  border-radius: 26px;
+  border: 1px solid rgba(70, 49, 25, 0.22);
+
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,0.22), transparent 34rem),
+    linear-gradient(rgba(70, 49, 25, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(70, 49, 25, 0.028) 1px, transparent 1px),
+    linear-gradient(180deg, #efe0bc 0%, #d8c59c 100%);
+
+  background-size: 100% 100%, 28px 28px, 28px 28px, 100% 100%;
+
+  box-shadow:
+    0 34px 100px rgba(0,0,0,0.58),
+    inset 0 0 0 1px rgba(255,255,255,0.26);
+}
+
+.casebook-header {
+  margin-bottom: clamp(22px, 3vw, 36px);
+}
+
+.casebook-header h2 {
+  margin: 0;
+  color: #17110a;
+  font-family: Impact, "Arial Black", system-ui, sans-serif;
+  font-size: clamp(4.4rem, 8.6vw, 9.4rem);
+  line-height: 0.82;
+  text-transform: uppercase;
+}
+
+/* Buchkörper */
+.casebook {
+  position: relative;
+  width: min(100%, 1260px);
+  min-height: clamp(560px, 58vh, 760px);
+  margin: clamp(24px, 4vw, 44px) auto 0;
+  perspective: 1800px;
+}
+
+/* Buchschatten */
+.casebook::before {
+  content: "";
+  position: absolute;
+  inset: 5% 4% -5%;
+  z-index: 0;
+  border-radius: 36px;
+  background: rgba(0, 0, 0, 0.34);
+  filter: blur(24px);
+}
+
+/* Mittlere Bindung */
+.casebook__binding {
+  position: absolute;
+  top: 4%;
+  bottom: 4%;
+  left: 50%;
+  z-index: 12;
+  width: 18px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.22), rgba(255,255,255,0.22), rgba(0,0,0,0.18)),
+    #6d4a2a;
+  box-shadow:
+    0 0 18px rgba(0,0,0,0.32),
+    inset 0 0 8px rgba(0,0,0,0.28);
+  pointer-events: none;
+}
+
+/* Seiten */
+.casebook-page {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(22px) rotateY(-4deg) scale(0.985);
+  transition:
+    opacity 260ms ease,
+    transform 360ms ease;
+}
+
+.casebook-page.is-active {
+  z-index: 5;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0) rotateY(0deg) scale(1);
+}
+
+.casebook-page.is-leaving-left {
+  transform: translateX(-30px) rotateY(5deg) scale(0.985);
+  opacity: 0;
+}
+
+.casebook-page.is-leaving-right {
+  transform: translateX(30px) rotateY(-5deg) scale(0.985);
+  opacity: 0;
+}
+
+/* Doppelseite */
+.casebook-spread {
+  position: relative;
+  z-index: 2;
+  min-height: clamp(560px, 58vh, 760px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+/* einzelne Buchseite */
+.casebook-sheet {
+  position: relative;
+  padding: clamp(28px, 3.4vw, 54px);
+
+  background:
+    linear-gradient(rgba(70, 49, 25, 0.038) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(70, 49, 25, 0.028) 1px, transparent 1px),
+    linear-gradient(180deg, #f2e4bf 0%, #dcc79c 100%);
+
+  background-size: 26px 26px, 26px 26px, 100% 100%;
+  color: #17110a;
+  overflow-y: auto;
+  max-height: clamp(560px, 58vh, 760px);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(70, 49, 25, 0.14),
+    inset 0 0 38px rgba(88, 55, 24, 0.09);
+}
+
+.casebook-sheet--left {
+  border-radius: 28px 0 0 28px;
+  border-right: 1px solid rgba(70, 49, 25, 0.22);
+  padding-right: clamp(34px, 4vw, 68px);
+}
+
+.casebook-sheet--right {
+  border-radius: 0 28px 28px 0;
+  padding-left: clamp(34px, 4vw, 68px);
+}
+
+/* Typo */
+.casebook-sheet .card-tag {
+  width: fit-content;
+  margin: 0 0 16px;
+  padding: 7px 10px;
+
+  border-radius: 999px;
+  border: 1px solid rgba(106, 45, 20, 0.28);
+  background: rgba(106, 45, 20, 0.09);
+
+  color: #6a2d14;
+  font-family: "Courier New", monospace;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.casebook-sheet h3 {
+  margin: 0 0 clamp(20px, 2.4vw, 32px);
+
+  color: #17110a;
+  font-family: Impact, "Arial Black", system-ui, sans-serif;
+  font-size: clamp(2rem, 3.3vw, 4.2rem);
+  line-height: 0.92;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+}
+
+.casebook-sheet p {
+  margin: 0 0 16px;
+  color: #21160c;
+  font-size: clamp(1rem, 1.08vw, 1.15rem);
+  font-weight: 650;
+  line-height: 1.68;
+}
+
+.casebook-caption {
+  margin-top: 14px !important;
+  font-family: "Courier New", monospace;
+  font-size: 0.82rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.04em;
+  color: rgba(33, 22, 12, 0.72) !important;
+}
+
+/* Foto */
+.case-photo-frame {
+  margin-top: 20px;
+  padding: 12px 12px 36px;
+  max-width: 360px;
+
+  background: #f7ecd0;
+  border: 1px solid rgba(70, 49, 25, 0.22);
+  box-shadow:
+    0 14px 28px rgba(60, 38, 18, 0.16),
+    inset 0 0 0 1px rgba(255,255,255,0.22);
+
+  transform: rotate(-2deg);
+}
+
+.case-photo-frame img {
+  width: 100%;
+  aspect-ratio: 1 / 1.08;
+  display: block;
+  object-fit: contain;
+  object-position: center top;
+  background: #e8d7ad;
+  filter: sepia(0.14) contrast(1.02);
+}
+
+/* Stammdatenliste */
+.case-data-list {
+  margin: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.case-data-list div {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(70, 49, 25, 0.18);
+}
+
+.case-data-list dt {
+  margin-bottom: 4px;
+  color: #6a2d14;
+  font-family: "Courier New", monospace;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.case-data-list dd {
+  margin: 0;
+  color: #17110a;
+  font-size: clamp(1rem, 1.15vw, 1.18rem);
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.casebook-stamp {
+  width: fit-content;
+  margin-top: 28px;
+  padding: 10px 16px;
+
+  border: 2px solid rgba(125, 23, 18, 0.5);
+  border-radius: 8px;
+
+  color: rgba(125, 23, 18, 0.68);
+  font-family: "Courier New", monospace;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  transform: rotate(4deg);
+}
+
+/* Maßnahmenliste */
+.case-measures {
+  margin: 20px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  list-style: none;
+}
+
+.case-measures li {
+  padding: 11px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(70, 49, 25, 0.22);
+  background: rgba(255, 255, 255, 0.22);
+  color: #17110a;
+  font-family: "Courier New", monospace;
+  font-size: 0.9rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.casebook-final-note {
+  margin-top: 24px;
+  padding: 18px 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(125, 23, 18, 0.28);
+  background: rgba(125, 23, 18, 0.06);
+  color: #21160c;
+  font-weight: 750;
+  line-height: 1.6;
+}
+
+/* Controls */
+.casebook-controls {
+  width: min(100%, 680px);
+  margin: clamp(26px, 4vw, 42px) auto 0;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 14px;
+  align-items: center;
+}
+
+.casebook-counter {
+  color: #21160c;
+  font-family: "Courier New", monospace;
+  font-size: 0.86rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* Disabled */
+.casebook-controls .btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Mobile: Einzelseiten statt Doppelseite */
+@media (max-width: 780px) {
+  .casebook-screen {
+    width: min(100%, calc(100vw - 18px));
+    padding: 24px 14px;
+  }
+
+  .casebook-header h2 {
+    font-size: clamp(3.1rem, 15vw, 5rem);
+    line-height: 0.88;
+  }
+
+  .casebook {
+    min-height: auto;
+    perspective: none;
+  }
+
+  .casebook__binding {
+    display: none;
+  }
+
+  .casebook-page {
+    position: relative;
+    display: none;
+    inset: auto;
+    opacity: 1;
+    transform: none;
+  }
+
+  .casebook-page.is-active {
+    display: block;
+    transform: none;
+  }
+
+  .casebook-spread {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .casebook-sheet {
+    max-height: none;
+    min-height: auto;
+    overflow: visible;
+    padding: 26px 18px;
+    border-radius: 22px;
+  }
+
+  .casebook-sheet--left,
+  .casebook-sheet--right {
+    border-radius: 22px;
+    padding: 26px 18px;
+  }
+
+  .casebook-sheet--right {
+    margin-top: 14px;
+  }
+
+  .casebook-sheet h3 {
+    font-size: clamp(2.1rem, 11vw, 3.6rem);
+  }
+
+  .casebook-sheet p {
+    font-size: 1rem;
+    line-height: 1.62;
+  }
+
+  .case-photo-frame {
+    max-width: 100%;
+  }
+
+  .casebook-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .casebook-counter {
+    order: -1;
+  }
+}
