@@ -304,9 +304,16 @@ flipCards.forEach((card) => {
     }
 
     card.classList.add("is-expanded");
-    card.classList.add("is-flipped");
-    evidenceBoard?.classList.add("has-expanded-card");
-  });
+card.classList.add("is-flipped");
+evidenceBoard?.classList.add("has-expanded-card");
+
+/* Mobile: Karte bleibt an Ort und Stelle sichtbar */
+if (window.matchMedia("(max-width: 899px)").matches) {
+card.scrollIntoView({
+behavior: "smooth",
+block: "center"
+});
+}
 });
 
 /* Klick neben große Pinnwandkarte schließt sie */
