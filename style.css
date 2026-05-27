@@ -1689,3 +1689,96 @@ body::after {
     line-height: 1.65;
   }
 }
+
+/* =========================================================
+DEPLOY FIX — MOBILE FLIP CARDS SHOW ONLY ONE SIDE
+========================================================= */
+
+.index-flip-card {
+perspective: 1400px;
+-webkit-perspective: 1400px;
+}
+
+.index-flip-inner {
+position: relative;
+width: 100%;
+min-height: 245px;
+transform-style: preserve-3d;
+-webkit-transform-style: preserve-3d;
+transition: transform 320ms ease;
+}
+
+.index-flip-card.is-flipped .index-flip-inner {
+transform: rotateY(180deg);
+-webkit-transform: rotateY(180deg);
+}
+
+.index-flip-front,
+.index-flip-back {
+position: absolute;
+inset: 0;
+width: 100%;
+min-height: 100%;
+
+backface-visibility: hidden !important;
+-webkit-backface-visibility: hidden !important;
+
+transform-style: preserve-3d;
+-webkit-transform-style: preserve-3d;
+
+overflow: hidden;
+}
+
+.index-flip-front {
+transform: rotateY(0deg) translateZ(1px);
+-webkit-transform: rotateY(0deg) translateZ(1px);
+}
+
+.index-flip-back {
+transform: rotateY(180deg) translateZ(1px);
+-webkit-transform: rotateY(180deg) translateZ(1px);
+}
+
+/* ganz wichtig: bei nicht geflippter Karte Rückseite wirklich weg */
+.index-flip-card:not(.is-flipped) .index-flip-back {
+pointer-events: none;
+visibility: hidden;
+}
+
+.index-flip-card.is-flipped .index-flip-front {
+pointer-events: none;
+visibility: hidden;
+}
+
+.index-flip-card.is-flipped .index-flip-back {
+pointer-events: auto;
+visibility: visible;
+}
+
+/* Mobile: Kartenhöhe stabilisieren */
+@media (max-width: 680px) {
+.choice-grid {
+width: min(100%, 92vw);
+grid-template-columns: 1fr;
+gap: 22px;
+}
+
+.choice-card,
+.index-flip-card {
+width: 100%;
+min-height: 265px;
+}
+
+.index-flip-inner,
+.index-flip-front,
+.index-flip-back,
+.choice-card-content {
+min-height: 225px;
+}
+
+.choice-card-content,
+.index-flip-front .choice-card-content,
+.index-flip-back .choice-card-content {
+padding: 24px;
+}
+}
