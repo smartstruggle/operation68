@@ -758,19 +758,16 @@
 </section>
 
 <!-- =========================================================
-  SCREEN 07: AKTENEINSICHT HANS-PETER W.
-========================================================== -->
-<!-- =========================================================
-  SCREEN 07: AKTENEINSICHT HANS-PETER W.
+  SCREEN 07: AKTENBUCH HANS-PETER W.
 ========================================================== -->
 <section class="mission-screen" id="screen-akte" data-screen="akte">
-  <section class="paper-file case-access case-file">
-    <div class="paper-file__header">
+  <section class="casebook-screen">
+    <div class="casebook-header">
       <p class="paper-kicker">Akteneinsicht Hans-Peter W.</p>
 
       <h2>
-        <span class="desktop-title">Akteneinsicht</span>
-        <span class="mobile-title">Akten-<br />einsicht</span>
+        <span class="desktop-title">Aktenbuch</span>
+        <span class="mobile-title">Akten-<br />buch</span>
       </h2>
 
       <div class="paper-meta">
@@ -780,191 +777,304 @@
       </div>
     </div>
 
-    <div class="case-profile">
-      <div class="case-profile__stamp">
-        Zielperson
-      </div>
+    <div class="casebook" id="casebook" data-current-page="1">
+      <div class="casebook__binding" aria-hidden="true"></div>
 
-      <div class="case-profile__content">
-        <p class="card-tag">Personenstammdaten</p>
+      <!-- SEITE 01 -->
+      <article class="casebook-page is-active" data-case-page="1">
+        <div class="casebook-spread">
+          <div class="casebook-sheet casebook-sheet--left">
+            <p class="card-tag">Deckblatt</p>
 
-        <h3>Hans-Peter W.</h3>
+            <h3>Akteneinsicht<br />Zielperson</h3>
 
-        <dl class="case-data-list">
-          <div>
-            <dt>Geboren</dt>
-            <dd>10.07.1958 in Paderborn</dd>
+            <div class="case-photo-frame">
+              <img
+                src="images/target.png"
+                alt="Zielperson Hans-Peter W."
+              />
+            </div>
+
+            <p class="casebook-caption">
+              Bildmaterial: Zielperson im öffentlichen beziehungsweise familiären Umfeld.
+              Auswertung läuft.
+            </p>
           </div>
 
-          <div>
-            <dt>Fachliche Prägung</dt>
-            <dd>Studium der Mathematik</dd>
+          <div class="casebook-sheet casebook-sheet--right">
+            <p class="card-tag">Personenstammdaten</p>
+
+            <h3>Hans-Peter W.</h3>
+
+            <dl class="case-data-list">
+              <div>
+                <dt>Geboren</dt>
+                <dd>10.07.1958 in Paderborn</dd>
+              </div>
+
+              <div>
+                <dt>Fachliche Prägung</dt>
+                <dd>Studium der Mathematik</dd>
+              </div>
+
+              <div>
+                <dt>Aktueller Status</dt>
+                <dd>Rentner mit dubiosen Nebeneinkünften im Bereich „Schülerhilfe“</dd>
+              </div>
+
+              <div>
+                <dt>Risikostufe</dt>
+                <dd>freundlich, kooperativ, jedoch fortschrittlich auffällig</dd>
+              </div>
+            </dl>
+
+            <div class="casebook-stamp">
+              Freiwillig beobachtet
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- SEITE 02 -->
+      <article class="casebook-page" data-case-page="2">
+        <div class="casebook-spread">
+          <div class="casebook-sheet casebook-sheet--left">
+            <p class="card-tag">Frühkindliche Ausgangslage</p>
+
+            <h3>Der Mittagsschlafkomplex</h3>
+
+            <p>
+              Bereits in der frühen Kindheit kam es zu einem Vorfall, der nach aktueller
+              Aktenlage nicht länger ignoriert werden kann: Der Zielperson wurde im Alter
+              von etwa fünf Jahren nahegelegt, nachmittags zu schlafen.
+            </p>
+
+            <p>
+              Nach Darstellung der Zielperson erfolgte diese Maßnahme gegen ihren Willen
+              und unter grober Missachtung ihres individuellen Vier-Stunden-Schlafmodells.
+            </p>
           </div>
 
-          <div>
-            <dt>Aktueller Status</dt>
-            <dd>Rentner mit dubiosen Nebeneinkünften im Bereich „Schülerhilfe“</dd>
+          <div class="casebook-sheet casebook-sheet--right">
+            <p>
+              Die zuständige Kinderanlage ging offenbar weiterhin von allgemeinen
+              Ruhebedarfen aus, ohne die spätere mathematische Sonderentwicklung der
+              Zielperson angemessen zu berücksichtigen.
+            </p>
+
+            <p>
+              Innerhalb der Ermittlungsleitung besteht daher der Verdacht, dass sich die
+              Zielperson damals erstmals entschloss, äußere Weltvorgaben nur noch begrenzt
+              ernst zu nehmen und sich stattdessen inneren, berechenbaren Strukturen
+              zuzuwenden.
+            </p>
+
+            <p>
+              Ob der Mittagsschlaf unmittelbar zur Mathematik führte, ist wissenschaftlich
+              noch nicht gesichert. Die Indizienlage ist jedoch unangenehm plausibel.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- SEITE 03 -->
+      <article class="casebook-page" data-case-page="3">
+        <div class="casebook-spread">
+          <div class="casebook-sheet casebook-sheet--left">
+            <p class="card-tag">Sondervermerk</p>
+
+            <h3>Mathematischer Stufenplanbereich</h3>
+
+            <p>
+              Die mathematische Prägung der Zielperson blieb bereits während des Studiums
+              nicht auf akademische Räume beschränkt. Nach aktuellem Erkenntnisstand kam
+              es über Jahrzehnte hinweg zu einer schrittweisen Ausweitung strukturierter
+              Ordnungssysteme auf immer weitere Lebensbereiche.
+            </p>
+
+            <p>
+              Mehrere Hinweise deuten darauf hin, dass die ursprüngliche Beschäftigung
+              mit Mathematik mittlerweile ein teilautonomes Eigenleben entwickelt haben
+              könnte.
+            </p>
           </div>
 
-          <div>
-            <dt>Risikostufe</dt>
-            <dd>freundlich, kooperativ, jedoch fortschrittlich auffällig</dd>
+          <div class="casebook-sheet casebook-sheet--right">
+            <p>
+              Besonders auffällig erscheinen die wiederholte Beschäftigung mit Matrizen,
+              Zahlensystemen und abstrakten Modellstrukturen sowie die anhaltende Tendenz
+              zur Quantifizierung physischer, technischer und organisatorischer Zustände.
+            </p>
+
+            <p>
+              Innerhalb der Ermittlungsleitung besteht mittlerweile der Verdacht, dass
+              die Zielperson langfristig an einer umfassenden mathematischen Modellierung
+              der Wirklichkeit arbeitet.
+            </p>
+
+            <p>
+              Nach aktuellem Stand besteht keine akute Gefährdung der Öffentlichkeit.
+              Die Zielperson gilt weiterhin als freundlich, kooperativ und in weiten
+              Teilen gegenwartsfähig.
+            </p>
           </div>
-        </dl>
-      </div>
+        </div>
+      </article>
+
+      <!-- SEITE 04 -->
+      <article class="casebook-page" data-case-page="4">
+        <div class="casebook-spread">
+          <div class="casebook-sheet casebook-sheet--left">
+            <p class="card-tag">Auffälligkeiten</p>
+
+            <h3>Digitalisierung &amp; Kontrollsysteme</h3>
+
+            <p>
+              Wiederholte Hinweise auf Kalenderlogik, Excel-basierte Wunschverwaltung,
+              physische Bücher betreffende Zukunftszweifel und mehrere digitale
+              Assistenzsysteme liegen der Einsatzleitung vor.
+            </p>
+
+            <p>
+              Besonders relevant ist die dokumentierte Frage, ob Bücher überhaupt noch
+              „eine Sache“ seien.
+            </p>
+
+            <p>
+              Bei familiären Zusammenkünften wurde außerdem mehrfach auf digitale
+              Kalenderfreigaben verwiesen. Eine mündliche Lageübermittlung fand dabei
+              nur eingeschränkt statt.
+            </p>
+          </div>
+
+          <div class="casebook-sheet casebook-sheet--right">
+            <p class="card-tag">Technische Projektlage</p>
+
+            <p>
+              Die Zielperson widmet sich regelmäßig neuen technischen Projekten,
+              darunter Solartechnik, E-Auto-Nutzung und die Kontrolle der Luftqualität
+              im häuslichen Umfeld.
+            </p>
+
+            <p>
+              Auffällig ist zudem das Interesse an Körperzusammensetzungsdaten,
+              insbesondere am Wasseranteil. Da Wasser als leitfähig gilt, wird dieser
+              Punkt nicht leichtfertig ignoriert.
+            </p>
+
+            <p>
+              Weiterhin wurde bekannt, dass Herr W. mehrere digitale Assistenzsysteme
+              parallel nutzt. Eine kleine KI-Armee kann zum jetzigen Zeitpunkt nicht
+              ausgeschlossen werden.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- SEITE 05 -->
+      <article class="casebook-page" data-case-page="5">
+        <div class="casebook-spread">
+          <div class="casebook-sheet casebook-sheet--left">
+            <p class="card-tag">Organisation</p>
+
+            <h3>„Schülerhilfe“</h3>
+
+            <p>
+              Besondere Aufmerksamkeit gilt einer regelmäßig frequentierten Organisation
+              unter dem Decknamen „Schülerhilfe“.
+            </p>
+
+            <p>
+              Nach bisherigem Erkenntnisstand handelt es sich hierbei nicht ausschließlich
+              um klassische Hilfeleistung, sondern möglicherweise um eine pädagogisch
+              getarnte Rechenstruktur mit auffälliger Nähe zu mathematischer Ordnung,
+              Leistungsquantifizierung und systematischer Ergebnisverbesserung.
+            </p>
+          </div>
+
+          <div class="casebook-sheet casebook-sheet--right">
+            <p class="card-tag">Familiärer Eigenanteil</p>
+
+            <h3>Mitverantwortung</h3>
+
+            <p>
+              Die Ermittlungsleitung erkennt an, dass die Familie an der Entwicklung
+              einzelner Tendenzen nicht vollständig unbeteiligt war.
+            </p>
+
+            <p>
+              Insbesondere die zunehmende Verlagerung von Brettspielabenden in digitale
+              Räume könnte zur Stabilisierung fortschrittlicher Verhaltensmuster
+              beigetragen haben.
+            </p>
+
+            <p>
+              Die vorliegende Maßnahme versteht sich daher nicht nur als Entführung,
+              sondern auch als familiäre Wiedergutmachung.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- SEITE 06 -->
+      <article class="casebook-page" data-case-page="6">
+        <div class="casebook-spread">
+          <div class="casebook-sheet casebook-sheet--left">
+            <p class="card-tag">Operative Einschätzung</p>
+
+            <h3>Analoge Rekonfrontation angeordnet</h3>
+
+            <p>
+              Die Summe der Hinweise lässt auf eine fortschreitende Entfremdung
+              von analogen Zuständen schließen. Um einer vollständigen Verlagerung
+              in Cloudsysteme, Kalenderlogik und KI-gestützte Kommunikation
+              vorzubeugen, wurde eine zeitlich begrenzte analoge Rekonfrontation
+              beschlossen.
+            </p>
+
+            <p>
+              Die Geburtstagsentführung dient der kontrollierten Wiederbegegnung
+              mit konkreten Dingen: Straßen, Gesprächen, Erinnerungen, körperlicher
+              Anwesenheit, Essen, Freizeit und gegebenenfalls einem Zitronenbonbon.
+            </p>
+          </div>
+
+          <div class="casebook-sheet casebook-sheet--right">
+            <p>
+              Ziel ist eine liebevolle Stabilisierung der Gegenwartsfähigkeit.
+            </p>
+
+            <ul class="case-measures">
+              <li>Analoge Rekonfrontation</li>
+              <li>Kontrollierte Freizeitmaßnahmen</li>
+              <li>Soziale Reintegration</li>
+              <li>Straßenhockey</li>
+              <li>Grillgut</li>
+              <li>Zitronenbonbon</li>
+            </ul>
+
+            <div class="casebook-final-note">
+              Bei ausreichender Versorgung der Einsatzkräfte sowie positiver öffentlicher
+              Signallage wird das Entführerteam intern beraten, ob und wann Hans-Peter W.
+              wieder kontrolliert in die Gegenwart zurückgeführt werden darf.
+            </div>
+          </div>
+        </div>
+      </article>
     </div>
 
-    <div class="case-summary-grid">
-      <article class="case-summary-card">
-        <p class="card-tag">Status</p>
+    <div class="casebook-controls" aria-label="Aktenbuch Navigation">
+      <button class="btn casebook-prev" type="button" data-casebook-prev>
+        Seite zurück
+      </button>
 
-        <h3>Zielperson</h3>
+      <span class="casebook-counter" id="casebookCounter">
+        Seite 1 / 6
+      </span>
 
-        <p>
-          Herr W. gilt aktuell als freundlich, kooperativ und in beeindruckender
-          körperlicher Verfassung.
-        </p>
-
-        <p>
-          Laut eigener Aussage ergab eine Bioimpedanzanalyse im Fitnessstudio
-          seines Vertrauens ein biologisches Alter von 53 Jahren.
-        </p>
-
-        <p>
-          Die Ermittlungsleitung gratuliert ausdrücklich zu dieser Existenz.
-        </p>
-      </article>
-
-      <article class="case-summary-card">
-        <p class="card-tag">Beobachtung</p>
-
-        <h3>Digitale Auffälligkeit</h3>
-
-        <p>
-          Wiederholte Hinweise auf Kalenderlogik, Excel-basierte Wunschverwaltung,
-          physische Bücher betreffende Zukunftszweifel und mehrere digitale
-          Assistenzsysteme liegen der Einsatzleitung vor.
-        </p>
-
-        <p>
-          Besonders relevant ist die dokumentierte Frage, ob Bücher überhaupt
-          noch „eine Sache“ seien.
-        </p>
-      </article>
-
-      <article class="case-summary-card">
-        <p class="card-tag">Technische Projektlage</p>
-
-        <h3>Mess- und Kontrollsysteme</h3>
-
-        <p>
-          Die Zielperson widmet sich regelmäßig neuen technischen Projekten,
-          darunter Solartechnik, E-Auto-Nutzung und die Kontrolle der Luftqualität
-          im häuslichen Umfeld.
-        </p>
-
-        <p>
-          Auffällig ist zudem das Interesse an Körperzusammensetzungsdaten,
-          insbesondere am Wasseranteil. Da Wasser als leitfähig gilt, wird dieser
-          Punkt nicht leichtfertig ignoriert.
-        </p>
-      </article>
-
-      <article class="case-summary-card">
-        <p class="card-tag">Organisation</p>
-
-        <h3>„Schülerhilfe“</h3>
-
-        <p>
-          Besondere Aufmerksamkeit gilt einer regelmäßig frequentierten Organisation
-          unter dem Decknamen „Schülerhilfe“.
-        </p>
-
-        <p>
-          Nach bisherigem Erkenntnisstand handelt es sich hierbei nicht ausschließlich
-          um klassische Hilfeleistung, sondern möglicherweise um eine pädagogisch
-          getarnte Rechenstruktur mit auffälliger Nähe zu mathematischer Ordnung,
-          Leistungsquantifizierung und systematischer Ergebnisverbesserung.
-        </p>
-      </article>
-
-      <article class="case-summary-card">
-        <p class="card-tag">KI-Lage</p>
-
-        <h3>Digitale Assistenzsysteme</h3>
-
-        <p>
-          Weiterhin wurde bekannt, dass Herr W. mehrere digitale Assistenzsysteme
-          parallel nutzt, darunter Siri, Google/Gemini, ChatGPT sowie weitere
-          bislang nicht abschließend identifizierte Einheiten.
-        </p>
-
-        <p>
-          Ob es sich hierbei um gewöhnliche technische Neugier oder bereits um
-          eine koordinierte digitale Unterstützungsstruktur handelt, ist Gegenstand
-          laufender Bewertung.
-        </p>
-
-        <p>
-          Eine kleine KI-Armee kann zum jetzigen Zeitpunkt nicht ausgeschlossen werden.
-        </p>
-      </article>
-
-      <article class="case-summary-card">
-        <p class="card-tag">Familiärer Eigenanteil</p>
-
-        <h3>Mitverantwortung</h3>
-
-        <p>
-          Die Ermittlungsleitung erkennt an, dass die Familie an der Entwicklung
-          einzelner Tendenzen nicht vollständig unbeteiligt war.
-        </p>
-
-        <p>
-          Insbesondere die zunehmende Verlagerung von Brettspielabenden in digitale
-          Räume könnte zur Stabilisierung fortschrittlicher Verhaltensmuster
-          beigetragen haben.
-        </p>
-
-        <p>
-          Die vorliegende Maßnahme versteht sich daher nicht nur als Entführung,
-          sondern auch als familiäre Wiedergutmachung.
-        </p>
-      </article>
-    </div>
-
-    <div class="case-note case-note--decision">
-      <p class="card-tag">Operative Einschätzung</p>
-
-      <h3>Analoge Rekonfrontation angeordnet</h3>
-
-      <p>
-        Die Summe der Hinweise lässt auf eine fortschreitende Entfremdung
-        von analogen Zuständen schließen. Um einer vollständigen Verlagerung
-        in Cloudsysteme, Kalenderlogik und KI-gestützte Kommunikation
-        vorzubeugen, wurde eine zeitlich begrenzte analoge Rekonfrontation
-        beschlossen.
-      </p>
-
-      <p>
-        Die Geburtstagsentführung dient der kontrollierten Wiederbegegnung
-        mit konkreten Dingen: Straßen, Gesprächen, Erinnerungen, körperlicher
-        Anwesenheit, Essen, Freizeit und gegebenenfalls einem Zitronenbonbon.
-      </p>
-
-      <p>
-        Ziel ist eine liebevolle Stabilisierung der Gegenwartsfähigkeit.
-      </p>
-    </div>
-
-    <div class="case-note case-note--final">
-      <p class="card-tag">Abschlussvermerk</p>
-
-      <p>
-        Bei ausreichender Versorgung der Einsatzkräfte sowie positiver öffentlicher
-        Signallage wird das Entführerteam intern beraten, ob und wann Hans-Peter W.
-        wieder kontrolliert in die Gegenwart zurückgeführt werden darf.
-      </p>
+      <button class="btn casebook-next" type="button" data-casebook-next>
+        Seite weiter
+      </button>
     </div>
   </section>
 
@@ -978,7 +1088,7 @@
     </button>
   </div>
 </section>
-
+      
 <!-- =========================================================
   BEWERBUNGS-POPUP
 ========================================================== -->
