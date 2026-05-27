@@ -2235,27 +2235,31 @@
 }
 
 /* =========================================================
-  APPLICATION MODAL — CLEANER / MOBILE SAFE
+  APPLICATION MODAL — BEWERBUNGSPOPUP
 ========================================================= */
 
 .application-modal.hidden {
-  display: none;
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 .application-modal {
   position: fixed;
   inset: 0;
-  z-index: 999;
+  z-index: 9999;
 
   display: grid;
   place-items: center;
 
   padding: clamp(16px, 4vw, 38px);
+  pointer-events: auto;
 }
 
 .application-modal__backdrop {
-  position: absolute;
+  position: fixed;
   inset: 0;
+  z-index: 1;
 
   background:
     radial-gradient(circle at 50% 20%, rgba(215, 179, 91, 0.1), transparent 34rem),
@@ -2269,7 +2273,7 @@
   z-index: 2;
 
   width: min(100%, 760px);
-  max-height: min(88vh, 920px);
+  max-height: min(88dvh, 920px);
   overflow-y: auto;
 
   padding: clamp(24px, 4vw, 46px);
@@ -2295,6 +2299,7 @@
   position: absolute;
   top: 14px;
   right: 14px;
+  z-index: 5;
 
   width: 38px;
   height: 38px;
@@ -2311,7 +2316,9 @@
 
 .application-modal__panel .eyebrow {
   margin: 0 0 12px;
+
   color: #7b391d;
+
   font-family: "Courier New", monospace;
   font-size: 0.78rem;
   font-weight: 900;
@@ -2323,6 +2330,7 @@
   margin: 0;
 
   color: #17110a;
+
   font-family: Impact, "Arial Black", system-ui, sans-serif;
   font-size: clamp(2.4rem, 6vw, 5rem);
   line-height: 0.9;
@@ -2331,6 +2339,7 @@
 
 .application-subtitle {
   margin: 14px 0 0;
+
   color: #4b2b15;
   font-weight: 800;
 }
@@ -2343,8 +2352,8 @@
   border-radius: 14px;
 
   background: rgba(125, 23, 18, 0.06);
-
   color: #21160c;
+
   font-weight: 700;
   line-height: 1.55;
 }
@@ -2361,6 +2370,7 @@
 
 .application-form label span {
   color: #4b2b15;
+
   font-family: "Courier New", monospace;
   font-size: 0.78rem;
   font-weight: 900;
@@ -2388,91 +2398,42 @@
   resize: vertical;
 }
 
-/* Mobile */
-@media (max-width: 680px) {
-  #screen-komitee .job-card {
-    padding: 22px;
-  }
-
-  #screen-komitee .job-card h3 {
-    font-size: clamp(1.8rem, 9vw, 2.65rem);
-  }
-
-  .job-card__topline {
-    align-items: flex-start;
-  }
-
-  .job-status,
-  .job-slots {
-    font-size: 0.66rem;
-  }
-
-  .application-modal {
-    padding: 10px;
-    align-items: end;
-  }
-
-  .application-modal__panel {
-    width: 100%;
-    max-height: 92vh;
-    border-radius: 22px 22px 0 0;
-    padding: 26px 18px;
-  }
-
-  .application-modal__panel h2 {
-    font-size: clamp(2.2rem, 12vw, 3.8rem);
-  }
-}
-
 /* =========================================================
-  PINNWAND HARD FIX — DESKTOP MAP HUGE + TARGET FACE VISIBLE
+  SCREEN 02 — PINNWAND / ERMITTLUNGSWAND FINAL
 ========================================================= */
 
+/* Desktop-Arbeitsfläche */
 @media (min-width: 900px) {
-  /* Ermittlungswand wirklich als große Arbeitsfläche */
   #screen-pinnwand .evidence-board {
     position: relative;
     min-height: calc(100vh - 120px);
     overflow: hidden;
   }
 
-  /* MITTLERE KARTE — alle wahrscheinlichen Klassen hart größer */
-  #screen-pinnwand .board-map,
-  #screen-pinnwand .map-board,
-  #screen-pinnwand .evidence-map,
-  #screen-pinnwand .center-map,
-  #screen-pinnwand .board-centerpiece,
-  #screen-pinnwand .evidence-map-card,
-  #screen-pinnwand .map-center,
-  #screen-pinnwand .map-card,
-  #screen-pinnwand .central-map,
-  #screen-pinnwand .pinboard-map {
+  /* zentrale Karte groß */
+  #screen-pinnwand .central-map {
     position: absolute !important;
     left: 50% !important;
     top: 52% !important;
+    z-index: 20 !important;
+
     width: clamp(900px, 52vw, 1180px) !important;
     max-width: none !important;
+
     transform: translate(-50%, -50%) rotate(0deg) !important;
-    z-index: 8 !important;
   }
 
-  #screen-pinnwand .board-map img,
-  #screen-pinnwand .map-board img,
-  #screen-pinnwand .evidence-map img,
-  #screen-pinnwand .center-map img,
-  #screen-pinnwand .board-centerpiece img,
-  #screen-pinnwand .evidence-map-card img,
-  #screen-pinnwand .map-center img,
-  #screen-pinnwand .map-card img,
   #screen-pinnwand .central-map img,
-  #screen-pinnwand .pinboard-map img {
+  #screen-pinnwand .board-map {
     width: 100% !important;
     height: auto !important;
     display: block !important;
   }
 
-  /* Polaroids größer */
+  /* Polaroids */
   #screen-pinnwand .flip-card {
+    z-index: 60 !important;
+
     width: clamp(280px, 17vw, 390px) !important;
     min-height: clamp(280px, 17vw, 400px) !important;
   }
@@ -2482,7 +2443,7 @@
     width: clamp(460px, 32vw, 680px) !important;
   }
 
-  /* Positionen neu, damit die größere Karte Platz hat */
+  /* Positionen */
   #screen-pinnwand .card-kidnapper {
     left: 4% !important;
     top: 8% !important;
@@ -2518,200 +2479,328 @@
     bottom: 3% !important;
     transform: translateX(-50%) rotate(1deg) !important;
   }
+
+  /* aktive Karte vor alles */
+  #screen-pinnwand .flip-card:hover,
+  #screen-pinnwand .flip-card.is-expanded,
+  #screen-pinnwand .flip-card.is-flipped {
+    z-index: 180 !important;
+  }
 }
 
-/* =========================================================
-  TARGET PHOTO FIX — Kopf nicht abschneiden
-========================================================= */
+/* Fäden/Pins über Karte, aber unter geöffneter Card */
+#screen-pinnwand .board-strings {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 120 !important;
 
-/* Polaroid-Foto grundsätzlich etwas höher machen */
-#screen-pinnwand .card-target .polaroid img {
-  width: 100% !important;
-  height: auto !important;
-  aspect-ratio: 1 / 1.18 !important;
-  object-fit: cover !important;
-
-  /* wichtig: Bildausschnitt ganz nach oben */
-  object-position: 50% 0% !important;
+  pointer-events: none !important;
 }
 
-/* Falls der Kopf trotzdem abgeschnitten wird:
-   nicht covern, sondern ganzes Bild zeigen */
+#screen-pinnwand .board-strings line {
+  stroke: rgba(185, 0, 0, 0.94) !important;
+  stroke-width: 2.4 !important;
+  filter: drop-shadow(0 0 4px rgba(185, 0, 0, 0.42));
+}
+
+#screen-pinnwand .board-strings circle {
+  fill: #c91717 !important;
+  stroke: rgba(70, 0, 0, 0.55) !important;
+  stroke-width: 2 !important;
+  filter: drop-shadow(0 4px 5px rgba(0, 0, 0, 0.5));
+}
+
+/* Zielpersonenfoto: Kopf sichtbar */
 #screen-pinnwand .card-target .polaroid {
   overflow: visible !important;
 }
 
 #screen-pinnwand .card-target .polaroid img {
+  width: 100% !important;
+  height: auto !important;
+
+  aspect-ratio: 1 / 1.22 !important;
   object-fit: contain !important;
+  object-position: center top !important;
+
   background: #ead9ad !important;
 }
 
-/* Bildfläche der Zielperson etwas größer/hochformatiger */
-#screen-pinnwand .card-target .polaroid img,
-#screen-pinnwand .card-target .photo-placeholder {
-  aspect-ratio: 1 / 1.22 !important;
-}
-
-/* Beschriftung bleibt unten */
 #screen-pinnwand .card-target .polaroid h3 {
   margin-top: 10px !important;
 }
 
+/* Desktop: keine inneren Scrollbereiche in Karten */
+@media (min-width: 900px) {
+  #screen-pinnwand .flip-back {
+    overflow: hidden !important;
+    max-height: none !important;
+
+    padding: clamp(12px, 1.15vw, 20px) !important;
+
+    justify-content: flex-start !important;
+  }
+
+  #screen-pinnwand .flip-back h3 {
+    margin: 0 0 8px !important;
+
+    font-size: clamp(1.05rem, 1.35vw, 1.75rem) !important;
+    line-height: 0.96 !important;
+    letter-spacing: 0.01em !important;
+  }
+
+  #screen-pinnwand .flip-back p {
+    margin: 0 0 5px !important;
+
+    font-size: clamp(0.54rem, 0.6vw, 0.74rem) !important;
+    line-height: 1.22 !important;
+    letter-spacing: 0.003em !important;
+    font-weight: 650 !important;
+  }
+
+  #screen-pinnwand .flip-back strong {
+    font-weight: 900 !important;
+  }
+
+  #screen-pinnwand .text-heavy .flip-back p,
+  #screen-pinnwand .card-activities .flip-back p {
+    font-size: clamp(0.5rem, 0.56vw, 0.68rem) !important;
+    line-height: 1.17 !important;
+    margin-bottom: 4px !important;
+  }
+
+  #screen-pinnwand .measure-rating {
+    margin: 4px 0 5px !important;
+    padding: 4px 7px !important;
+    gap: 6px !important;
+
+    border-radius: 999px;
+  }
+
+  #screen-pinnwand .measure-label {
+    font-size: 0.48rem !important;
+    line-height: 1 !important;
+  }
+
+  #screen-pinnwand .rocket-rating {
+    font-size: clamp(0.72rem, 0.82vw, 0.95rem) !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+  }
+
+  #screen-pinnwand .paypal-link,
+  #screen-pinnwand .no-paypal {
+    margin-top: auto !important;
+    padding: 5px 7px !important;
+
+    font-size: clamp(0.5rem, 0.58vw, 0.68rem) !important;
+    line-height: 1.15 !important;
+  }
+
+  /* Hover soll nicht wieder alles riesig machen */
+  #screen-pinnwand .flip-card:hover .flip-back {
+    overflow: hidden !important;
+    padding: clamp(12px, 1.2vw, 21px) !important;
+  }
+
+  #screen-pinnwand .flip-card:hover .flip-back h3 {
+    font-size: clamp(1.1rem, 1.45vw, 1.9rem) !important;
+    margin-bottom: 8px !important;
+  }
+
+  #screen-pinnwand .flip-card:hover .flip-back p {
+    font-size: clamp(0.54rem, 0.62vw, 0.76rem) !important;
+    line-height: 1.22 !important;
+    margin-bottom: 5px !important;
+  }
+
+  #screen-pinnwand .flip-card.text-heavy:hover .flip-back p,
+  #screen-pinnwand .card-activities:hover .flip-back p {
+    font-size: clamp(0.5rem, 0.58vw, 0.7rem) !important;
+    line-height: 1.17 !important;
+    margin-bottom: 4px !important;
+  }
+}
+
+/* Mobile Pinnwand: Karten bleiben im Flow und flippen an Ort und Stelle */
+@media (max-width: 899px) {
+  #screen-pinnwand .evidence-board {
+    overflow-x: hidden;
+    overflow-y: visible;
+  }
+
+  #screen-pinnwand .board-strings {
+    display: none !important;
+  }
+
+  #screen-pinnwand .flip-card,
+  #screen-pinnwand .flip-card.is-expanded {
+    position: relative !important;
+
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+
+    width: min(100%, 92vw) !important;
+    min-height: auto !important;
+    margin: 24px auto !important;
+
+    transform: none !important;
+    z-index: 20 !important;
+
+    opacity: 1 !important;
+    filter: none !important;
+    mix-blend-mode: normal !important;
+  }
+
+  #screen-pinnwand .card-activities,
+  #screen-pinnwand .card-activities.is-expanded {
+    width: min(100%, 92vw) !important;
+  }
+
+  #screen-pinnwand .flip-inner,
+  #screen-pinnwand .flip-card.is-expanded .flip-inner {
+    position: relative;
+
+    width: 100%;
+    min-height: auto !important;
+
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+  }
+
+  #screen-pinnwand .flip-front,
+  #screen-pinnwand .flip-back {
+    min-height: 420px;
+    border-radius: 18px;
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    opacity: 1 !important;
+    filter: none !important;
+    mix-blend-mode: normal !important;
+  }
+
+  #screen-pinnwand .flip-card.is-flipped .flip-inner,
+  #screen-pinnwand .flip-card.is-expanded .flip-inner {
+    transform: rotateY(180deg) !important;
+    -webkit-transform: rotateY(180deg) !important;
+  }
+
+  #screen-pinnwand .flip-card.is-expanded .flip-back,
+  #screen-pinnwand .flip-back {
+    overflow: visible !important;
+    max-height: none !important;
+
+    padding: 24px 20px !important;
+    justify-content: flex-start !important;
+
+    background:
+      linear-gradient(rgba(70, 49, 25, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(70, 49, 25, 0.035) 1px, transparent 1px),
+      linear-gradient(180deg, #efe0bc 0%, #d8c59c 100%) !important;
+
+    background-size: 28px 28px, 28px 28px, 100% 100% !important;
+
+    color: #17110a !important;
+  }
+
+  #screen-pinnwand .flip-back h3 {
+    margin-bottom: 18px !important;
+
+    color: #17110a !important;
+
+    font-size: clamp(1.85rem, 8vw, 2.7rem) !important;
+    line-height: 0.95 !important;
+  }
+
+  #screen-pinnwand .flip-back h3 br {
+    display: inline !important;
+  }
+
+  #screen-pinnwand .flip-back p {
+    margin-bottom: 11px !important;
+
+    color: #17110a !important;
+
+    font-size: clamp(0.92rem, 3.8vw, 1.04rem) !important;
+    line-height: 1.48 !important;
+  }
+
+  #screen-pinnwand .text-heavy .flip-back p,
+  #screen-pinnwand .card-activities .flip-back p {
+    font-size: clamp(0.86rem, 3.6vw, 0.98rem) !important;
+    line-height: 1.42 !important;
+    margin-bottom: 10px !important;
+  }
+
+  #screen-pinnwand .polaroid img {
+    object-fit: cover;
+    object-position: center;
+  }
+
+  #screen-pinnwand .card-target .polaroid img {
+    object-fit: contain !important;
+    object-position: center top !important;
+    background: #ead9ad !important;
+  }
+
+  #screen-pinnwand .paypal-link,
+  #screen-pinnwand .no-paypal {
+    font-size: 0.9rem !important;
+    line-height: 1.35 !important;
+  }
+}
+
 /* =========================================================
-MOBILE PINNWAND FIX — FLIP IN PLACE, NO JUMP
+  MEASURE RATINGS — FREIZEITKARTE
 ========================================================= */
 
-@media (max-width: 899px) {
-/* Mobile: Pinnwand als normale vertikale Liste behandeln */
-#screen-pinnwand .evidence-board {
-overflow-x: hidden;
-overflow-y: visible;
+.measure-rating {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  margin: 14px 0 18px !important;
+  padding: 10px 12px;
+
+  border-radius: 999px;
+  border: 1px solid rgba(24, 17, 10, 0.2);
+
+  background: rgba(255, 255, 255, 0.18);
 }
 
-/* Alle Karten bleiben im normalen Flow */
-#screen-pinnwand .flip-card,
-#screen-pinnwand .flip-card.is-expanded {
-position: relative !important;
+.measure-label {
+  color: #17110a;
 
-left: auto !important;
-right: auto !important;
-top: auto !important;
-bottom: auto !important;
-
-width: min(100%, 92vw) !important;
-min-height: auto !important;
-
-margin: 24px auto !important;
-
-transform: none !important;
-z-index: 20 !important;
+  font-family: "Courier New", monospace;
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-/* Activities darf etwas breiter sein, aber nicht überlaufen */
-#screen-pinnwand .card-activities,
-#screen-pinnwand .card-activities.is-expanded {
-width: min(100%, 92vw) !important;
+.rocket-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+
+  margin-bottom: 10px;
+
+  color: #1f7a17;
+
+  font-family: "Courier New", monospace;
+  font-size: clamp(1.2rem, 2vw, 1.7rem);
+  font-weight: 900;
+  line-height: 1;
+
+  filter:
+    drop-shadow(0 1px 0 rgba(255, 255, 255, 0.4))
+    drop-shadow(0 0 5px rgba(156, 255, 95, 0.16));
 }
-
-/* Flip-Innenleben stabil */
-#screen-pinnwand .flip-inner,
-#screen-pinnwand .flip-card.is-expanded .flip-inner {
-position: relative;
-width: 100%;
-min-height: auto !important;
-transform-style: preserve-3d;
--webkit-transform-style: preserve-3d;
-}
-
-/* Vorder-/Rückseite sollen exakt dieselbe Fläche nutzen */
-#screen-pinnwand .flip-front,
-#screen-pinnwand .flip-back {
-min-height: 420px;
-border-radius: 18px;
-
-backface-visibility: hidden;
--webkit-backface-visibility: hidden;
-}
-
-/* Wenn Karte geflippt ist: nicht irgendwohin bewegen, nur drehen */
-#screen-pinnwand .flip-card.is-flipped .flip-inner,
-#screen-pinnwand .flip-card.is-expanded .flip-inner {
-transform: rotateY(180deg) !important;
--webkit-transform: rotateY(180deg) !important;
-}
-
-/* Rückseite lesbarer, aber nicht absurd riesig */
-#screen-pinnwand .flip-card.is-expanded .flip-back,
-#screen-pinnwand .flip-back {
-padding: 28px 24px !important;
-justify-content: flex-start !important;
-}
-
-#screen-pinnwand .flip-back h3 {
-font-size: clamp(2rem, 10vw, 3.2rem) !important;
-line-height: 0.95 !important;
-margin-bottom: 24px !important;
-color: #17110a !important;
-}
-
-#screen-pinnwand .flip-back p {
-font-size: clamp(1rem, 4.4vw, 1.18rem) !important;
-line-height: 1.58 !important;
-letter-spacing: 0.015em !important;
-color: #17110a !important;
-}
-
-.paypal-link,
-.no-paypal {
-font-size: 0.9rem !important;
-line-height: 1.35 !important;
-}
-
-/* Front-Fotos auf Mobile nicht dunkel/abgeschnitten */
-#screen-pinnwand .polaroid img {
-object-fit: cover;
-object-position: center;
-}
-
-/* Zielperson: Kopf vollständig sichtbar */
-#screen-pinnwand .card-target .polaroid img {
-object-fit: contain !important;
-object-position: center top !important;
-background: #ead9ad !important;
-}
-}
-
-/* =========================================================
-MOBILE PINNWAND FIX — FLIPPED CARDS STAY BRIGHT
-========================================================= */
-
-@media (max-width: 899px) {
-/* Keine Abdunklung auf der geöffneten Karte */
-#screen-pinnwand .flip-card,
-#screen-pinnwand .flip-card.is-flipped,
-#screen-pinnwand .flip-card.is-expanded {
-opacity: 1 !important;
-filter: none !important;
-mix-blend-mode: normal !important;
-}
-
-/* Vorder- und Rückseite immer hell halten */
-#screen-pinnwand .flip-front,
-#screen-pinnwand .flip-back,
-#screen-pinnwand .flip-card.is-flipped .flip-front,
-#screen-pinnwand .flip-card.is-flipped .flip-back,
-#screen-pinnwand .flip-card.is-expanded .flip-front,
-#screen-pinnwand .flip-card.is-expanded .flip-back {
-opacity: 1 !important;
-filter: none !important;
-mix-blend-mode: normal !important;
-}
-
-/* Falls das Board bei geöffneter Karte alle Cards abdunkelt */
-#screen-pinnwand .evidence-board.has-expanded-card .flip-card {
-opacity: 1 !important;
-filter: none !important;
-}
-
-#screen-pinnwand .evidence-board.has-expanded-card .flip-card.is-expanded {
-opacity: 1 !important;
-filter: none !important;
-}
-
-/* Falls ein Overlay/Pseudo-Element die Wand abdunkelt */
-#screen-pinnwand .evidence-board.has-expanded-card::before,
-#screen-pinnwand .evidence-board.has-expanded-card::after {
-opacity: 0 !important;
-display: none !important;
-}
-
-/* Rückseite explizit wieder helles Papier */
-#screen-pinnwand .flip-back {
-background:
-linear-gradient(rgba(70, 49, 25, 0.04) 1px, transparent 1px),
-linear-gradient(90deg, rgba(70, 49, 25, 0.035) 1px, transparent 1px),
-linear-gradient(180deg, #efe0bc 0%, #d8c59c 100%) !important;
-background-size:
 
 /* =========================================================
   MOBILE CASEBOOK FIX — NO HORIZONTAL OVERFLOW
@@ -2769,7 +2858,6 @@ background-size:
     margin-inline: 0 !important;
   }
 
-  /* Lange Überschriften dürfen nicht aus der Seite laufen */
   .casebook-sheet h3 {
     max-width: 100% !important;
 
@@ -2783,9 +2871,8 @@ background-size:
     hyphens: auto !important;
   }
 
-  /* Besonders lange Wörter wie Mittagsschlafkomplex */
   .casebook-sheet h3 br {
-    display: none;
+    display: inline !important;
   }
 
   .casebook-sheet p,
@@ -2814,24 +2901,127 @@ background-size:
   }
 }
 
-@media (max-width: 780px) {
-  .casebook-sheet h3 br {
-    display: inline !important;
+/* =========================================================
+  SCREEN 03 + 04 — SMALLER HEADLINES
+========================================================= */
+
+#screen-nachricht h2 {
+  max-width: 11ch !important;
+
+  font-size: clamp(3.4rem, 6.2vw, 7.2rem) !important;
+  line-height: 0.88 !important;
+  letter-spacing: 0.01em !important;
+}
+
+#screen-tracking h2 {
+  max-width: 10ch !important;
+
+  font-size: clamp(3.6rem, 6.6vw, 7.4rem) !important;
+  line-height: 0.88 !important;
+  letter-spacing: 0.01em !important;
+}
+
+@media (max-width: 680px) {
+  #screen-nachricht h2 {
+    max-width: 9ch !important;
+
+    font-size: clamp(2.2rem, 10vw, 3.4rem) !important;
+    line-height: 0.96 !important;
+  }
+
+  #screen-tracking h2 {
+    max-width: 9ch !important;
+
+    font-size: clamp(2.3rem, 10.5vw, 3.6rem) !important;
+    line-height: 0.94 !important;
   }
 }
 
+/* =========================================================
+  SCREEN 01 — COMPACT BRIEFING
+========================================================= */
+
+#screen-briefing .support-intro {
+  padding-top: clamp(26px, 3vw, 46px) !important;
+  padding-bottom: clamp(34px, 4vw, 58px) !important;
+}
+
+#screen-briefing .support-intro .eyebrow {
+  margin-bottom: clamp(10px, 1.2vw, 16px) !important;
+
+  font-size: clamp(0.76rem, 0.9vw, 0.98rem) !important;
+  letter-spacing: 0.14em !important;
+}
+
+#screen-briefing .support-intro h1 {
+  margin: 0 !important;
+
+  font-size: clamp(4.2rem, 9vw, 10rem) !important;
+  line-height: 0.78 !important;
+  letter-spacing: 0.05em !important;
+}
+
+#screen-briefing .support-intro .subtitle {
+  margin-top: clamp(18px, 2vw, 30px) !important;
+
+  font-size: clamp(1rem, 1.35vw, 1.45rem) !important;
+  line-height: 1.38 !important;
+}
+
+#screen-briefing .mission-disclaimer {
+  margin-top: clamp(24px, 2.8vw, 38px) !important;
+  padding: clamp(18px, 2vw, 26px) !important;
+
+  font-size: clamp(0.98rem, 1.08vw, 1.16rem) !important;
+  line-height: 1.55 !important;
+}
+
+#screen-briefing .guideline-info-button {
+  margin-top: clamp(16px, 2vw, 24px) !important;
+}
+
+#screen-briefing .mission-copy {
+  margin-top: clamp(22px, 2.6vw, 34px) !important;
+
+  font-size: clamp(1rem, 1.08vw, 1.16rem) !important;
+  line-height: 1.62 !important;
+}
+
+#screen-briefing .mission-copy-small {
+  margin-top: clamp(16px, 2vw, 24px) !important;
+
+  font-size: clamp(0.92rem, 1vw, 1.06rem) !important;
+  line-height: 1.56 !important;
+}
+
+#screen-briefing .screen-actions {
+  margin-top: clamp(24px, 3vw, 38px) !important;
+}
+
+@media (max-width: 680px) {
+  #screen-briefing .support-intro {
+    padding-top: 24px !important;
+  }
+
+  #screen-briefing .support-intro h1 {
+    font-size: clamp(3.5rem, 16vw, 5.6rem) !important;
+  }
+}
 
 /* =========================================================
-  GUIDELINE MODAL — INTERNE ENTFÜHRUNGSLEITLINIE
+  GUIDELINE BUTTON
 ========================================================= */
 
 .guideline-info-button {
+  position: relative;
+  z-index: 50;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  margin: clamp(22px, 3vw, 34px) auto 0;
   min-height: 50px;
+  margin: clamp(22px, 3vw, 34px) auto 0;
   padding: 13px 22px;
 
   border-radius: 999px;
@@ -2842,6 +3032,7 @@ background-size:
     rgba(4, 10, 7, 0.88);
 
   color: #c7ff8f;
+
   font-family: "Courier New", monospace;
   font-size: clamp(0.78rem, 0.95vw, 0.95rem);
   font-weight: 900;
@@ -2851,8 +3042,8 @@ background-size:
   cursor: pointer;
 
   box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,0.035),
-    0 16px 34px rgba(0,0,0,0.32);
+    inset 0 0 0 1px rgba(255, 255, 255, 0.035),
+    0 16px 34px rgba(0, 0, 0, 0.32);
 
   transition:
     transform 160ms ease,
@@ -2865,478 +3056,60 @@ background-size:
   transform: translateY(-2px);
   border-color: rgba(156, 255, 95, 0.78);
   filter: brightness(1.08);
-  box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,0.045),
-    0 22px 46px rgba(0,0,0,0.38),
-    0 0 28px rgba(156,255,95,0.12);
-}
-
-.guideline-modal.hidden {
-  display: none !important;
-  pointer-events: none !important;
-}
-
-.guideline-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-
-  display: grid;
-  place-items: center;
-
-  padding: clamp(14px, 4vw, 38px);
-}
-
-.guideline-modal__backdrop {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 50% 20%, rgba(156, 255, 95, 0.08), transparent 32rem),
-    rgba(0, 0, 0, 0.74);
-  backdrop-filter: blur(7px);
-}
-
-.guideline-modal__panel {
-  position: relative;
-  z-index: 2;
-
-  width: min(100%, 820px);
-  max-height: min(88vh, 880px);
-  overflow-y: auto;
-
-  padding: clamp(24px, 4vw, 48px);
-
-  border-radius: 24px;
-  border: 1px solid rgba(77, 52, 26, 0.28);
-
-  background:
-    linear-gradient(rgba(70, 49, 25, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(70, 49, 25, 0.035) 1px, transparent 1px),
-    linear-gradient(180deg, #f1e2bd 0%, #dcc79c 100%);
-
-  background-size: 26px 26px, 26px 26px, 100% 100%;
-
-  color: #17110a;
 
   box-shadow:
-    0 30px 100px rgba(0, 0, 0, 0.68),
-    inset 0 0 0 1px rgba(255,255,255,0.3);
+    inset 0 0 0 1px rgba(255, 255, 255, 0.045),
+    0 22px 46px rgba(0, 0, 0, 0.38),
+    0 0 28px rgba(156, 255, 95, 0.12);
 }
 
-.guideline-modal__close {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-
-  width: 38px;
-  height: 38px;
-
-  border-radius: 999px;
-  border: 1px solid rgba(24, 17, 10, 0.3);
-  background: rgba(255,255,255,0.22);
-  color: #17110a;
-
-  font-size: 1.6rem;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.guideline-modal__panel .eyebrow {
-  margin: 0 0 12px;
-  color: #7b391d;
-  font-family: "Courier New", monospace;
-  font-size: 0.78rem;
-  font-weight: 900;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.guideline-modal__panel h2 {
-  margin: 0;
-
-  color: #17110a;
-  font-family: Impact, "Arial Black", system-ui, sans-serif;
-  font-size: clamp(2.3rem, 5.8vw, 5.4rem);
-  line-height: 0.9;
-  text-transform: uppercase;
-}
-
-.guideline-intro {
-  margin: 20px 0 0;
-  max-width: 66ch;
-
-  color: #21160c;
-  font-size: clamp(1rem, 1.1vw, 1.14rem);
-  font-weight: 700;
-  line-height: 1.65;
-}
-
-.guideline-scale {
-  margin-top: clamp(24px, 4vw, 36px);
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.guideline-scale article {
-  padding: 18px;
-
-  border-radius: 18px;
-  border: 1px solid rgba(58, 37, 19, 0.22);
-
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.34), rgba(255,255,255,0.12));
-
-  box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,0.18),
-    0 12px 28px rgba(60,38,18,0.1);
-}
-
-.rocket-rating {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-
-  margin-bottom: 10px;
-
-  color: #1f7a17;
-  font-family: "Courier New", monospace;
-  font-size: clamp(1.2rem, 2vw, 1.7rem);
-  font-weight: 900;
-  line-height: 1;
-
-  filter:
-    drop-shadow(0 1px 0 rgba(255,255,255,0.4))
-    drop-shadow(0 0 5px rgba(156,255,95,0.16));
-}
-
-.guideline-gpp {
-  padding: 6px 10px;
-
-  border-radius: 999px;
-  border: 1px solid rgba(31, 122, 23, 0.38);
-  background: rgba(156, 255, 95, 0.14);
-
-  font-size: 0.9rem;
-  letter-spacing: 0.1em;
-}
-
-.guideline-scale strong {
-  display: block;
-  margin-bottom: 8px;
-
-  color: #17110a;
-  font-family: "Courier New", monospace;
-  font-size: 0.88rem;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.guideline-scale p {
-  margin: 0;
-  color: #21160c;
-  font-size: 0.96rem;
-  font-weight: 650;
-  line-height: 1.55;
-}
-
-.guideline-note {
-  margin-top: 22px;
-  padding: 16px 18px;
-
-  border-radius: 16px;
-  border: 1px solid rgba(125, 23, 18, 0.24);
-  background: rgba(125, 23, 18, 0.055);
-
-  color: #21160c;
-  font-weight: 750;
-  line-height: 1.55;
-}
-
-/* =========================================================
-  MEASURE RATINGS — PINNWAND FREIZEIT
-========================================================= */
-
-.measure-rating {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-
-  margin: 14px 0 18px !important;
-  padding: 10px 12px;
-
-  border-radius: 999px;
-  border: 1px solid rgba(24, 17, 10, 0.2);
-
-  background: rgba(255,255,255,0.18);
-}
-
-.measure-label {
-  color: #17110a;
-  font-family: "Courier New", monospace;
-  font-size: 0.74rem;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-/* Mobile */
 @media (max-width: 680px) {
   .guideline-info-button {
     width: 100%;
     padding: 13px 16px;
+
     font-size: 0.74rem;
     line-height: 1.35;
     white-space: normal;
   }
-
-  .guideline-modal {
-    padding: 10px;
-    align-items: end;
-  }
-
-  .guideline-modal__panel {
-    width: 100%;
-    max-height: 92vh;
-
-    padding: 26px 18px;
-    border-radius: 22px 22px 0 0;
-  }
-
-  .guideline-modal__panel h2 {
-    font-size: clamp(2.1rem, 11vw, 3.7rem);
-  }
-
-  .guideline-scale {
-    grid-template-columns: 1fr;
-  }
-
-  .guideline-scale article {
-    padding: 16px;
-  }
-
-  .measure-rating {
-    align-items: flex-start;
-    flex-direction: column;
-    border-radius: 16px;
-  }
-
-  .measure-rating .rocket-rating {
-    font-size: 1.35rem;
-  }
 }
 
 /* =========================================================
-  PINNWAND PATCH — PINS/FÄDEN VORNE + RÜCKSEITEN KOMPAKTER
-========================================================= */
-
-/* ---------------------------------------------------------
-  1) Fäden und Pins immer in den Vordergrund
---------------------------------------------------------- */
-
-#screen-pinnwand .board-strings {
-  position: absolute !important;
-  inset: 0 !important;
-  z-index: 85 !important;
-  pointer-events: none !important;
-}
-
-#screen-pinnwand .board-strings line {
-  stroke: rgba(178, 0, 0, 0.92) !important;
-  stroke-width: 3.2 !important;
-  filter: drop-shadow(0 0 4px rgba(178, 0, 0, 0.45));
-}
-
-#screen-pinnwand .board-strings circle {
-  fill: #c91717 !important;
-  stroke: rgba(60, 0, 0, 0.55) !important;
-  stroke-width: 2 !important;
-  filter: drop-shadow(0 4px 5px rgba(0, 0, 0, 0.45));
-}
-
-/* Polaroids bleiben klickbar, aber unter Fäden/Pins */
-#screen-pinnwand .flip-card {
-  z-index: 40 !important;
-}
-
-/* Beim Hover/Öffnen darf die aktive Karte trotzdem ganz nach vorne */
-#screen-pinnwand .flip-card:hover,
-#screen-pinnwand .flip-card.is-expanded,
-#screen-pinnwand .flip-card.is-flipped {
-  z-index: 160 !important;
-}
-
-/* zentrale Karte unter Fäden */
-#screen-pinnwand .central-map {
-  z-index: 20 !important;
-}
-
-/* Falls du CSS-Pins als Pseudo-Elemente hast */
-#screen-pinnwand .polaroid::before,
-#screen-pinnwand .flip-card::before,
-#screen-pinnwand .central-map::before,
-#screen-pinnwand .map-polaroid::before {
-  z-index: 95 !important;
-}
-
-/* ---------------------------------------------------------
-  2) Rückseiten kompakter: weniger Scroll, kleinere Schrift
---------------------------------------------------------- */
-
-#screen-pinnwand .flip-back {
-  padding: clamp(18px, 1.8vw, 28px) !important;
-  justify-content: flex-start !important;
-  overflow: hidden !important;
-}
-
-#screen-pinnwand .flip-back h3 {
-  margin: 0 0 12px !important;
-
-  font-size: clamp(1.45rem, 2vw, 2.25rem) !important;
-  line-height: 0.95 !important;
-  letter-spacing: 0.015em !important;
-}
-
-#screen-pinnwand .flip-back p {
-  margin: 0 0 9px !important;
-
-  font-size: clamp(0.78rem, 0.82vw, 0.96rem) !important;
-  line-height: 1.42 !important;
-  letter-spacing: 0.01em !important;
-  font-weight: 680 !important;
-}
-
-/* Textlastige Karten noch etwas kompakter */
-#screen-pinnwand .text-heavy .flip-back p,
-#screen-pinnwand .card-activities .flip-back p {
-  font-size: clamp(0.72rem, 0.78vw, 0.88rem) !important;
-  line-height: 1.34 !important;
-  margin-bottom: 7px !important;
-}
-
-/* Rating-Zeilen kompakter */
-#screen-pinnwand .measure-rating {
-  margin: 8px 0 10px !important;
-  padding: 7px 10px !important;
-  gap: 8px !important;
-}
-
-#screen-pinnwand .measure-label {
-  font-size: 0.62rem !important;
-  line-height: 1 !important;
-}
-
-#screen-pinnwand .rocket-rating {
-  font-size: clamp(0.95rem, 1.2vw, 1.25rem) !important;
-  margin-bottom: 0 !important;
-}
-
-/* PayPal-/No-PayPal Button kompakter */
-#screen-pinnwand .paypal-link,
-#screen-pinnwand .no-paypal {
-  margin-top: auto !important;
-  padding: 8px 10px !important;
-
-  font-size: clamp(0.66rem, 0.76vw, 0.82rem) !important;
-  line-height: 1.25 !important;
-}
-
-/* ---------------------------------------------------------
-  3) Hover-Zustand kompakter halten
---------------------------------------------------------- */
-
-@media (hover: hover) and (pointer: fine) {
-  #screen-pinnwand .flip-card:hover .flip-back {
-    padding: clamp(20px, 2vw, 32px) !important;
-  }
-
-  #screen-pinnwand .flip-card:hover .flip-back h3 {
-    font-size: clamp(1.6rem, 2.3vw, 2.55rem) !important;
-    margin-bottom: 14px !important;
-  }
-
-  #screen-pinnwand .flip-card:hover .flip-back p {
-    font-size: clamp(0.78rem, 0.9vw, 1rem) !important;
-    line-height: 1.42 !important;
-    margin-bottom: 9px !important;
-  }
-
-  #screen-pinnwand .flip-card.text-heavy:hover .flip-back p,
-  #screen-pinnwand .card-activities:hover .flip-back p {
-    font-size: clamp(0.72rem, 0.82vw, 0.9rem) !important;
-    line-height: 1.34 !important;
-    margin-bottom: 7px !important;
-  }
-}
-
-/* ---------------------------------------------------------
-  4) Mobile: kompakter, aber nicht winzig
---------------------------------------------------------- */
-
-@media (max-width: 899px) {
-  #screen-pinnwand .board-strings {
-    display: none !important;
-  }
-
-  #screen-pinnwand .flip-back {
-    overflow: visible !important;
-    padding: 24px 20px !important;
-  }
-
-  #screen-pinnwand .flip-back h3 {
-    font-size: clamp(1.85rem, 8vw, 2.7rem) !important;
-    line-height: 0.95 !important;
-    margin-bottom: 18px !important;
-  }
-
-  #screen-pinnwand .flip-back p {
-    font-size: clamp(0.92rem, 3.8vw, 1.04rem) !important;
-    line-height: 1.48 !important;
-    margin-bottom: 11px !important;
-  }
-
-  #screen-pinnwand .text-heavy .flip-back p,
-  #screen-pinnwand .card-activities .flip-back p {
-    font-size: clamp(0.86rem, 3.6vw, 0.98rem) !important;
-    line-height: 1.42 !important;
-    margin-bottom: 10px !important;
-  }
-}
-
-
-/* =========================================================
-  GUIDELINE MODAL — ACCESSIBLE REAL POPUP FIX
+  GUIDELINE MODAL — ATTRIBUTE BASED FINAL VERSION
 ========================================================= */
 
 body.modal-is-open {
-  overflow: hidden;
+  overflow: hidden !important;
 }
 
-.guideline-modal.hidden {
+#guidelineModal[data-modal-open="false"] {
   display: none !important;
   visibility: hidden !important;
+  opacity: 0 !important;
   pointer-events: none !important;
 }
 
-.guideline-modal:not(.hidden) {
+#guidelineModal[data-modal-open="true"] {
   position: fixed !important;
   inset: 0 !important;
   z-index: 2147483647 !important;
 
-  display: grid !important;
-  place-items: center !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 
   width: 100vw !important;
   height: 100dvh !important;
-  padding: clamp(14px, 4vw, 38px) !important;
+  margin: 0 !important;
+  padding: 24px !important;
 
   overflow: hidden !important;
+  visibility: visible !important;
+  opacity: 1 !important;
   pointer-events: auto !important;
 }
 
-.guideline-modal__backdrop {
+#guidelineModal .guideline-modal__backdrop {
   position: fixed !important;
   inset: 0 !important;
   z-index: 1 !important;
@@ -3345,17 +3118,18 @@ body.modal-is-open {
     radial-gradient(circle at 50% 20%, rgba(156, 255, 95, 0.08), transparent 32rem),
     rgba(0, 0, 0, 0.76) !important;
 
-  backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px) !important;
 }
 
-.guideline-modal__panel {
+#guidelineModal .guideline-modal__panel {
   position: relative !important;
   z-index: 2 !important;
 
   width: min(100%, 820px) !important;
-  max-height: min(88dvh, 880px) !important;
+  max-height: 88dvh !important;
   overflow-y: auto !important;
 
+  margin: 0 auto !important;
   padding: clamp(24px, 4vw, 48px) !important;
 
   border-radius: 24px !important;
@@ -3372,275 +3146,167 @@ body.modal-is-open {
 
   box-shadow:
     0 30px 100px rgba(0, 0, 0, 0.68),
-    inset 0 0 0 1px rgba(255,255,255,0.3) !important;
+    inset 0 0 0 1px rgba(255, 255, 255, 0.3) !important;
 }
 
-.guideline-modal__panel,
-.guideline-modal__panel * {
-  color: #17110a;
+#guidelineModal .guideline-modal__panel,
+#guidelineModal .guideline-modal__panel * {
+  color: #17110a !important;
 }
 
-.guideline-modal__close {
+#guidelineModal .guideline-modal__close {
   position: absolute !important;
   top: 14px !important;
   right: 14px !important;
   z-index: 5 !important;
+
+  width: 40px !important;
+  height: 40px !important;
+
+  border-radius: 999px !important;
+  border: 1px solid rgba(24, 17, 10, 0.32) !important;
+
+  background: rgba(255, 255, 255, 0.35) !important;
+  color: #17110a !important;
+
+  font-size: 1.6rem !important;
+  line-height: 1 !important;
+
+  cursor: pointer !important;
 }
 
-@media (max-width: 680px) {
-  .guideline-modal:not(.hidden) {
-    align-items: end !important;
-    place-items: end center !important;
-    padding: 10px !important;
-  }
+#guidelineModal .guideline-eyebrow {
+  margin: 0 0 14px !important;
 
-  .guideline-modal__panel {
-    width: 100% !important;
-    max-height: 92dvh !important;
-    border-radius: 22px 22px 0 0 !important;
-    padding: 26px 18px !important;
-  }
-}
+  color: #7b391d !important;
 
-/* =========================================================
-  FINAL PINNWAND FIX — NO INNER SCROLL ON DESKTOP
-========================================================= */
-
-/* Desktop: Rückseiten dürfen nicht intern scrollen */
-@media (min-width: 900px) {
-  #screen-pinnwand .flip-back {
-    overflow: hidden !important;
-    padding: clamp(14px, 1.3vw, 22px) !important;
-    justify-content: flex-start !important;
-  }
-
-  #screen-pinnwand .flip-back h3 {
-    margin: 0 0 10px !important;
-
-    font-size: clamp(1.22rem, 1.55vw, 1.95rem) !important;
-    line-height: 0.96 !important;
-    letter-spacing: 0.01em !important;
-  }
-
-  #screen-pinnwand .flip-back p {
-    margin: 0 0 7px !important;
-
-    font-size: clamp(0.62rem, 0.68vw, 0.82rem) !important;
-    line-height: 1.28 !important;
-    letter-spacing: 0.005em !important;
-    font-weight: 650 !important;
-  }
-
-  #screen-pinnwand .flip-back strong {
-    font-weight: 900 !important;
-  }
-
-  /* Textlastige Karten nochmal kleiner */
-  #screen-pinnwand .text-heavy .flip-back p,
-  #screen-pinnwand .card-activities .flip-back p {
-    font-size: clamp(0.56rem, 0.62vw, 0.74rem) !important;
-    line-height: 1.22 !important;
-    margin-bottom: 5px !important;
-  }
-
-  #screen-pinnwand .measure-rating {
-    margin: 5px 0 6px !important;
-    padding: 5px 8px !important;
-    gap: 6px !important;
-  }
-
-  #screen-pinnwand .measure-label {
-    font-size: 0.52rem !important;
-    line-height: 1 !important;
-  }
-
-  #screen-pinnwand .rocket-rating {
-    font-size: clamp(0.78rem, 0.9vw, 1rem) !important;
-    line-height: 1 !important;
-    margin: 0 !important;
-  }
-
-  #screen-pinnwand .paypal-link,
-  #screen-pinnwand .no-paypal {
-    margin-top: auto !important;
-    padding: 6px 8px !important;
-
-    font-size: clamp(0.54rem, 0.62vw, 0.72rem) !important;
-    line-height: 1.18 !important;
-  }
-
-  /* Hover-Back nicht wieder riesig machen */
-  #screen-pinnwand .flip-card:hover .flip-back {
-    overflow: hidden !important;
-    padding: clamp(14px, 1.4vw, 24px) !important;
-  }
-
-  #screen-pinnwand .flip-card:hover .flip-back h3 {
-    font-size: clamp(1.32rem, 1.7vw, 2.1rem) !important;
-    margin-bottom: 10px !important;
-  }
-
-  #screen-pinnwand .flip-card:hover .flip-back p {
-    font-size: clamp(0.62rem, 0.72vw, 0.86rem) !important;
-    line-height: 1.28 !important;
-    margin-bottom: 6px !important;
-  }
-
-  #screen-pinnwand .flip-card.text-heavy:hover .flip-back p,
-  #screen-pinnwand .card-activities:hover .flip-back p {
-    font-size: clamp(0.56rem, 0.66vw, 0.76rem) !important;
-    line-height: 1.22 !important;
-    margin-bottom: 5px !important;
-  }
-}
-
-/* Mobile: Scrollen der Seite ja, aber keine Mini-Scrollboxen in Karten */
-@media (max-width: 899px) {
-  #screen-pinnwand .flip-back {
-    overflow: visible !important;
-    max-height: none !important;
-  }
-}
-
-/* =========================================================
-  PINNWAND — THREADS AND PINS ABOVE BOARD
-========================================================= */
-
-#screen-pinnwand .board-strings {
-  position: absolute !important;
-  inset: 0 !important;
-  z-index: 120 !important;
-  pointer-events: none !important;
-}
-
-#screen-pinnwand .board-strings line {
-  stroke: rgba(185, 0, 0, 0.94) !important;
-  stroke-width: 2.4 !important;
-  filter: drop-shadow(0 0 4px rgba(185, 0, 0, 0.42));
-}
-
-#screen-pinnwand .board-strings circle {
-  fill: #c91717 !important;
-  stroke: rgba(70, 0, 0, 0.55) !important;
-  stroke-width: 2 !important;
-  filter: drop-shadow(0 4px 5px rgba(0, 0, 0, 0.5));
-}
-
-#screen-pinnwand .central-map {
-  z-index: 20 !important;
-}
-
-#screen-pinnwand .flip-card {
-  z-index: 60 !important;
-}
-
-#screen-pinnwand .flip-card:hover,
-#screen-pinnwand .flip-card.is-expanded,
-#screen-pinnwand .flip-card.is-flipped {
-  z-index: 180 !important;
-}
-
-
-/* =========================================================
-  SCREEN 03 + 04 — SMALLER HEADLINES
-========================================================= */
-
-/* Nachricht an Zielperson */
-#screen-nachricht .paper-file h2,
-#screen-nachricht h2 {
-  font-size: clamp(3.4rem, 6.2vw, 7.2rem) !important;
-  line-height: 0.88 !important;
-  letter-spacing: 0.01em !important;
-  max-width: 11ch !important;
-}
-
-/* Live-Protokoll */
-#screen-tracking .paper-file h2,
-#screen-tracking h2 {
-  font-size: clamp(3.6rem, 6.6vw, 7.4rem) !important;
-  line-height: 0.88 !important;
-  letter-spacing: 0.01em !important;
-  max-width: 10ch !important;
-}
-
-@media (max-width: 680px) {
-  #screen-nachricht .paper-file h2,
-  #screen-nachricht h2 {
-    font-size: clamp(2.2rem, 10vw, 3.4rem) !important;
-    line-height: 0.96 !important;
-    max-width: 9ch !important;
-  }
-
-  #screen-tracking .paper-file h2,
-  #screen-tracking h2 {
-    font-size: clamp(2.3rem, 10.5vw, 3.6rem) !important;
-    line-height: 0.94 !important;
-    max-width: 9ch !important;
-  }
-}
-
-
-/* =========================================================
-  SCREEN 01 — COMPACT BRIEFING
-========================================================= */
-
-#screen-briefing .support-intro {
-  padding-top: clamp(26px, 3vw, 46px) !important;
-  padding-bottom: clamp(34px, 4vw, 58px) !important;
-}
-
-#screen-briefing .support-intro .eyebrow {
-  margin-bottom: clamp(10px, 1.2vw, 16px) !important;
-  font-size: clamp(0.76rem, 0.9vw, 0.98rem) !important;
+  font-family: "Courier New", monospace !important;
+  font-size: 0.78rem !important;
+  font-weight: 900 !important;
   letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
 }
 
-#screen-briefing .support-intro h1 {
+#guidelineModal h2 {
   margin: 0 !important;
-  font-size: clamp(4.2rem, 9vw, 10rem) !important;
-  line-height: 0.78 !important;
-  letter-spacing: 0.05em !important;
+
+  color: #17110a !important;
+
+  font-family: Impact, "Arial Black", system-ui, sans-serif !important;
+  font-size: clamp(2.3rem, 5.8vw, 5.4rem) !important;
+  line-height: 0.9 !important;
+  text-transform: uppercase !important;
 }
 
-#screen-briefing .support-intro .subtitle {
-  margin-top: clamp(18px, 2vw, 30px) !important;
-  font-size: clamp(1rem, 1.35vw, 1.45rem) !important;
-  line-height: 1.38 !important;
+#guidelineModal .guideline-intro {
+  max-width: 66ch;
+  margin: 20px 0 0 !important;
+
+  color: #21160c !important;
+
+  font-size: clamp(1rem, 1.1vw, 1.14rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.65 !important;
 }
 
-#screen-briefing .mission-disclaimer {
-  margin-top: clamp(24px, 2.8vw, 38px) !important;
-  padding: clamp(18px, 2vw, 26px) !important;
-  font-size: clamp(0.98rem, 1.08vw, 1.16rem) !important;
+#guidelineModal .guideline-scale {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+
+  margin-top: clamp(24px, 4vw, 36px) !important;
+}
+
+#guidelineModal .guideline-scale article {
+  padding: 18px !important;
+
+  border-radius: 18px !important;
+  border: 1px solid rgba(58, 37, 19, 0.22) !important;
+
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.12)) !important;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 12px 28px rgba(60, 38, 18, 0.1) !important;
+}
+
+#guidelineModal .guideline-gpp {
+  padding: 6px 10px !important;
+
+  border-radius: 999px !important;
+  border: 1px solid rgba(31, 122, 23, 0.38) !important;
+
+  background: rgba(156, 255, 95, 0.14) !important;
+
+  font-size: 0.9rem !important;
+  letter-spacing: 0.1em !important;
+}
+
+#guidelineModal .guideline-scale strong {
+  display: block !important;
+
+  margin-bottom: 8px !important;
+
+  color: #17110a !important;
+
+  font-family: "Courier New", monospace !important;
+  font-size: 0.88rem !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+}
+
+#guidelineModal .guideline-scale p {
+  margin: 0 !important;
+
+  color: #21160c !important;
+
+  font-size: 0.96rem !important;
+  font-weight: 650 !important;
   line-height: 1.55 !important;
 }
 
-#screen-briefing .guideline-info-button {
-  margin-top: clamp(16px, 2vw, 24px) !important;
-}
+#guidelineModal .guideline-note {
+  margin-top: 22px !important;
+  padding: 16px 18px !important;
 
-#screen-briefing .mission-copy {
-  margin-top: clamp(22px, 2.6vw, 34px) !important;
-  font-size: clamp(1rem, 1.08vw, 1.16rem) !important;
-  line-height: 1.62 !important;
-}
+  border-radius: 16px !important;
+  border: 1px solid rgba(125, 23, 18, 0.24) !important;
 
-#screen-briefing .mission-copy-small {
-  margin-top: clamp(16px, 2vw, 24px) !important;
-  font-size: clamp(0.92rem, 1vw, 1.06rem) !important;
-  line-height: 1.56 !important;
-}
+  background: rgba(125, 23, 18, 0.055) !important;
+  color: #21160c !important;
 
-#screen-briefing .screen-actions {
-  margin-top: clamp(24px, 3vw, 38px) !important;
+  font-weight: 750 !important;
+  line-height: 1.55 !important;
 }
 
 @media (max-width: 680px) {
-  #screen-briefing .support-intro {
-    padding-top: 24px !important;
+  #guidelineModal[data-modal-open="true"] {
+    align-items: flex-end !important;
+    justify-content: center !important;
+
+    padding: 10px !important;
   }
 
-  #screen-briefing .support-intro h1 {
-    font-size: clamp(3.5rem, 16vw, 5.6rem) !important;
+  #guidelineModal .guideline-modal__panel {
+    width: 100% !important;
+    max-height: 92dvh !important;
+
+    padding: 26px 18px !important;
+
+    border-radius: 22px 22px 0 0 !important;
+  }
+
+  #guidelineModal h2 {
+    font-size: clamp(2.1rem, 11vw, 3.7rem) !important;
+  }
+
+  #guidelineModal .guideline-scale {
+    grid-template-columns: 1fr !important;
+  }
+
+  #guidelineModal .guideline-scale article {
+    padding: 16px !important;
   }
 }
