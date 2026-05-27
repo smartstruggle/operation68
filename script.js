@@ -586,38 +586,84 @@ if (casebook && totalCasebookPages > 0) {
 ========================================================= */
 
 const guidelineModal = document.querySelector("#guidelineModal");
-const guidelineOpenButtons = document.querySelectorAll("[data-guideline-open]");
-const guidelineCloseButtons = document.querySelectorAll("[data-guideline-close]");
+let lastGuidelineTrigger = null;
 
-function openGuidelineModal() {
-  if (!guidelineModal) return;
+function openGuidelineModal(triggerButton = null) {
+  if (!guidelineModal) {
+    console.warn("guidelineModal wurde nicht gefunden.");
+    return;
+  }
+
+  lastGuidelineTrigger = triggerButton;
 
   guidelineModal.classList.remove("hidden");
+  guidelineModal.removeAttribute("inert");
   guidelineModal.setAttribute("aria-hidden", "false");
+
+  document.body.classList.add("modal-is-open");
+
+  window.setTimeout(() => {
+    const closeButton = guidelineModal.querySelector("[data-guideline-close]");
+    closeButton?.focus();
+  }, 50);
 }
 
 function closeGuidelineModal() {
   if (!guidelineModal) return;
 
+  const activeElement = document.activeElement;
+
+  if (activeElement && guidelineModal.contains(activeElement)) {
+    activeElement.blur();
+  }
+
   guidelineModal.classList.add("hidden");
   guidelineModal.setAttribute("aria-hidden", "true");
+  guidelineModal.setAttribute("inert", "");
+
+  document.body.classList.remove("modal-is-open");
+
+  window.setTimeout(() => {
+    lastGuidelineTrigger?.focus();
+  }, 50);
 }
 
-guidelineOpenButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const isOpen = guidelineModal && !guidelineModal.classList.contains("hidden");
+function toggleGuidelineModal(triggerButton = null) {
+  if (!guidelineModal) return;
 
-    if (isOpen) {
-      closeGuidelineModal();
-      return;
-    }
+  const isOpen = !guidelineModal.classList.contains("hidden");
 
-    openGuidelineModal();
-  });
-});
+  if (isOpen) {
+    closeGuidelineModal();
+  } else {
+    openGuidelineModal(triggerButton);
+  }
+}
 
-guidelineCloseButtons.forEach((button) => {
-  button.addEventListener("click", closeGuidelineModal);
+/* Initial sicher verstecken */
+if (guidelineModal) {
+  guidelineModal.classList.add("hidden");
+  guidelineModal.setAttribute("aria-hidden", "true");
+  guidelineModal.setAttribute("inert", "");
+}
+
+/* Event Delegation */
+document.addEventListener("click", (event) => {
+  const openButton = event.target.closest("[data-guideline-open]");
+  const closeButton = event.target.closest("[data-guideline-close]");
+
+  if (openButton) {
+    event.preventDefault();
+    event.stopPropagation();
+    toggleGuidelineModal(openButton);
+    return;
+  }
+
+  if (closeButton) {
+    event.preventDefault();
+    event.stopPropagation();
+    closeGuidelineModal();
+  }
 });
 
 document.addEventListener("keydown", (event) => {
