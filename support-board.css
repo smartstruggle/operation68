@@ -2661,6 +2661,57 @@ background: #ead9ad !important;
 }
 }
 
+/* =========================================================
+MOBILE PINNWAND FIX — FLIPPED CARDS STAY BRIGHT
+========================================================= */
+
+@media (max-width: 899px) {
+/* Keine Abdunklung auf der geöffneten Karte */
+#screen-pinnwand .flip-card,
+#screen-pinnwand .flip-card.is-flipped,
+#screen-pinnwand .flip-card.is-expanded {
+opacity: 1 !important;
+filter: none !important;
+mix-blend-mode: normal !important;
+}
+
+/* Vorder- und Rückseite immer hell halten */
+#screen-pinnwand .flip-front,
+#screen-pinnwand .flip-back,
+#screen-pinnwand .flip-card.is-flipped .flip-front,
+#screen-pinnwand .flip-card.is-flipped .flip-back,
+#screen-pinnwand .flip-card.is-expanded .flip-front,
+#screen-pinnwand .flip-card.is-expanded .flip-back {
+opacity: 1 !important;
+filter: none !important;
+mix-blend-mode: normal !important;
+}
+
+/* Falls das Board bei geöffneter Karte alle Cards abdunkelt */
+#screen-pinnwand .evidence-board.has-expanded-card .flip-card {
+opacity: 1 !important;
+filter: none !important;
+}
+
+#screen-pinnwand .evidence-board.has-expanded-card .flip-card.is-expanded {
+opacity: 1 !important;
+filter: none !important;
+}
+
+/* Falls ein Overlay/Pseudo-Element die Wand abdunkelt */
+#screen-pinnwand .evidence-board.has-expanded-card::before,
+#screen-pinnwand .evidence-board.has-expanded-card::after {
+opacity: 0 !important;
+display: none !important;
+}
+
+/* Rückseite explizit wieder helles Papier */
+#screen-pinnwand .flip-back {
+background:
+linear-gradient(rgba(70, 49, 25, 0.04) 1px, transparent 1px),
+linear-gradient(90deg, rgba(70, 49, 25, 0.035) 1px, transparent 1px),
+linear-gradient(180deg, #efe0bc 0%, #d8c59c 100%) !important;
+background-size:
 
 
 
