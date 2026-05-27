@@ -2556,3 +2556,123 @@
 #screen-pinnwand .card-target .polaroid h3 {
   margin-top: 10px !important;
 }
+
+/* =========================================================
+MOBILE PINNWAND FIX — FLIP IN PLACE, NO JUMP
+========================================================= */
+
+@media (max-width: 899px) {
+/* Mobile: Pinnwand als normale vertikale Liste behandeln */
+#screen-pinnwand .evidence-board {
+overflow-x: hidden;
+overflow-y: visible;
+}
+
+/* Alle Karten bleiben im normalen Flow */
+#screen-pinnwand .flip-card,
+#screen-pinnwand .flip-card.is-expanded {
+position: relative !important;
+
+left: auto !important;
+right: auto !important;
+top: auto !important;
+bottom: auto !important;
+
+width: min(100%, 92vw) !important;
+min-height: auto !important;
+
+margin: 24px auto !important;
+
+transform: none !important;
+z-index: 20 !important;
+}
+
+/* Activities darf etwas breiter sein, aber nicht überlaufen */
+#screen-pinnwand .card-activities,
+#screen-pinnwand .card-activities.is-expanded {
+width: min(100%, 92vw) !important;
+}
+
+/* Flip-Innenleben stabil */
+#screen-pinnwand .flip-inner,
+#screen-pinnwand .flip-card.is-expanded .flip-inner {
+position: relative;
+width: 100%;
+min-height: auto !important;
+transform-style: preserve-3d;
+-webkit-transform-style: preserve-3d;
+}
+
+/* Vorder-/Rückseite sollen exakt dieselbe Fläche nutzen */
+#screen-pinnwand .flip-front,
+#screen-pinnwand .flip-back {
+min-height: 420px;
+border-radius: 18px;
+
+backface-visibility: hidden;
+-webkit-backface-visibility: hidden;
+}
+
+/* Wenn Karte geflippt ist: nicht irgendwohin bewegen, nur drehen */
+#screen-pinnwand .flip-card.is-flipped .flip-inner,
+#screen-pinnwand .flip-card.is-expanded .flip-inner {
+transform: rotateY(180deg) !important;
+-webkit-transform: rotateY(180deg) !important;
+}
+
+/* Rückseite lesbarer, aber nicht absurd riesig */
+#screen-pinnwand .flip-card.is-expanded .flip-back,
+#screen-pinnwand .flip-back {
+padding: 28px 24px !important;
+justify-content: flex-start !important;
+}
+
+#screen-pinnwand .flip-back h3 {
+font-size: clamp(2rem, 10vw, 3.2rem) !important;
+line-height: 0.95 !important;
+margin-bottom: 24px !important;
+color: #17110a !important;
+}
+
+#screen-pinnwand .flip-back p {
+font-size: clamp(1rem, 4.4vw, 1.18rem) !important;
+line-height: 1.58 !important;
+letter-spacing: 0.015em !important;
+color: #17110a !important;
+}
+
+.paypal-link,
+.no-paypal {
+font-size: 0.9rem !important;
+line-height: 1.35 !important;
+}
+
+/* Front-Fotos auf Mobile nicht dunkel/abgeschnitten */
+#screen-pinnwand .polaroid img {
+object-fit: cover;
+object-position: center;
+}
+
+/* Zielperson: Kopf vollständig sichtbar */
+#screen-pinnwand .card-target .polaroid img {
+object-fit: contain !important;
+object-position: center top !important;
+background: #ead9ad !important;
+}
+}
+
+
+
+
+card.classList.add("is-expanded");
+card.classList.add("is-flipped");
+evidenceBoard?.classList.add("has-expanded-card");
+
+/* Mobile: Karte bleibt an Ort und Stelle sichtbar */
+if (window.matchMedia("(max-width: 899px)").matches) {
+card.scrollIntoView({
+behavior: "smooth",
+block: "center"
+});
+}
+
