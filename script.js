@@ -595,7 +595,7 @@ function openGuidelineModal(triggerButton = null) {
 
   lastGuidelineTrigger = triggerButton;
 
-  guidelineModal.classList.remove("hidden");
+  guidelineModal.dataset.modalOpen = "true";
   guidelineModal.removeAttribute("inert");
   guidelineModal.setAttribute("aria-hidden", "false");
 
@@ -615,7 +615,7 @@ function closeGuidelineModal() {
     activeElement.blur();
   }
 
-  guidelineModal.classList.add("hidden");
+  guidelineModal.dataset.modalOpen = "false";
   guidelineModal.setAttribute("aria-hidden", "true");
   guidelineModal.setAttribute("inert", "");
 
@@ -629,7 +629,7 @@ function closeGuidelineModal() {
 function toggleGuidelineModal(triggerButton = null) {
   if (!guidelineModal) return;
 
-  const isOpen = !guidelineModal.classList.contains("hidden");
+  const isOpen = guidelineModal.dataset.modalOpen === "true";
 
   if (isOpen) {
     closeGuidelineModal();
@@ -638,8 +638,9 @@ function toggleGuidelineModal(triggerButton = null) {
   }
 }
 
+/* Initialzustand erzwingen */
 if (guidelineModal) {
-  guidelineModal.classList.add("hidden");
+  guidelineModal.dataset.modalOpen = "false";
   guidelineModal.setAttribute("aria-hidden", "true");
   guidelineModal.setAttribute("inert", "");
 }
